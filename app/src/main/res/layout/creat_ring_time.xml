@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_2"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请选择闹钟响铃时间"
+        android:textSize="30dp"
+        android:fontFamily="@font/font1"
+        android:layout_above="@id/time_picker"
+        android:layout_centerHorizontal="true"
+        />
+<TimePicker
+    android:id="@+id/time_picker"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:background="@color/white"
+    />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确认"
+        android:id="@+id/button_time"
+        android:layout_below="@id/time_picker"
+        android:layout_alignParentRight="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取选取的时间，若小于等于当前时间则跳失败toast，若大于则跳成功toast后返回mainactivity，在闹钟的list中添加新闹钟，默认switch为true"
+        android:layout_below="@id/button_time"
+        android:textColor="@color/black"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="myarray">
+        <item>闹钟1_____time1___________________switch_button1</item>
+        <item>闹钟2_____time2___________________switch_button2</item>
+        <item>闹钟3_____time3___________________switch_button3</item>
+        <item>.....</item>
+    </string-array>
+</resources>
