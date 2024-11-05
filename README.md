@@ -1,7 +1,5 @@
 # Multi-Func_Alarm_and_Agenda_Manager---BUAA-OOP-2024
 
-# Multi-Func Alarm and Agenda Manager
-
 > 本项目是 2024 年北京航空航天大学《面向对象程序设计》课程的结课作业，请勿抄袭，仿冒必究。
 
 ## 项目概述
