@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:background="@drawable/press_button"
             android:shadowColor="@color/white"
-            android:src="@drawable/setting" />
+            android:src="@drawable/three_dots_vertical" />
     </LinearLayout>
     <CalendarView
         android:layout_width="match_parent"
