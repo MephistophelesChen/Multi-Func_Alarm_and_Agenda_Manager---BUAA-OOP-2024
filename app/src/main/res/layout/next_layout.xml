@@ -3,12 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="  日程管理"
+    android:textSize="20dp"
+    android:fontFamily="@font/font1"
+    />
 
     <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="5"
         tools:ignore="MissingConstraints" />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="5">
+    <ListView
+        android:id="@+id/data_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+      <ImageButton
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          android:layout_alignParentBottom="true"
+          android:layout_alignRight="@+id/data_list"
+          android:layout_marginRight="30dp"
+          android:layout_marginBottom="30dp"
+          android:background="@drawable/round_button"
+          android:src="@drawable/plus"
+          android:elevation="8dp"
+          />
+</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="0.8"
+        android:background="@color/gray_yellow">
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="闹钟" />
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="日程" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="计时器" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="其他功能..." />
+    </LinearLayout>
+
+<!-- 日程管理和-->
 </LinearLayout>
