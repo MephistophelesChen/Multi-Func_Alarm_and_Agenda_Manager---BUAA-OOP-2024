@@ -6,14 +6,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="  日程管理"
-    android:textSize="20dp"
-    android:fontFamily="@font/font1"
-    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:fontFamily="@font/font1"
+            android:text="  日程管理"
+            android:textSize="20dp"
+            />
 
+        <ImageButton
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/press_button"
+            android:shadowColor="@color/white"
+            android:src="@drawable/setting" />
+    </LinearLayout>
     <CalendarView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -76,5 +93,9 @@
             android:text="其他功能..." />
     </LinearLayout>
 
-<!-- 日程管理和-->
+<!-- 日程管理和闹钟创建几乎相同，可以选择跳过time_picker来创建没有具体时间的某天的日程，在
+listView中要记录日程名称，日程具体时间（如果有的话），完成按钮（右侧）。通过这个
+calendarView来选择显示对应日期的listView，当该日期无日程时，将listView部分
+替换为TextView：“今日无事”
+-->
 </LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="考虑将1.时区选择；2：表情识别开启与关闭；3：主题选择（白天与黑夜，很容易实现）4：闹钟铃声设置5：账户信息管理（退出登录）以一个listView形式放入setting中,若有额外功能大家补充"
+        tools:ignore="MissingConstraints"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

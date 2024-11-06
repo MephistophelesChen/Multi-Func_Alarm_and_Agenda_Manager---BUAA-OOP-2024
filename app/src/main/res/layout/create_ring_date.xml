@@ -5,7 +5,10 @@
     android:orientation="vertical"
     android:background="@color/gray_2"
     >
-
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="返回按钮，返回到creat_data"/>
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -31,10 +34,19 @@
         android:layout_alignParentRight="true"
         android:id="@+id/buttonPanel"
         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="每日重复"
+        android:layout_below="@id/date_picker_actions"
+        android:layout_centerHorizontal="true"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="(监听选择的日期,若选择的日期小于当前日期且点击确认，生成toast：不能时光倒流(demo,若大于等于，则跳转到creat_ring_time界面)"
+        android:text="(监听选择的日期,若选择的日期小于当前日期且点击确认，生成toast：不能时光倒流(demo,若大于等于，则跳转到creat_ring_time界面)
+如果选择了每日重复，直接跳到creat_ring_time
+"
         android:layout_below="@id/buttonPanel"
         android:textColor="@color/black"
         />
