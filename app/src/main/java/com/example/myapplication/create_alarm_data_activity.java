@@ -9,7 +9,7 @@ public class create_alarm_data_activity extends Activity {
     public void onCreate(Bundle savedInstanceState)
 {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.create_ring_date);
+    setContentView(R.layout.create_alarm_date);
 }
 
 }

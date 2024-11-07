@@ -109,14 +109,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="闹钟" />
+            android:text="闹钟"
+
+            />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="日程" />
+            android:text="日程"
+            android:id="@+id/to_date_btn"
+            />
 
         <Button
             android:layout_width="0dp"
