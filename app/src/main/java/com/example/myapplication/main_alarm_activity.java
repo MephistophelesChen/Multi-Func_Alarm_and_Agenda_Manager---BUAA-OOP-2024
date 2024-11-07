@@ -26,7 +26,7 @@ public class main_alarm_activity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private ImageButton add_alarm_btn;
-    private Button to_alarm_btn,to_date_btn;
+    private Button to_date_btn,to_timer_btn,to_setting_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,24 +46,16 @@ public class main_alarm_activity extends AppCompatActivity {
         a.setAdapter(simpleAdapter);
 
         add_alarm_btn=(ImageButton) findViewById(R.id.add_alarm_btn);
-        add_alarm_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(main_alarm_activity.this, create_alarm_data_activity.class);
-                // 启动Activity2
-                startActivity(intent);
-            }
-        });
+        ButtonManager.switchToActivity_ibtn(add_alarm_btn,main_alarm_activity.this,create_alarm_date_activity.class);
 
         to_date_btn=(Button) findViewById(R.id.to_date_btn);
-        to_date_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(main_alarm_activity.this, main_date_activity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
+        ButtonManager.switchToActivity_btn(to_date_btn,main_alarm_activity.this,main_date_activity.class);
+
+        to_timer_btn=(Button) findViewById(R.id.to_timer_btn);
+        ButtonManager.switchToActivity_btn(to_timer_btn,main_alarm_activity.this, main_timer_activity.class);
+
+        to_setting_btn=(Button) findViewById(R.id.to_setting_btn);
+        ButtonManager.switchToActivity_btn(to_setting_btn,main_alarm_activity.this,main_setting_activity.class);
 
 
 

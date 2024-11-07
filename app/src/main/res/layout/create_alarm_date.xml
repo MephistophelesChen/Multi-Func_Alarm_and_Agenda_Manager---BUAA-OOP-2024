@@ -5,10 +5,17 @@
     android:orientation="vertical"
     android:background="@color/gray_2"
     >
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="返回按钮，返回到creat_data"/>
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_button"
+        android:elevation="8dp"
+        android:paddingLeft="10dp"
+        android:src="@drawable/chevron_left"
+        />
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

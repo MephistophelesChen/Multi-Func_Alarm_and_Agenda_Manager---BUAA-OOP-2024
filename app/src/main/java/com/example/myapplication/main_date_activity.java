@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class main_date_activity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class main_date_activity extends AppCompatActivity {
     //-----------------------------------------------------------------按钮逻辑部分
     private Button to_alarm_btn,to_timer_btn,to_setting_btn;
     @Override
@@ -15,13 +17,13 @@ public class main_date_activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_date);
         to_alarm_btn=(Button) findViewById(R.id.to_alarm_btn);
-        to_alarm_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(main_date_activity.this, main_alarm_activity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
+        ButtonManager.switchToActivity_btn(to_alarm_btn,main_date_activity.this,main_alarm_activity.class);
+
+        to_timer_btn=(Button) findViewById(R.id.to_timer_btn);
+        ButtonManager.switchToActivity_btn(to_timer_btn,main_date_activity.this, main_timer_activity.class);
+
+        to_setting_btn=(Button) findViewById(R.id.to_setting_btn);
+        ButtonManager.switchToActivity_btn(to_setting_btn,main_date_activity.this,main_setting_activity.class);
+
     }
 }
