@@ -1,0 +1,163 @@
+Index: app/src/main/java/com/example/myapplication/MainActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/example/myapplication/MainActivity.java b/app/src/main/java/com/example/myapplication/MainActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/myapplication/MainActivity.java	(revision 3f9e53d73ccad2eeb393d5ed5f70001cb681401a)
++++ /dev/null	(revision 3f9e53d73ccad2eeb393d5ed5f70001cb681401a)
+@@ -1,58 +0,0 @@
+-package com.example.myapplication;
+-
+-
+-import android.content.Intent;
+-import android.os.Bundle;
+-import android.view.View;
+-import android.widget.ImageButton;
+-import android.widget.ListView;
+-import android.widget.SimpleAdapter;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import java.util.ArrayList;
+-import java.util.HashMap;
+-import java.util.List;
+-import java.util.Map;
+-
+-public class MainActivity extends AppCompatActivity {
+-    List<Map<String,Object>> listItems;
+-    HashMap<String,Object> map;
+-    SimpleAdapter simpleAdapter;
+-    private String[] time = new String[]{"11:00","10:00","11:58","11:34"};
+-    private String[] time_1=new String[]{"AM","PM","AM","PM"};
+-
+-    private static final String TAG = "MainActivity";
+-    private ImageButton imbtn1;
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.main_alarm);
+-        // 创建一个MaterialDatePicker实例
+-        ListView a=(ListView)findViewById(R.id.list_test);
+-        listItems=new ArrayList<Map<String, Object>>();
+-        for(int i=0;i<time.length;i++)
+-        {
+-            map=new HashMap<String, Object>();
+-            map.put("time", time[i]);
+-            map.put("time_1", time_1[i]);
+-            //把列表项加进列表集合
+-            listItems.add(map);
+-        }
+-     //  simpleAdapter =new SimpleAdapter(this,listItems,R.layout.data_list_res,new String[]{"time","time_1"},new int[]);
+-      //  a.setAdapter(simpleAdapter);
+-
+-        imbtn1=(ImageButton) findViewById(R.id.add_alarm_btn);
+-        imbtn1.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                Intent intent = new Intent(MainActivity.this, create_alarm_data_activity.class);
+-                // 启动Activity2
+-                startActivity(intent);
+-            }
+-        });
+-    }
+-//我们需要的实例的类：闹钟类，日程事件类，
+-
+-
+-}
+\ No newline at end of file
+Index: app/src/main/res/drawable/arrow_left.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/arrow_left.xml b/app/src/main/res/drawable/arrow_left.xml
+new file mode 100644
+--- /dev/null	(date 1730890614452)
++++ b/app/src/main/res/drawable/arrow_left.xml	(date 1730890614452)
+@@ -0,0 +1,27 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="24dp"
++    android:height="24dp"
++    android:viewportWidth="24"
++    android:viewportHeight="24">
++  <path
++      android:pathData="M5,12L19,12"
++      android:strokeLineJoin="round"
++      android:strokeWidth="2"
++      android:fillColor="#00000000"
++      android:strokeColor="#FFFFFF"
++      android:strokeLineCap="round"/>
++  <path
++      android:pathData="M5,12L11,18"
++      android:strokeLineJoin="round"
++      android:strokeWidth="2"
++      android:fillColor="#00000000"
++      android:strokeColor="#FFFFFF"
++      android:strokeLineCap="round"/>
++  <path
++      android:pathData="M5,12L11,6"
++      android:strokeLineJoin="round"
++      android:strokeWidth="2"
++      android:fillColor="#00000000"
++      android:strokeColor="#FFFFFF"
++      android:strokeLineCap="round"/>
++</vector>
+Index: app/src/main/res/drawable/chevron_left.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/chevron_left.xml b/app/src/main/res/drawable/chevron_left.xml
+new file mode 100644
+--- /dev/null	(date 1730890898005)
++++ b/app/src/main/res/drawable/chevron_left.xml	(date 1730890898005)
+@@ -0,0 +1,13 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="24dp"
++    android:height="24dp"
++    android:viewportWidth="24"
++    android:viewportHeight="24">
++  <path
++      android:pathData="M10,6l-8,6l8,6"
++      android:strokeLineJoin="round"
++      android:strokeWidth="3"
++      android:fillColor="#00000000"
++      android:strokeColor="#FFFFFF"
++      android:strokeLineCap="round"/>
++</vector>
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"black\">#FF000000</color>\r\n    <color name=\"white\">#FFFFFFFF</color>\r\n    <color name=\"gray_1\">#e5e5e5</color>\r\n    <color name=\"gray_yellow\">#f5f9d5</color>\r\n    <color name=\"gray_2\">#aeaeae</color>\r\n    <color name=\"gray_3\">#575757</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+--- a/app/src/main/res/values/colors.xml	(revision 3f9e53d73ccad2eeb393d5ed5f70001cb681401a)
++++ b/app/src/main/res/values/colors.xml	(date 1730854201166)
+@@ -6,4 +6,6 @@
+     <color name="gray_yellow">#f5f9d5</color>
+     <color name="gray_2">#aeaeae</color>
+     <color name="gray_3">#575757</color>
++    <color name="blue_1">#34c7e8</color>
++    <color name="blue_1_press">#1baece</color>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/drawable/three_dots_vertical.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/three_dots_vertical.xml b/app/src/main/res/drawable/three_dots_vertical.xml
+new file mode 100644
+--- /dev/null	(date 1730893386986)
++++ b/app/src/main/res/drawable/three_dots_vertical.xml	(date 1730893386986)
+@@ -0,0 +1,9 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="16dp"
++    android:height="16dp"
++    android:viewportWidth="16"
++    android:viewportHeight="16">
++  <path
++      android:pathData="M9.5,13a1.5,1.5 0,1 1,-3 0,1.5 1.5,0 0,1 3,0zM9.5,8a1.5,1.5 0,1 1,-3 0,1.5 1.5,0 0,1 3,0zM9.5,3a1.5,1.5 0,1 1,-3 0,1.5 1.5,0 0,1 3,0z"
++      android:fillColor="@color/black"/>
++</vector>
