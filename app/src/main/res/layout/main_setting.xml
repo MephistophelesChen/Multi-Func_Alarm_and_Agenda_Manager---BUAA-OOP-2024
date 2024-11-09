@@ -8,6 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="560dp"
         android:text="考虑将
         1.时区选择；
         2：表情识别开启与关闭；
@@ -15,12 +16,57 @@
         4：闹钟铃声设置
         5：账户信息管理（退出登录）
         以一个listView形式放入setting中,若有额外功能大家补充"
-        tools:ignore="MissingConstraints"
-        android:textSize="20dp"
         android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <Button
+        android:id="@+id/to_alarm_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="闹钟"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/to_date_btn"
         />
 
+    <Button
+        android:id="@+id/to_date_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="日程"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/to_alarm_btn"
+        app:layout_constraintRight_toLeftOf="@id/to_timer_btn"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="计时器"
+        android:id="@+id/to_timer_btn"
+        app:layout_constraintLeft_toRightOf="@id/to_date_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/to_setting_btn"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="设置"
+        android:id="@+id/to_setting_btn"
+        app:layout_constraintLeft_toRightOf="@id/to_timer_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

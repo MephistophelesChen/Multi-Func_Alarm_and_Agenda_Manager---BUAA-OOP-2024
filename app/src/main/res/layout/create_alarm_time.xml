@@ -4,10 +4,17 @@
     android:layout_height="match_parent"
     android:background="@color/gray_2"
     >
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="返回按钮，返回到main_activity"/>
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_button"
+        android:elevation="8dp"
+        android:paddingLeft="10dp"
+        android:src="@drawable/chevron_left"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="确认"
-        android:id="@+id/button_time"
+        android:id="@+id/alarm_time_ensure"
         android:layout_below="@id/time_picker"
         android:layout_alignParentRight="true"
         />
@@ -36,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="获取选取的时间，若小于等于当前时间则跳失败toast，若大于则跳成功toast后返回mainactivity，在闹钟的list中添加新闹钟，默认switch为true"
-        android:layout_below="@id/button_time"
+        android:layout_below="@id/alarm_time_ensure"
         android:textColor="@color/black"
         />
 

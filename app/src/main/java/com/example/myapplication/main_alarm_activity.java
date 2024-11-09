@@ -43,7 +43,7 @@ public class main_alarm_activity extends AppCompatActivity {
             //把列表项加进列表集合
             listItems.add(map);
         }
-        simpleAdapter =new SimpleAdapter(this,listItems,R.layout.data_list_res,new String[]{"time","time_1"},new int[]{R.id.time, R.id.time_1});
+        simpleAdapter =new SimpleAdapter(this,listItems,R.layout.date_list_res,new String[]{"time","time_1"},new int[]{R.id.time, R.id.time_1});
         a.setAdapter(simpleAdapter);
 
         add_alarm_btn=(ImageButton) findViewById(R.id.add_alarm_btn);

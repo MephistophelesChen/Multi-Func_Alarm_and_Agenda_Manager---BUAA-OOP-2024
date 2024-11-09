@@ -13,16 +13,20 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity android:name=".create_alarm_date_activity" />
+        <activity android:name=".create_alarm_time_activity"/>
         <activity android:name=".main_date_activity"
             android:label="singleTask launchMode"
             android:launchMode="singleTask"
             />
+
         <activity android:name=".main_timer_activity"
             android:label="singleTask launchMode"
             android:launchMode="singleTask"/>
+
         <activity android:name=".main_setting_activity"
             android:label="singleTask launchMode"
             android:launchMode="singleTask"/>
+
         <activity
             android:name=".main_alarm_activity"
             android:exported="true"

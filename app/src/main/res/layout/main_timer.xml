@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="计时器包含一个精确到0.01秒的电子时钟，表盘比较麻烦，我的建议是不做，然后3个按钮：开始/暂停按钮，重置按钮，计时按钮
+每次按下计时按钮后，需要一个list来记录每次所记时间，效果图参考mipmap中的timer——list
+开始/暂停按钮按下后要改变图标"
+        android:fontFamily="@font/font1"
+        android:textSize="20dp"
+        />
+
+
+
+
+
+
+
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="闹钟"
+        android:id="@+id/to_alarm_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/to_date_btn"
+        />
+
+    <Button
+        android:id="@+id/to_date_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="日程"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/to_alarm_btn"
+        app:layout_constraintRight_toLeftOf="@id/to_timer_btn"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="计时器"
+        android:id="@+id/to_timer_btn"
+        app:layout_constraintLeft_toRightOf="@id/to_date_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/to_setting_btn"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="设置"
+        android:id="@+id/to_setting_btn"
+        app:layout_constraintLeft_toRightOf="@id/to_timer_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
