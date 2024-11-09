@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class create_alarm_date_activity extends AppCompatActivity {
-
+private ButtonManager btnManager=new ButtonManager();
 private ImageButton back;
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -15,6 +15,6 @@ private ImageButton back;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_alarm_date);
     back=(ImageButton) findViewById(R.id.back);
-    ButtonManager.switchToActivity_ibtn(back,create_alarm_date_activity.this,main_date_activity.class);
+        btnManager.switchToActivity_btn(back,create_alarm_date_activity.this,main_date_activity.class);
     }
 }
