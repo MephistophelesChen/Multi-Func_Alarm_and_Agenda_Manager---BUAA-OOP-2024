@@ -1,0 +1,3 @@
+11.12
+1：新增了一个MyBaseAdapter类，用来存放闹铃list的内容，功能是能为每一个switch按钮添加Listener，有关使用方法见https://blog.51cto.com/u_15359293/3913781
+2：设计了一个alarm类，实现24小时制的转换
