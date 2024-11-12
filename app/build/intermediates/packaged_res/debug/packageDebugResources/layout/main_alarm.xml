@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android ="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main_alarm_activity"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/topText"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="8"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font1"
+        android:text="   闹钟"
+        android:textSize="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/analogClock1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/threeDots"
+        />
+
+    <ImageButton
+        android:id="@+id/threeDots"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="1.2"
+        android:background="@drawable/press_button"
+        android:shadowColor="@color/white"
+        android:src="@drawable/three_dots_vertical"
+        app:layout_constraintLeft_toRightOf="@id/topText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/analogClock1"
+        />
+
+    <AnalogClock
+        android:id="@+id/analogClock1"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_x="83dp"
+        android:layout_y="59dp"
+        android:dial="@drawable/pan_first"
+        android:hand_hour="@drawable/hourppp"
+        android:hand_minute="@drawable/minuteppp"
+        app:layout_constraintTop_toBottomOf="@id/topText"
+        app:layout_constraintBottom_toTopOf="@id/digitalclock"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+       />
+
+    <DigitalClock
+        android:id="@+id/digitalclock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_x="148dp"
+        android:layout_y="323dp"
+        android:fontFamily="@font/font_1"
+        android:textSize="25dp"
+        app:layout_constraintVertical_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/analogClock1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/next_ring_time"
+        app:layout_constraintRight_toLeftOf="@id/next_ring_time"
+        />
+
+    <TextView
+        android:id="@+id/next_ring_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/font_1"
+        android:text="还有X小时XX分钟响铃"
+        app:layout_constraintTop_toBottomOf="@id/analogClock1"
+        app:layout_constraintLeft_toRightOf="@id/digitalclock"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+
+        <ListView
+            android:id="@+id/list_test"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="5"
+            app:layout_constraintTop_toBottomOf="@id/digitalclock"
+            app:layout_constraintBottom_toTopOf="@id/to_date_btn"
+            />
+
+    <ImageButton
+        android:id="@+id/add_alarm_btn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/round_button"
+        android:src="@drawable/plus"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toTopOf="@id/to_setting_btn"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="闹钟"
+        android:id="@+id/to_alarm_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/to_date_btn"
+        />
+
+    <Button
+        android:id="@+id/to_date_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="日程"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/to_alarm_btn"
+        app:layout_constraintRight_toLeftOf="@id/to_timer_btn"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="计时器"
+        android:id="@+id/to_timer_btn"
+        app:layout_constraintLeft_toRightOf="@id/to_date_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/to_setting_btn"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="设置"
+        android:id="@+id/to_setting_btn"
+        app:layout_constraintLeft_toRightOf="@id/to_timer_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

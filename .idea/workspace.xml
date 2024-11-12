@@ -10,11 +10,6 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/create_alarm_date.xml">
-        <config>
-          <theme>@style/Theme.MyApplication</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/create_alarm_time.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
@@ -1197,11 +1192,8 @@
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/javaResources0" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/processDebugResources/resources-list-for-linked-resources-binary-format-debug.ap_.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/AlarmAdapter.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/ButtonManager$1.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/ButtonManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/create_alarm_date_activity$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/create_alarm_date_activity.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/create_alarm_time_activity$1.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/create_alarm_time_activity$2.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/create_alarm_time_activity.class" afterDir="false" />
@@ -1232,7 +1224,6 @@
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mergeDebugResources/drawable_three_dots_vertical.xml.flat" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mergeDebugResources/font_font1.xml.flat" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mergeDebugResources/font_font_1.otf.flat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mergeDebugResources/layout_create_alarm_date.xml.flat" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mergeDebugResources/layout_create_alarm_time.xml.flat" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mergeDebugResources/layout_create_schedule_date.xml.flat" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mergeDebugResources/layout_create_schedule_time.xml.flat" afterDir="false" />
@@ -1519,7 +1510,6 @@
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/drawable/three_dots_vertical.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/font/font1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/font/font_1.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/create_alarm_date.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/create_alarm_time.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/create_schedule_date.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/create_schedule_time.xml" afterDir="false" />
@@ -1547,19 +1537,8 @@
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/xml/backup_rules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/xml/data_extraction_rules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/xml/track.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/ae3ef1e857ea27d6c7f7b00bb455ff1b32315ab42b799b7a801d87c62e6b0b74_0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/ae3ef1e857ea27d6c7f7b00bb455ff1b32315ab42b799b7a801d87c62e6b0b74_1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/ae3ef1e857ea27d6c7f7b00bb455ff1b32315ab42b799b7a801d87c62e6b0b74_2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/ae3ef1e857ea27d6c7f7b00bb455ff1b32315ab42b799b7a801d87c62e6b0b74_3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/ae3ef1e857ea27d6c7f7b00bb455ff1b32315ab42b799b7a801d87c62e6b0b74_4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/ae3ef1e857ea27d6c7f7b00bb455ff1b32315ab42b799b7a801d87c62e6b0b74_5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/ae3ef1e857ea27d6c7f7b00bb455ff1b32315ab42b799b7a801d87c62e6b0b74_6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/ae3ef1e857ea27d6c7f7b00bb455ff1b32315ab42b799b7a801d87c62e6b0b74_7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/AlarmAdapter.dex" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/ButtonManager$1.dex" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/ButtonManager.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/create_alarm_date_activity$1.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/create_alarm_date_activity.dex" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/create_alarm_time_activity$1.dex" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/create_alarm_time_activity$2.dex" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/create_alarm_time_activity.dex" afterDir="false" />
@@ -1572,8 +1551,34 @@
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/source_set_path_map/debug/mapDebugSourceSetPaths/file-map.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/processDebugResources/stableIds.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/build/intermediates/symbol_list_with_package_name/debug/processDebugResources/package-aware-r.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/MyBaseAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Tool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/x.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/yes.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../alarames/alarames/.gradle/config.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../alarames/alarames/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/compileTransaction/stash-dir/create_alarm_date_activity$1.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/compileTransaction/stash-dir/create_alarm_date_activity.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/compileTransaction/stash-dir/create_alarm_time_activity$1.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/compileTransaction/stash-dir/create_alarm_time_activity$2.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/compileTransaction/stash-dir/create_alarm_time_activity.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/AlarmAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Alarm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/create_alarm_date_activity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/create_alarm_time_activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/create_alarm_time_activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/main_alarm_activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/main_alarm_activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/create_alarm_date.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/create_alarm_time.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/create_alarm_time.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/date_list_res.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/date_list_res.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_date.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_date.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_setting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_setting.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1589,14 +1594,31 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="My Application" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
-        <option value="valueResourceFile" />
         <option value="resourceFile" />
+        <option value="valueResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -1646,11 +1668,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\andriod_workplace\MyApplication4\app\src\main\res\drawable" />
       <recent name="D:\andriod_workplace\MyApplication4\app\src\main\res\drawable\switch" />
       <recent name="D:\andriod_workplace\MyApplication4\app\src\main\res\layout" />
       <recent name="D:\andriod_workplace\MyApplication4\app\src\main\res\layout\resource\layout" />
       <recent name="D:\andriod_workplace\MyApplication4\app\src\main\res\layout\resource" />
-      <recent name="D:\andriod_workplace\MyApplication4\app\src\main\res\xml" />
+    </key>
+    <key name="android.template.854800247">
+      <recent name="com.example.myapplication" />
     </key>
   </component>
   <component name="RunManager">
@@ -1858,7 +1883,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731164721651</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="hello">
+      <option name="closed" value="true" />
+      <created>1731164854585</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1731164854585</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1887,5 +1920,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hello" />
     <option name="LAST_COMMIT_MESSAGE" value="hello" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Tool.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

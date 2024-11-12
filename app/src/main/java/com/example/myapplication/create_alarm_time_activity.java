@@ -10,7 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class create_alarm_time_activity extends AppCompatActivity {
-ButtonManager btnManager=new ButtonManager();
+
+    ButtonManager btnManager=new ButtonManager();
+    Alarm alarm=new Alarm();
 @Override
     public void onCreate(Bundle savedInstanceState)
 {
@@ -24,7 +26,7 @@ ButtonManager btnManager=new ButtonManager();
         }
     });
 
-    Button ensure=(Button) findViewById(R.id.alarm_time_ensure);
+    ImageButton ensure=(ImageButton) findViewById(R.id.yes);
 
     ensure.setOnClickListener(new View.OnClickListener() {
         @Override

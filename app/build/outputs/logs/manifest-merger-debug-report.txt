@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:1-43:12
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:1-42:12
 MERGED from [com.google.android.material:material:1.12.0] D:\gradle\caches\transforms-4\462e02600b56a66f8051426fdb1abe8f\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] D:\gradle\caches\transforms-4\0b64d0d661db4c8b67d2f58fbab394ae\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] D:\gradle\caches\transforms-4\c2e16d7653bdf1eba6fe77bc7061403b\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -56,8 +56,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] D:\gradle\caches
 	xmlns:android
 		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:5:5-42:19
-INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:5:5-42:19
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:5:5-41:19
+INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:5:5-41:19
 MERGED from [com.google.android.material:material:1.12.0] D:\gradle\caches\transforms-4\462e02600b56a66f8051426fdb1abe8f\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] D:\gradle\caches\transforms-4\462e02600b56a66f8051426fdb1abe8f\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] D:\gradle\caches\transforms-4\0b64d0d661db4c8b67d2f58fbab394ae\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -94,58 +94,54 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] D:\gradle\c
 		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:13:9-51
 	android:dataExtractionRules
 		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:7:9-65
-activity#com.example.myapplication.create_alarm_date_activity
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:15:9-64
+activity#com.example.myapplication.create_alarm_time_activity
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:15:9-63
 	android:name
 		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:15:19-61
-activity#com.example.myapplication.create_alarm_time_activity
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:16:9-63
-	android:name
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:16:19-61
 activity#com.example.myapplication.main_date_activity
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:17:9-20:15
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:16:9-19:15
 	android:label
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:18:13-50
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:17:13-50
 	android:launchMode
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:19:13-44
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:18:13-44
 	android:name
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:17:19-53
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:16:19-53
 activity#com.example.myapplication.main_timer_activity
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:22:9-24:46
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:21:9-23:46
 	android:label
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:23:13-50
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:22:13-50
 	android:launchMode
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:24:13-44
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:23:13-44
 	android:name
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:22:19-54
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:21:19-54
 activity#com.example.myapplication.main_setting_activity
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:26:9-28:46
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:25:9-27:46
 	android:label
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:27:13-50
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:26:13-50
 	android:launchMode
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:28:13-44
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:27:13-44
 	android:name
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:26:19-56
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:25:19-56
 activity#com.example.myapplication.main_alarm_activity
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:30:9-40:20
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:29:9-39:20
 	android:label
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:33:13-50
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:32:13-50
 	android:launchMode
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:34:13-44
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:33:13-44
 	android:exported
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:32:13-36
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:31:13-36
 	android:name
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:31:13-48
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:30:13-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:36:13-39:29
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:35:13-38:29
 action#android.intent.action.MAIN
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:37:17-69
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:36:17-69
 	android:name
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:37:25-66
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:36:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:38:17-77
+ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:37:17-77
 	android:name
-		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:38:27-74
+		ADDED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml:37:27-74
 uses-sdk
 INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\andriod_workplace\MyApplication4\app\src\main\AndroidManifest.xml
