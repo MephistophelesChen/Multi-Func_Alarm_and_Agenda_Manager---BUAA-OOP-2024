@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Alarm {
   public int hour;
   public int minute;
-  ArrayList<Boolean> repeat=new ArrayList<Boolean>();
+  ArrayList<Boolean> repeat=new ArrayList<Boolean>();//例如repeat.get（0）==true表示每周一重复
   boolean isRing=false;
   public int ap=1;//ap==1->AM,ap==2->PM
   public int hour24=0;//
