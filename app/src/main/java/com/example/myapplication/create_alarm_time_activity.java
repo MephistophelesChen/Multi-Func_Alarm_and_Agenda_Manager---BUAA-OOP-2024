@@ -1,40 +1,57 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class create_alarm_time_activity extends AppCompatActivity {
+import java.util.ArrayList;
 
+public class create_alarm_time_activity extends AppCompatActivity {
+    private TimePicker timePicker;
     ButtonManager btnManager=new ButtonManager();
-    Alarm alarm=new Alarm();
 @Override
     public void onCreate(Bundle savedInstanceState)
-{
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.create_alarm_time);
-    ImageButton back=(ImageButton) findViewById(R.id.back);
-    back.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            finish();
-        }
-    });
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.create_alarm_time);
+        ImageButton back=(ImageButton) findViewById(R.id.back);
+        timePicker = (TimePicker) findViewById(R.id.time_picker);
 
-    ImageButton ensure=(ImageButton) findViewById(R.id.yes);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
-    ensure.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), "成功创建闹钟", Toast.LENGTH_SHORT).show();
-            Intent intent =new Intent(create_alarm_time_activity.this,main_alarm_activity.class);
-            create_alarm_time_activity.this.startActivity(intent);
-        }
-    });
-}
+        ImageButton ensure=(ImageButton) findViewById(R.id.yes);
+
+        ensure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "成功创建闹钟", Toast.LENGTH_SHORT).show();
+                int hour = timePicker.getCurrentHour();
+                int minute = timePicker.getCurrentMinute();
+
+                ArrayList<Boolean> repeatDays = new ArrayList<>();
+                for (int i = 0; i < 7; i++) {
+                    repeatDays.add(true); // 默认每一天重复
+                }
+
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("hour", hour);
+                resultIntent.putExtra("minute", minute);
+                resultIntent.putExtra("repeatDays", repeatDays);
+                setResult(Activity.RESULT_OK, resultIntent);
+                finish();
+            }
+        });
+    }
 }
