@@ -4,7 +4,7 @@
 
 11.13
 1. 在alarm类中添加switch方法，用来反转闹铃状态
-2. 更新create_alarm_time_activity类和create_alarm_time_activity类文件，
+2. 更新create_alarm_time_activity类和main_alarm_activity类文件，
    实现了与create_alarm_time.xml的绑定,现在可以正确添加新建闹钟到列表并显示出来；
    但是单条的闹钟与开关的绑定还没有debug，不知道是否可用；
    并且暂未实现星期重复的UI或逻辑，所以默认使用每天重复；
