@@ -1,7 +1,7 @@
-#Tue Nov 12 01:20:29 CST 2024
-base.0=D\:\\andriod_workplace\\MyApplication4\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=D\:\\andriod_workplace\\MyApplication4\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=D\:\\andriod_workplace\\MyApplication4\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+#Wed Nov 13 17:28:56 CST 2024
+base.0=D\:\\Android\\Multi-Func_Alarm_and_Agenda_Manager---BUAA-OOP-2024\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\Android\\Multi-Func_Alarm_and_Agenda_Manager---BUAA-OOP-2024\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=D\:\\Android\\Multi-Func_Alarm_and_Agenda_Manager---BUAA-OOP-2024\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=5/classes.dex

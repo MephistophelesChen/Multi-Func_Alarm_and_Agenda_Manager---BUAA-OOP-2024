@@ -31,8 +31,6 @@ public class Alarm {
         }
     }
 
-    public Alarm() {
-    }
 
     public int getHour24() {
         return hour24;
@@ -55,7 +53,11 @@ public class Alarm {
     }
 
     public void setRing(boolean ring) {
-        isRing = ring;
+        isRing = ring;  // ring = TRUE or False
+    }
+
+    public void switchRing(){
+        isRing=!isRing; // switch the ring
     }
 
     public int getHour() {

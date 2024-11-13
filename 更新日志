@@ -1,3 +1,11 @@
 11.12
 1：新增了一个MyBaseAdapter类，用来存放闹铃list的内容，功能是能为每一个switch按钮添加Listener，有关使用方法见https://blog.51cto.com/u_15359293/3913781
 2：设计了一个alarm类，实现24小时制的转换
+
+11.13
+1. 在alarm类中添加switch方法，用来反转闹铃状态
+2. 更新create_alarm_time_activity类和create_alarm_time_activity类文件，
+   实现了与create_alarm_time.xml的绑定,现在可以正确添加新建闹钟到列表并显示出来；
+   但是单条的闹钟与开关的绑定还没有debug，不知道是否可用；
+   并且暂未实现星期重复的UI或逻辑，所以默认使用每天重复；
+   暂未实现数据库的存储，所以每次重启app都会丢失之前在app内部添加的闹钟；
