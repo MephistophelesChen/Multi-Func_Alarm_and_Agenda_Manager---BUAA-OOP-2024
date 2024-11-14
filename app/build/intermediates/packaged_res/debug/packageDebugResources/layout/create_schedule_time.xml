@@ -32,14 +32,17 @@
         android:layout_above="@id/schedule_time_picker"
         android:layout_centerHorizontal="true"
         />
+
     <Button
+        android:id="@+id/button_schedule_ensure2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="确认"
         android:layout_below="@id/schedule_time_picker"
         android:layout_alignParentRight="true"
-        android:id="@+id/button_schedule_ensure2"
-        />
+        android:layout_marginTop="-1dp"
+        android:layout_marginRight="0dp"
+        android:text="确认" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

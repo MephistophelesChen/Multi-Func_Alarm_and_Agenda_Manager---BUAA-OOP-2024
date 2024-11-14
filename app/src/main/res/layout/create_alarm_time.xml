@@ -9,7 +9,6 @@
         android:id="@+id/back"
         android:layout_width="60dp"
         android:layout_height="60dp"
-
         android:background="@drawable/press_button"
         android:paddingLeft="7dp"
         android:src="@drawable/x"
@@ -49,6 +48,20 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <Button
+        android:id="@+id/repeatButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/press_button_repeat"
+        android:text=" 重复"
+        app:layout_constraintTop_toBottomOf="@id/time_picker"
+        android:gravity="left|center"
+        android:textSize="18dp"
+        android:paddingLeft="15dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:drawableRight="@drawable/chevron_right"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

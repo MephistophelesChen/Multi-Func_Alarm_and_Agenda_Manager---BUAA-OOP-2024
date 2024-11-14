@@ -35,7 +35,6 @@ public class MyBaseAdapter extends BaseAdapter {
         this.list1=mList1;
         this.selectedMap = mSelectedMap;
     }
-
     @Override
     public int getCount() {
         return list.size();
@@ -59,7 +58,7 @@ public class MyBaseAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.switch_alarm =  (Switch)convertView.findViewById(R.id.switch_alarm);
             holder.time =   (TextView) convertView.findViewById(R.id.time);
-            holder.repeat= (TextView) convertView.findViewById(R.id.repeat);
+            holder.repeat= (TextView) convertView.findViewById(R.id.repeat);//绑定ViewHolder和items
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();

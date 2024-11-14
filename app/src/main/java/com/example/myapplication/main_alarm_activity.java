@@ -47,9 +47,9 @@ public class main_alarm_activity extends AppCompatActivity {
         a.add(true);
         a.add(false);
         a.add(true);
-        alarms.add(new Alarm(8,4,a,2));
+        alarms.add(new Alarm(8,4,a));
 
-        init();
+        //init();
 
         ListView alarmList = findViewById(R.id.list_test);
         adapter = new MyBaseAdapter(main_alarm_activity.this, this.time, repeat, map1);
@@ -74,7 +74,7 @@ public class main_alarm_activity extends AppCompatActivity {
             int minute = data.getIntExtra("minute", 0);
             ArrayList<Boolean> repeatDays = (ArrayList<Boolean>) data.getSerializableExtra("repeatDays");
 
-            Alarm newAlarm = new Alarm(hour, minute, repeatDays, 2);
+            Alarm newAlarm = new Alarm(hour, minute, repeatDays);
             alarms.add(newAlarm);
 
             String timeStr = String.format("%02d:%02d", hour, minute);
@@ -88,35 +88,6 @@ public class main_alarm_activity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         }
     }
-
-    private void init()
-    {
-        for(Alarm alarm:alarms)
-        {
-           String time=Integer.toString(alarm.hour24)+":";
-            if(alarm.minute<10)
-            {
-                time+="0";
-            }
-            time+=Integer.toString(alarm.minute);
-            this.time.add(time);
-
-
-            String repeat="";
-            if(alarm.repeat.contains(true))
-            {
-                repeat=Tool.addrepeat(alarm.repeat);
-            }
-            else {
-                repeat+="不重复";
-            }
-            this.repeat.add(repeat);
-        }
-        for (int i = 0; i < this.time.size(); i++) {
-            this.map1.put(this.time.get(i), false);
-        }
-    }
-
 //我们需要的实例的类：闹钟类，日程事件类，
 
 }

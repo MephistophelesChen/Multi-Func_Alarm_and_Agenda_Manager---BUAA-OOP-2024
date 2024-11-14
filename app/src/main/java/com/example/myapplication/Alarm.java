@@ -11,24 +11,10 @@ public class Alarm {
   public int hour24=0;//
 
 
-    public Alarm(int hour, int minute, ArrayList<Boolean> repeat,int ap) {
+    public Alarm(int hour, int minute, ArrayList<Boolean> repeat) {
         this.hour = hour;
         this.minute = minute;
         this.repeat = repeat;
-
-        if (ap == 1) { // AM
-            if (hour == 12) {
-                this.hour24 = 0; // 12:XX AM 应该是 00:XX
-            } else {
-                this.hour24 = hour; // 对于AM，小时数不变
-            }
-        } else if (ap == 2) { // PM
-            if (hour != 12) {
-                this.hour24 = hour + 12; // 对于PM，小时数加12
-            } else {
-                this.hour24 = 12; // 12:XX PM 应该是 12:XX
-            }
-        }
     }
 
 

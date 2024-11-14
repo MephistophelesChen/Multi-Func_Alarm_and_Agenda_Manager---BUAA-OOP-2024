@@ -2995,6 +2995,7 @@ int drawable abc_vector_test 0x7f080077
 int drawable arrow_left 0x7f080078
 int drawable avd_hide_password 0x7f080079
 int drawable avd_show_password 0x7f08007a
+int drawable bottomshape 0x7f0800f7
 int drawable btn_checkbox_checked_mtrl 0x7f08007b
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f08007c
 int drawable btn_checkbox_unchecked_mtrl 0x7f08007d
@@ -3004,6 +3005,7 @@ int drawable btn_radio_off_to_on_mtrl_animation 0x7f080080
 int drawable btn_radio_on_mtrl 0x7f080081
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f080082
 int drawable chevron_left 0x7f080083
+int drawable chevron_right 0x7f0800f5
 int drawable design_fab_background 0x7f080084
 int drawable design_ic_visibility 0x7f080085
 int drawable design_ic_visibility_off 0x7f080086
@@ -3108,6 +3110,7 @@ int drawable notify_panel_notification_icon_bg 0x7f0800e8
 int drawable pan_first 0x7f0800e9
 int drawable plus 0x7f0800ea
 int drawable press_button 0x7f0800eb
+int drawable press_button_repeat 0x7f0800f4
 int drawable round_button 0x7f0800ec
 int drawable setting 0x7f0800ed
 int drawable test_level_drawable 0x7f0800ee
@@ -3215,6 +3218,7 @@ int id beginning 0x7f0a005d
 int id bestChoice 0x7f0a005e
 int id blocking 0x7f0a005f
 int id bottom 0x7f0a0060
+int id bottom_sheet 0x7f0a020c
 int id bounce 0x7f0a0061
 int id bounceBoth 0x7f0a0062
 int id bounceEnd 0x7f0a0063
@@ -3235,6 +3239,7 @@ int id center_vertical 0x7f0a0071
 int id chain 0x7f0a0072
 int id chain2 0x7f0a0073
 int id chains 0x7f0a0074
+int id checkBox 0x7f0a020e
 int id checkbox 0x7f0a0075
 int id checked 0x7f0a0076
 int id chronometer 0x7f0a0077
@@ -3489,6 +3494,7 @@ int id radio 0x7f0a016f
 int id ratio 0x7f0a0170
 int id rectangles 0x7f0a0171
 int id repeat 0x7f0a0172
+int id repeatButton 0x7f0a020d
 int id report_drawn 0x7f0a0173
 int id reverseSawtooth 0x7f0a0174
 int id right 0x7f0a0175
@@ -3632,6 +3638,7 @@ int id view_tree_saved_state_registry_owner 0x7f0a01fe
 int id view_tree_view_model_store_owner 0x7f0a01ff
 int id visible 0x7f0a0200
 int id visible_removing_fragment_view_tag 0x7f0a0201
+int id week 0x7f0a020f
 int id west 0x7f0a0202
 int id withText 0x7f0a0203
 int id with_icon 0x7f0a0204
@@ -3756,6 +3763,7 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0d0018
 int layout abc_search_view 0x7f0d0019
 int layout abc_select_dialog_material 0x7f0d001a
 int layout abc_tooltip 0x7f0d001b
+int layout bottom_sheet_res 0x7f0d0074
 int layout create_alarm_time 0x7f0d001c
 int layout create_schedule_date 0x7f0d001d
 int layout create_schedule_time 0x7f0d001e
@@ -3776,6 +3784,7 @@ int layout design_navigation_menu 0x7f0d002c
 int layout design_navigation_menu_item 0x7f0d002d
 int layout design_text_input_end_icon 0x7f0d002e
 int layout design_text_input_start_icon 0x7f0d002f
+int layout dialog_bottom_sheet 0x7f0d0073
 int layout ime_base_split_test_activity 0x7f0d0030
 int layout ime_secondary_split_test_activity 0x7f0d0031
 int layout m3_alert_dialog 0x7f0d0032
@@ -4360,6 +4369,7 @@ int style Base_Widget_MaterialComponents_Snackbar 0x7f12011c
 int style Base_Widget_MaterialComponents_TextInputEditText 0x7f12011d
 int style Base_Widget_MaterialComponents_TextInputLayout 0x7f12011e
 int style Base_Widget_MaterialComponents_TextView 0x7f12011f
+int style BottomSheetStyleWrapper 0x7f12046a
 int style CardView 0x7f120120
 int style CardView_Dark 0x7f120121
 int style CardView_Light 0x7f120122
@@ -4383,6 +4393,7 @@ int style MaterialAlertDialog_MaterialComponents_Title_Panel 0x7f120133
 int style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked 0x7f120134
 int style MaterialAlertDialog_MaterialComponents_Title_Text 0x7f120135
 int style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked 0x7f120136
+int style MyBottomSheetDialog 0x7f12046b
 int style Platform_AppCompat 0x7f120137
 int style Platform_AppCompat_Light 0x7f120138
 int style Platform_MaterialComponents 0x7f120139
