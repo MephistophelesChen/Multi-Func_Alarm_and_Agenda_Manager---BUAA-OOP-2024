@@ -6,6 +6,8 @@ public class Tool {
     public static String addrepeat(ArrayList<Boolean> repeat)
     {
         String a="";
+        if(!repeat.contains(true))
+            return "不重复";
         if(repeat.get(0))
         {
             a+=" 星期一";

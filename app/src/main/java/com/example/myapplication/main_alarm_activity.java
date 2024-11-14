@@ -40,15 +40,6 @@ public class main_alarm_activity extends AppCompatActivity {
 
         ArrayList<Boolean> a=new ArrayList<>();
         // 星期一到星期日重复情况
-        a.add(true);
-        a.add(false);
-        a.add(true);
-        a.add(false);
-        a.add(true);
-        a.add(false);
-        a.add(true);
-        alarms.add(new Alarm(8,4,a));
-
         //init();
 
         ListView alarmList = findViewById(R.id.list_test);
