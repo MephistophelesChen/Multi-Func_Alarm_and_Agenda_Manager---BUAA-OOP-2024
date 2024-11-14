@@ -7,14 +7,14 @@ public class Alarm {
   public int minute;
   ArrayList<Boolean> repeat=new ArrayList<Boolean>();//例如repeat.get（0）==true表示每周一重复
   boolean isRing=false;
-  public int ap=1;//ap==1->AM,ap==2->PM
   public int hour24=0;//
 
 
-    public Alarm(int hour, int minute, ArrayList<Boolean> repeat) {
+    public Alarm(int hour, int minute, ArrayList<Boolean> repeat, boolean isRing) {
         this.hour = hour;
         this.minute = minute;
         this.repeat = repeat;
+        this.isRing = isRing;
     }
 
 
