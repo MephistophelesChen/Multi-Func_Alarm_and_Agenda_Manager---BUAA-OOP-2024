@@ -107,18 +107,6 @@ public class main_alarm_activity extends AppCompatActivity {
             Alarm newAlarm = new Alarm(hour, minute, repeatDays,false);
             newAlarm.id=alarm_id++;
             alarms.add(newAlarm);
-            int[] re=new int[7];
-            for(int i=0;i<7;i++)
-            {
-                if(repeatDays.get(i))
-                {
-                    re[i]=1;
-                }
-                else
-                {
-                    re[i]=0;
-                }
-            }
             String timeStr = String.format("%02d:%02d%d", hour, minute,alarm_id);
             time.add(timeStr);
 
