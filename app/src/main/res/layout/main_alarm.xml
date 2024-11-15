@@ -91,21 +91,31 @@
             app:layout_constraintVertical_weight="5"
             app:layout_constraintTop_toBottomOf="@id/digitalclock"
             app:layout_constraintBottom_toTopOf="@id/to_date_btn"
+            android:focusable="true"
             />
 
     <ImageButton
         android:id="@+id/add_alarm_btn"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/round_button"
         android:src="@drawable/plus"
         android:elevation="8dp"
         app:layout_constraintBottom_toTopOf="@id/to_setting_btn"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
-
+<Button
+    android:id="@+id/cancle_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="取消"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/to_setting_btn"
+    android:visibility="invisible"
+    />
 
 
     <Button

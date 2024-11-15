@@ -1,11 +1,13 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
+import android.widget.PopupMenu;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -20,9 +22,14 @@ public class MyBaseAdapter extends BaseAdapter {
     private ArrayList<Alarm> alarms;
     private ViewHolder holder = null;
     private SetOnClickDialogListener mSetOnClickDialogListener;
+    private main_alarm_activity mactivity;
 
     public void OnSetOnClickDialogListener(SetOnClickDialogListener listener) {
         this.mSetOnClickDialogListener = listener;
+    }
+    public void setMactivity(main_alarm_activity mactivity)
+    {
+        this.mactivity=mactivity;
     }
 
     public interface SetOnClickDialogListener {
@@ -83,7 +90,11 @@ public class MyBaseAdapter extends BaseAdapter {
                 ((main_alarm_activity) context).updateNextRingTime();
             }
         });
-
+        if (mactivity.getlist().isItemChecked(position) && main_alarm_activity.isMultipleSelectionMode) {
+            convertView.setBackgroundColor(0xff999999);
+        } else {
+            convertView.setBackgroundColor(0xffffffff);
+        }
         return convertView;
     }
 

@@ -1,15 +1,22 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,26 +32,53 @@ public class main_alarm_activity extends AppCompatActivity {
     private ArrayList<Alarm> alarms = new ArrayList<>();
     private TextView nextRingTime;
     private Handler handler = new Handler(Looper.getMainLooper());
-
+    ListView alarmList;
+    static boolean isMultipleSelectionMode=false;
     private ImageButton add_alarm_btn;
+    private Button cancle;
+    private int alarm_id=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_alarm);
 
-        ListView alarmList = findViewById(R.id.list_test);
+        alarmList = findViewById(R.id.list_test);
         adapter = new MyBaseAdapter(main_alarm_activity.this, this.time, repeat, map1, alarms);
+        adapter.setMactivity(this);
         alarmList.setAdapter(adapter);
-
+        setlongclick(alarmList);
         nextRingTime = findViewById(R.id.next_ring_time);
-
+        cancle = findViewById(R.id.cancle_button);
+        cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               cancle_delete();
+            }
+        });
         add_alarm_btn = findViewById(R.id.add_alarm_btn);
         add_alarm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(main_alarm_activity.this, create_alarm_time_activity.class);
-                startActivityForResult(intent, REQUEST_CODE_CREATE_ALARM);
+                if(!isMultipleSelectionMode) {
+                    Intent intent = new Intent(main_alarm_activity.this, create_alarm_time_activity.class);
+                    startActivityForResult(intent, REQUEST_CODE_CREATE_ALARM);
+                } else {
+                    cancle_delete();
+                   for(int i=0;i<alarmList.getCount();i++)
+                   {
+                       if(alarmList.isItemChecked(i))
+                       {
+                           delete_alarm(i);
+                           i--;
+                           adapter.notifyDataSetChanged();
+                           alarmList.invalidate();
+                       }
+                   }
+
+                    updateNextRingTime();
+                }
+
             }
         });
         updateNextRingTime();
@@ -72,6 +106,7 @@ public class main_alarm_activity extends AppCompatActivity {
             ArrayList<Boolean> repeatDays = (ArrayList<Boolean>) data.getSerializableExtra("repeatDays");
 
             Alarm newAlarm = new Alarm(hour, minute, repeatDays,false);
+
             alarms.add(newAlarm);
 
             String timeStr = String.format("%02d:%02d", hour, minute);
@@ -138,5 +173,82 @@ public class main_alarm_activity extends AppCompatActivity {
         }
 
         nextRingTime.setText(nextTime);
+    }
+
+    void setlongclick(ListView list)
+    {
+        setItem(list);
+    list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        cancle.setVisibility(View.VISIBLE);
+        isMultipleSelectionMode=true;
+        add_alarm_btn.setBackgroundResource(R.drawable.delete_button);
+        add_alarm_btn.setImageResource(R.drawable.trash);
+        for(int i=0;i<alarmList.getCount();i++) {
+            ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
+            layout.findViewById(R.id.switch_alarm).setVisibility(View.INVISIBLE);
+        }
+       return false;
+    }
+    });
+
+    }
+    void setItem(ListView list)
+    {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (isMultipleSelectionMode) {
+                    if(list.isItemChecked(position)) {
+                        view.setBackgroundColor(0xffaeaeae);
+                    }
+                    else {
+                        view.setBackgroundColor(0xffffffff);
+                    }
+                }
+
+            }
+        });
+    }
+
+    private View findView(int position, ListView listView) {
+        int firstListItemPosition = listView.getFirstVisiblePosition();
+        int lastListItemPosition = firstListItemPosition
+                + listView.getChildCount() - 1;
+
+        if (position < firstListItemPosition || position > lastListItemPosition) {
+            return listView.getAdapter().getView(position, null, listView);
+        } else {
+            final int childIndex = position - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
+    }
+    private void cancle_delete()
+    {
+        isMultipleSelectionMode=false;
+        add_alarm_btn.setBackgroundResource(R.drawable.round_button);
+        add_alarm_btn.setImageResource(R.drawable.plus);
+        cancle.setVisibility(View.INVISIBLE);
+        for(int i=0;i<alarmList.getCount();i++) {
+            ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
+            layout.findViewById(R.id.switch_alarm).setVisibility(View.VISIBLE);
+        }
+        for(int i=0;i<alarms.size();i++)
+        {
+            findView(i,alarmList).setBackgroundColor(0xffffffff);
+        }
+    }
+    private void delete_alarm(int position)
+    {
+        alarms.remove(position);
+        map1.remove(time.get(position));
+        time.remove(position);
+        repeat.remove(position);
+    }
+    ListView getlist()
+    {
+        return this.alarmList;
     }
 }

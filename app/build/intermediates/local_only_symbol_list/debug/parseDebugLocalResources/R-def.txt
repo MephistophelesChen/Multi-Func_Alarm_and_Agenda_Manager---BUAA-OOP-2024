@@ -9,11 +9,14 @@ color gray_1
 color gray_2
 color gray_3
 color gray_yellow
+color red
+color red_press
 color white
 drawable arrow_left
 drawable bottomshape
 drawable chevron_left
 drawable chevron_right
+drawable delete_button
 drawable hourppp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -24,8 +27,10 @@ drawable plus
 drawable press_button
 drawable press_button_repeat
 drawable round_button
+drawable round_corner
 drawable setting
 drawable three_dots_vertical
+drawable trash
 drawable x
 drawable yes
 font font1
@@ -37,8 +42,10 @@ id bottom_sheet
 id button_schedule_ensure
 id button_schedule_ensure2
 id calendarView
+id cancle_button
 id checkBox
 id data_list
+id delete
 id digitalclock
 id list_test
 id main
@@ -69,6 +76,7 @@ layout main_alarm
 layout main_date
 layout main_setting
 layout main_timer
+menu menu_pop
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap schedule

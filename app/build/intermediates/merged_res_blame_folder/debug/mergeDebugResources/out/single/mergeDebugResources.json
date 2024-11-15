@@ -12,6 +12,10 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\menu_menu_pop.xml.flat",
+        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\menu\\menu_pop.xml"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-anydpi_schedule.jpg.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-anydpi\\schedule.jpg"
     },
@@ -22,6 +26,18 @@
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\xml_backup_rules.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_round_corner.xml.flat",
+        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\round_corner.xml"
+    },
+    {
+        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_delete_button.xml.flat",
+        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\delete_button.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/layout_main_alarm.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/main_alarm.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_arrow_left.xml.flat",
@@ -90,6 +106,10 @@
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\xml_data_extraction_rules.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_trash.xml.flat",
+        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\trash.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_date_list_res.xml.flat",
@@ -162,10 +182,6 @@
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_round_button.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\round_button.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-4:/layout_bottom_sheet_res.xml.flat",
-        "source": "com.example.myapplication.app-main-6:/layout/bottom_sheet_res.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\font_font1.xml.flat",

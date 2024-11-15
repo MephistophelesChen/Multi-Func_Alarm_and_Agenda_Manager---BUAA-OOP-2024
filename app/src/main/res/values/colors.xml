@@ -9,4 +9,6 @@
     <color name="blue_1">#34c7e8</color>
     <color name="blue_1_press">#1baece</color>
     <color name="blue_2">#1e40e7</color>
+    <color name="red">#ff0000</color>
+    <color name="red_press">#a30000</color>
 </resources>

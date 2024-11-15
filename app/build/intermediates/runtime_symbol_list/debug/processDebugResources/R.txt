@@ -2095,6 +2095,8 @@ int color primary_text_default_material_dark 0x7f0602fb
 int color primary_text_default_material_light 0x7f0602fc
 int color primary_text_disabled_material_dark 0x7f0602fd
 int color primary_text_disabled_material_light 0x7f0602fe
+int color red 0x7f06030e
+int color red_press 0x7f06030f
 int color ripple_material_dark 0x7f0602ff
 int color ripple_material_light 0x7f060300
 int color secondary_text_default_material_dark 0x7f060301
@@ -3006,6 +3008,7 @@ int drawable btn_radio_on_mtrl 0x7f080081
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f080082
 int drawable chevron_left 0x7f080083
 int drawable chevron_right 0x7f0800f5
+int drawable delete_button 0x7f0800f9
 int drawable design_fab_background 0x7f080084
 int drawable design_ic_visibility 0x7f080085
 int drawable design_ic_visibility_off 0x7f080086
@@ -3112,11 +3115,13 @@ int drawable plus 0x7f0800ea
 int drawable press_button 0x7f0800eb
 int drawable press_button_repeat 0x7f0800f4
 int drawable round_button 0x7f0800ec
+int drawable round_corner 0x7f0800f8
 int drawable setting 0x7f0800ed
 int drawable test_level_drawable 0x7f0800ee
 int drawable three_dots_vertical 0x7f0800ef
 int drawable tooltip_frame_dark 0x7f0800f0
 int drawable tooltip_frame_light 0x7f0800f1
+int drawable trash 0x7f0800fa
 int drawable x 0x7f0800f2
 int drawable yes 0x7f0800f3
 int font font1 0x7f090000
@@ -3230,6 +3235,7 @@ int id cache_measures 0x7f0a0068
 int id calendarView 0x7f0a0069
 int id callMeasure 0x7f0a006a
 int id cancel_button 0x7f0a006b
+int id cancle_button 0x7f0a0211
 int id carryVelocity 0x7f0a006c
 int id center 0x7f0a006d
 int id centerCrop 0x7f0a006e
@@ -3272,6 +3278,7 @@ int id decelerate 0x7f0a0091
 int id decelerateAndComplete 0x7f0a0092
 int id decor_content_parent 0x7f0a0093
 int id default_activity_button 0x7f0a0094
+int id delete 0x7f0a0210
 int id deltaRelative 0x7f0a0095
 int id dependency_ordering 0x7f0a0096
 int id design_bottom_sheet 0x7f0a0097
@@ -3852,6 +3859,7 @@ int layout select_dialog_item_material 0x7f0d006f
 int layout select_dialog_multichoice_material 0x7f0d0070
 int layout select_dialog_singlechoice_material 0x7f0d0071
 int layout support_simple_spinner_dropdown_item 0x7f0d0072
+int menu menu_pop 0x7f150000
 int mipmap ic_launcher 0x7f0f0000
 int mipmap ic_launcher_round 0x7f0f0001
 int mipmap schedule 0x7f0f0002

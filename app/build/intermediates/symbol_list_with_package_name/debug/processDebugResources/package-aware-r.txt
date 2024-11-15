@@ -2096,6 +2096,8 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color red
+color red_press
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -3007,6 +3009,7 @@ drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable chevron_left
 drawable chevron_right
+drawable delete_button
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -3113,11 +3116,13 @@ drawable plus
 drawable press_button
 drawable press_button_repeat
 drawable round_button
+drawable round_corner
 drawable setting
 drawable test_level_drawable
 drawable three_dots_vertical
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable trash
 drawable x
 drawable yes
 font font1
@@ -3231,6 +3236,7 @@ id cache_measures
 id calendarView
 id callMeasure
 id cancel_button
+id cancle_button
 id carryVelocity
 id center
 id centerCrop
@@ -3273,6 +3279,7 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id delete
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -3853,6 +3860,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu menu_pop
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap schedule
