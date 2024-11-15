@@ -38,5 +38,4 @@ public class Tool {
         return a;
 
     }
-
 }

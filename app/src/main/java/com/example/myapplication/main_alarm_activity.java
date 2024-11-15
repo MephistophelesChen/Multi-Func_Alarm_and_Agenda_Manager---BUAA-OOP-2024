@@ -65,12 +65,11 @@ public class main_alarm_activity extends AppCompatActivity {
                     startActivityForResult(intent, REQUEST_CODE_CREATE_ALARM);
                 } else {
                     cancle_delete();
-                   for(int i=0;i<alarmList.getCount();i++)
+                   for(int i=alarmList.getCount()-1;i>=0;i--)
                    {
                        if(alarmList.isItemChecked(i))
                        {
                            delete_alarm(i);
-                           i--;
                            adapter.notifyDataSetChanged();
                            alarmList.invalidate();
                        }
@@ -106,10 +105,21 @@ public class main_alarm_activity extends AppCompatActivity {
             ArrayList<Boolean> repeatDays = (ArrayList<Boolean>) data.getSerializableExtra("repeatDays");
 
             Alarm newAlarm = new Alarm(hour, minute, repeatDays,false);
-
+            newAlarm.id=alarm_id++;
             alarms.add(newAlarm);
-
-            String timeStr = String.format("%02d:%02d", hour, minute);
+            int[] re=new int[7];
+            for(int i=0;i<7;i++)
+            {
+                if(repeatDays.get(i))
+                {
+                    re[i]=1;
+                }
+                else
+                {
+                    re[i]=0;
+                }
+            }
+            String timeStr = String.format("%02d:%02d%d", hour, minute,alarm_id);
             time.add(timeStr);
 
             String repeatStr = Tool.addrepeat(repeatDays);
@@ -251,4 +261,5 @@ public class main_alarm_activity extends AppCompatActivity {
     {
         return this.alarmList;
     }
+
 }

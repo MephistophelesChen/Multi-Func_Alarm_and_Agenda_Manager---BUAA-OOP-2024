@@ -72,7 +72,7 @@ public class MyBaseAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.time.setText(list.get(position));
+        holder.time.setText(list.get(position).substring(0,5));
         holder.repeat.setText(list1.get(position));
         holder.switch_alarm.setChecked(selectedMap.get(list.get(position)));
 
