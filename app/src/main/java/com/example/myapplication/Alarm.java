@@ -17,6 +17,14 @@ public class Alarm {
         this.isRing = isRing;
     }
 
+    public int compareTo(Alarm other) {
+        if (this.hour != other.hour) {
+            return Integer.compare(this.hour, other.hour);
+        } else {
+            return Integer.compare(this.minute, other.minute);
+        }
+    }
+
 
     public int getHour24() {
         return hour24;

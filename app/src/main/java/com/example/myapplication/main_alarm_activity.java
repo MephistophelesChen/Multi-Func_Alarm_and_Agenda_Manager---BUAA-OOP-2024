@@ -1,10 +1,16 @@
 package com.example.myapplication;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -22,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class main_alarm_activity extends AppCompatActivity {
     private static final int REQUEST_CODE_CREATE_ALARM = 1;
@@ -70,6 +77,7 @@ public class main_alarm_activity extends AppCompatActivity {
                        if(alarmList.isItemChecked(i))
                        {
                            delete_alarm(i);
+                           sort_alarm();
                            adapter.notifyDataSetChanged();
                            alarmList.invalidate();
                        }
@@ -90,10 +98,40 @@ public class main_alarm_activity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                calculateNextRingTime();
+                if(calculateNextRingTime()-now.getTimeInMillis()<=1000)
+                    checkAndRing();
                 updateNextRingTime();
             }
         }, delay);
+    }
+
+    void sort_alarm()
+    {
+        boolean swap;
+        for(int i=0;i<alarms.size()-1;i++)
+        {
+            swap=false;
+            for(int j=0;j<alarms.size()-1;j++)
+            {
+                if(alarms.get(j).compareTo(alarms.get(j+1))>0)
+                {
+                    Alarm temp = alarms.get(j);
+                    alarms.set(j,alarms.get(j+1));
+                    alarms.set(j+1,temp);
+
+                    String stemp= time.get(j);
+                    time.set(j,time.get(j+1));
+                    time.set(j+1,stemp);
+
+                    String temp1=repeat.get(j);
+                    repeat.set(j, repeat.get(j+1));
+                    repeat.set(j+1,temp1);
+
+                    swap=true;
+                }
+            }
+            if (!swap) break;
+        }
     }
 
     @Override
@@ -114,19 +152,19 @@ public class main_alarm_activity extends AppCompatActivity {
             repeat.add(repeatStr);
 
             map1.put(timeStr, false);
-
+            sort_alarm();
             adapter.notifyDataSetChanged();
             updateNextRingTime();
         }
     }
 
-    void calculateNextRingTime() {
+    long calculateNextRingTime() {
         Calendar now = Calendar.getInstance();
-        long minDiff = Long.MAX_VALUE;
         String nextTime = "无启用的闹钟";
+        long NextTimeInMillis = Long.MAX_VALUE;
 
         for (int i = 0; i < alarms.size(); i++) {
-            if (alarms.get(i).isRing()) {
+            if (alarms.get(i).isRing()) {   // 如果闹钟开启
                 Alarm alarm = alarms.get(i);
                 Calendar alarmTime = Calendar.getInstance();
                 alarmTime.set(Calendar.HOUR_OF_DAY, alarm.getHour());
@@ -136,7 +174,6 @@ public class main_alarm_activity extends AppCompatActivity {
                 // 处理重复天数
                 ArrayList<Boolean> repeatDays = alarm.getRepeat();
                 int today = now.get(Calendar.DAY_OF_WEEK) - 1; // 将星期天设为0，星期一设为1，依此类推
-                boolean found = false;
 
                 // 如果闹钟不重复而开启，且今天的闹钟时间已经过去，则将闹钟时间设为明天
                 if (!repeatDays.contains(true) && alarmTime.before(now)) {
@@ -149,28 +186,32 @@ public class main_alarm_activity extends AppCompatActivity {
                             alarmTime.add(Calendar.DAY_OF_MONTH, j);
                         }
                         if (alarmTime.after(now)) {
-                            found = true;
                             break;
                         }
                     }
                 }
 
                 long diff = alarmTime.getTimeInMillis() - now.getTimeInMillis();
-                if (diff < minDiff) {
-                    minDiff = diff;
-                    long hours = diff / (1000 * 60 * 60);
-                    long minutes = (diff / (1000 * 60)) % 60;
-                    if (diff % (1000 * 60) != 0) {
-                        minutes++; // 如果有剩余的秒数，则向上取整
-                    }
-                    hours += minutes / 60;
-                    minutes %= 60;
-                    nextTime = String.format("还有%d小时%d分钟响铃", hours, minutes);
+                long hours = diff / (1000 * 60 * 60);
+                long minutes = (diff / (1000 * 60)) % 60;
+                if (diff % (1000 * 60) != 0) {
+                    minutes++; // 如果有剩余的秒数，则向上取整
                 }
+                hours += minutes / 60;
+                minutes %= 60;
+                nextTime = String.format("还有%d小时%d分钟响铃", hours, minutes);
+                NextTimeInMillis = alarmTime.getTimeInMillis();
             }
         }
 
         nextRingTime.setText(nextTime);
+        return NextTimeInMillis;
+    }
+
+    void checkAndRing(){
+        Intent intent = new Intent(this, activity_ring_alarm.class);
+        startActivity(intent);
+
     }
 
     void setlongclick(ListView list)
