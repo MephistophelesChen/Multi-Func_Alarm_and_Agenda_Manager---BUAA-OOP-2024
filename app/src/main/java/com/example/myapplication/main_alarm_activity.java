@@ -299,6 +299,7 @@ public class main_alarm_activity extends AppCompatActivity  {
             if (!swap) break;
         }
     }
+    //SQL部分------------------------------SQL----------------------------------------------------
     void saveToSQL(String s1,String s2,Alarm al)
     {
         ContentValues values = new ContentValues();
@@ -369,25 +370,27 @@ public class main_alarm_activity extends AppCompatActivity  {
         sort_alarm();
     }
 
+
+ void deleteSQL(int position)
+ {
+     long id=alarms.get(position).id;
+     String idToDelete = String.valueOf(id);
+     String removeSQL = "DELETE FROM string_table WHERE _id = '" + idToDelete + "'";
+     db.execSQL(removeSQL);
+ }
+    SQLiteDatabase getSQL()
+    {
+        return this.db;
+    }
+
+    void setSQL(SQLiteDatabase db)
+    {
+        this.db=db;
+    }
+ //SQL结束------------------------------------SQLend----------------------------------------------------
     ListView getlist()
     {
         return this.alarmList;
     }
- void deleteSQL(int position)
- {
-     long id=alarms.get(position).id;
-     String idToDelete = String.valueOf(id); // 确保这个值来自可信的源，或者已经过适当的清理和转义
-     String removeSQL = "DELETE FROM string_table WHERE _id = '" + idToDelete + "'";
-     db.execSQL(removeSQL);
- }
 
-   SQLiteDatabase getSQL()
-   {
-       return this.db;
-   }
-
-   void setSQL(SQLiteDatabase db)
-   {
-       this.db=db;
-   }
 }
