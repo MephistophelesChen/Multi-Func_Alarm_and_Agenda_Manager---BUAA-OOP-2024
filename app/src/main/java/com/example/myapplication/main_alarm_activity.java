@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -41,8 +42,9 @@ public class main_alarm_activity extends AppCompatActivity  {
     static boolean isMultipleSelectionMode=false;
     private ImageButton add_alarm_btn;
     private Button cancle;
-    private int alarm_id=0;
+    private int alarm_id;
     DataBaseHelper dbHelper;
+    ContentValues values;
 
     public SQLiteDatabase db ;
 
@@ -50,6 +52,7 @@ public class main_alarm_activity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_alarm);
+        alarm_id=0;
         dbHelper=new DataBaseHelper(this);
 
         alarmList = findViewById(R.id.list_test);
@@ -63,6 +66,7 @@ public class main_alarm_activity extends AppCompatActivity  {
         adapter.notifyDataSetChanged();
 
         setlongclick(alarmList);
+        setOnScroll(alarmList);
         nextRingTime = findViewById(R.id.next_ring_time);
         cancle = findViewById(R.id.cancle_button);
         cancle.setOnClickListener(new View.OnClickListener() {
@@ -80,20 +84,17 @@ public class main_alarm_activity extends AppCompatActivity  {
                     startActivityForResult(intent, REQUEST_CODE_CREATE_ALARM);
                 } else {
                     cancle_delete();
-                     int count=alarmList.getCount();
-                   for(int i=0,j=0;i<count;i++,j++)
+                   for(int i=0,j=0;i<alarms.size();i++,j++)
                    {
                        if(alarmList.isItemChecked(j))
                        {
                            deleteSQL(i);
                            delete_alarm(i);
-                           adapter.notifyDataSetChanged();
-                           alarmList.invalidate();
-                           count--;
                            i=i-1;
                        }
                    }
-
+                    adapter.notifyDataSetChanged();
+                    alarmList.invalidate();
                     updateNextRingTime();
                 }
 
@@ -107,6 +108,7 @@ public class main_alarm_activity extends AppCompatActivity  {
         super.onStart();
         loadFromSQL();
         adapter.notifyDataSetChanged();
+
     }
 
     void updateNextRingTime() {
@@ -198,7 +200,34 @@ public class main_alarm_activity extends AppCompatActivity  {
 
         nextRingTime.setText(nextTime);
     }
+    void setOnScroll(ListView list)
+    {
+        list.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
 
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                    if(isMultipleSelectionMode)
+                    {
+                     for(int i=firstVisibleItem;i<=visibleItemCount-1;i++)
+                     {
+                         ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
+                         layout.findViewById(R.id.switch_alarm).setVisibility(View.INVISIBLE);
+                     }
+                    }
+                    else
+                    {
+                        for(int i=firstVisibleItem;i<visibleItemCount-1;i++)
+                        {
+                            ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
+                            layout.findViewById(R.id.switch_alarm).setVisibility(View.VISIBLE);
+                        }
+                    }
+            }
+        });
+    }
     void setlongclick(ListView list)
     {
         setItem(list);
@@ -210,7 +239,7 @@ public class main_alarm_activity extends AppCompatActivity  {
         isMultipleSelectionMode=true;
         add_alarm_btn.setBackgroundResource(R.drawable.delete_button);
         add_alarm_btn.setImageResource(R.drawable.trash);
-        for(int i=0;i<alarmList.getCount();i++) {
+        for(int i=0;i< Math.min(alarmList.getCount(),7);i++) {
             ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
             layout.findViewById(R.id.switch_alarm).setVisibility(View.INVISIBLE);
         }
@@ -255,7 +284,7 @@ public class main_alarm_activity extends AppCompatActivity  {
         add_alarm_btn.setBackgroundResource(R.drawable.round_button);
         add_alarm_btn.setImageResource(R.drawable.plus);
         cancle.setVisibility(View.INVISIBLE);
-        for(int i=0;i<alarmList.getCount();i++) {
+        for(int i=0;i<Math.min(alarmList.getCount(),7);i++) {
             ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
             layout.findViewById(R.id.switch_alarm).setVisibility(View.VISIBLE);
         }
@@ -299,7 +328,6 @@ public class main_alarm_activity extends AppCompatActivity  {
             if (!swap) break;
         }
     }
-    //SQL部分------------------------------SQL----------------------------------------------------
     void saveToSQL(String s1,String s2,Alarm al)
     {
         ContentValues values = new ContentValues();
@@ -329,6 +357,7 @@ public class main_alarm_activity extends AppCompatActivity  {
                 null,                          // 过滤条件
                 null                           // 排序依据
         );
+
         while (cursor.moveToNext()) {
             String s,t;
             int i;
@@ -338,6 +367,7 @@ public class main_alarm_activity extends AppCompatActivity  {
             s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ID));
             i=Integer.parseInt(s);
             al.id=i;
+
             for(Alarm a:alarms)
             {
                 if(a.id==i)
@@ -345,6 +375,7 @@ public class main_alarm_activity extends AppCompatActivity  {
                    re=true;
                 }
             }
+
             if(re==false) {
                 t = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING1));
                 time.add(t);
@@ -366,31 +397,30 @@ public class main_alarm_activity extends AppCompatActivity  {
                 al.repeat = Tool.StringToBoolean(s);
                 alarms.add(al);
             }
+            alarm_id++;
         }
         sort_alarm();
     }
 
-
- void deleteSQL(int position)
- {
-     long id=alarms.get(position).id;
-     String idToDelete = String.valueOf(id);
-     String removeSQL = "DELETE FROM string_table WHERE _id = '" + idToDelete + "'";
-     db.execSQL(removeSQL);
- }
-    SQLiteDatabase getSQL()
-    {
-        return this.db;
-    }
-
-    void setSQL(SQLiteDatabase db)
-    {
-        this.db=db;
-    }
- //SQL结束------------------------------------SQLend----------------------------------------------------
     ListView getlist()
     {
         return this.alarmList;
     }
+ void deleteSQL(int position)
+ {
+     long id=alarms.get(position).id;
+     String idToDelete = String.valueOf(id); // 确保这个值来自可信的源，或者已经过适当的清理和转义
+     String removeSQL = "DELETE FROM string_table WHERE _id = '" + idToDelete + "'";
+     db.execSQL(removeSQL);
+ }
 
+   SQLiteDatabase getSQL()
+   {
+       return this.db;
+   }
+
+   void setSQL(SQLiteDatabase db)
+   {
+       this.db=db;
+   }
 }
