@@ -7,7 +7,6 @@ public class Alarm {
   public int minute;
   ArrayList<Boolean> repeat=new ArrayList<Boolean>();//例如repeat.get（0）==true表示每周一重复
   boolean isRing=false;
-  public int hour24=0;//
   public int id;//id每增加一个闹铃都会增加，便于删除
 
     public Alarm(int hour, int minute, ArrayList<Boolean> repeat, boolean isRing) {
@@ -16,6 +15,7 @@ public class Alarm {
         this.repeat = repeat;
         this.isRing = isRing;
     }
+    public Alarm(){}
 
     public int compareTo(Alarm other) {
         if (this.hour != other.hour) {
@@ -23,15 +23,6 @@ public class Alarm {
         } else {
             return Integer.compare(this.minute, other.minute);
         }
-    }
-
-
-    public int getHour24() {
-        return hour24;
-    }
-
-    public void setHour24(int hour24) {
-        this.hour24 = hour24;
     }
 
     public ArrayList<Boolean> getRepeat() {
