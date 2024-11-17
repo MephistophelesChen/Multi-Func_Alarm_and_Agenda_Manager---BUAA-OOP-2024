@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,8 @@ public class MyBaseAdapter extends BaseAdapter {
     private ViewHolder holder = null;
     private SetOnClickDialogListener mSetOnClickDialogListener;
     private main_alarm_activity mactivity;
-
+    SQLiteDatabase db;
+    DataBaseHelper dbHelper;
     public void OnSetOnClickDialogListener(SetOnClickDialogListener listener) {
         this.mSetOnClickDialogListener = listener;
     }
@@ -36,12 +38,14 @@ public class MyBaseAdapter extends BaseAdapter {
         void onClickDialogListener(int type, boolean boolClick);
     }
 
-    public MyBaseAdapter(Context mContext, ArrayList<String> mList, ArrayList<String> mList1, Map<String, Boolean> mSelectedMap, ArrayList<Alarm> alarms) {
+    public MyBaseAdapter(Context mContext, ArrayList<String> mList, ArrayList<String> mList1, Map<String, Boolean> mSelectedMap, ArrayList<Alarm> alarms,SQLiteDatabase db,DataBaseHelper dbHelper) {
         this.context = mContext;
         this.list = mList;
         this.list1 = mList1;
         this.selectedMap = mSelectedMap;
         this.alarms = alarms;
+        this.db=db;
+        this.dbHelper=dbHelper;
     }
 
     @Override
@@ -86,7 +90,8 @@ public class MyBaseAdapter extends BaseAdapter {
                     mSetOnClickDialogListener.onClickDialogListener(position, isChecked);
                 }
                 selectedMap.put(list.get(position), isChecked);
-                alarms.get(position).setRing(isChecked); // 更新闹钟的isRing状态
+                alarms.get(position).setRing(isChecked);// 更新闹钟的isRing状态
+                updataSQL(position,isChecked);
                 ((main_alarm_activity) context).updateNextRingTime();
             }
         });
@@ -97,10 +102,28 @@ public class MyBaseAdapter extends BaseAdapter {
         }
         return convertView;
     }
+  private void updataSQL(int position,boolean isChecked)
+  {
+      db=dbHelper.getWritableDatabase();
+      String updateSQL = "UPDATE string_table SET string_value_ring = ? WHERE _id = ?";
+      long idToUpdate = alarms.get(position).id;
+      String newValue;
+      if(isChecked) {
+          newValue = "1";
+      }
+      else {
+          newValue = "0";
+      }
+
+      db.execSQL(updateSQL, new String[]{newValue,  String.valueOf(idToUpdate)});
+  }
+
+
 
     private class ViewHolder {
         Switch switch_alarm;
         TextView time;
         TextView repeat;
     }
+
 }

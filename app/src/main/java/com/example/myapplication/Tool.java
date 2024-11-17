@@ -38,4 +38,24 @@ public class Tool {
         return a;
 
     }
+    public static String booleanToString(ArrayList<Boolean> ar)
+    {
+        String s="";
+        for(Boolean b:ar)
+        {
+            s+=b?"1":"0";
+        }
+        return s;
+    }
+
+    public static ArrayList<Boolean> StringToBoolean(String s)
+    {
+        ArrayList<Boolean> ar=new ArrayList<Boolean>();
+        char[] ch=s.toCharArray();
+        for(int i=0;i<ch.length;i++)
+        {
+            ar.add(ch[i]=='1');
+        }
+        return ar;
+    }
 }
