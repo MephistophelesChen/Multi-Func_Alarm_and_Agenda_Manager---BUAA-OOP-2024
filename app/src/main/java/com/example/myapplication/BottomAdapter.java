@@ -60,9 +60,7 @@ public class BottomAdapter extends BaseAdapter {
                 if (!checkBox.isChecked()) {
                     checkBox.setChecked(false);
                     data.get(i).setIscheck(false);
-                }
-                else if(checkBox.isChecked())
-                {
+                } else if (checkBox.isChecked()) {
                     checkBox.setChecked(true);
                     data.get(i).setIscheck(true);
                 }

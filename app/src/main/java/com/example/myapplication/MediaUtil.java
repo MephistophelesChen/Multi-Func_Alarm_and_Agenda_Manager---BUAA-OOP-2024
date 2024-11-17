@@ -9,8 +9,8 @@ public class MediaUtil {
     private static MediaPlayer mediaPlayer;
 
     //播放铃声
-    public static void playRing(Context context){
-        try{
+    public static void playRing(Context context) {
+        try {
             //获取手机默认铃声
             Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
             mediaPlayer = new MediaPlayer();
@@ -24,9 +24,10 @@ public class MediaUtil {
             e.printStackTrace();
         }
     }
+
     //播放停止
-    public static void stopRing(){
-        if(mediaPlayer != null && mediaPlayer.isPlaying()){
+    public static void stopRing() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop(); //停止播放
             mediaPlayer.release();  //释放相关资源
 

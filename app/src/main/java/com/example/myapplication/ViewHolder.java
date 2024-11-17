@@ -18,17 +18,18 @@ public class ViewHolder {
     private ViewHolder(Context context, ViewGroup parent, int layoutRes) {
         mViews = new SparseArray<>();
         this.context = context;
-        View convertView = LayoutInflater.from(context).inflate(layoutRes, parent,false);
+        View convertView = LayoutInflater.from(context).inflate(layoutRes, parent, false);
         convertView.setTag(this);
         item = convertView;
-        Switch switch1= (Switch) LayoutInflater.from(context).inflate(layoutRes,parent,false);
+        Switch switch1 = (Switch) LayoutInflater.from(context).inflate(layoutRes, parent, false);
         switch1.setTag(this);
-        aSwitch =switch1;
+        aSwitch = switch1;
     }
+
     public static ViewHolder bind(Context context, View convertView, ViewGroup parent,
                                   int layoutRes, int position) {
         ViewHolder holder;
-        if(convertView == null) {
+        if (convertView == null) {
             holder = new ViewHolder(context, parent, layoutRes);
         } else {
             holder = (ViewHolder) convertView.getTag();

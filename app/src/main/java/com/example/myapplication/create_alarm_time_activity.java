@@ -1,16 +1,11 @@
 package com.example.myapplication;
 
-import static androidx.fragment.app.DialogFragment.STYLE_NORMAL;
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TimePicker;
@@ -21,9 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class create_alarm_time_activity extends AppCompatActivity {
     private TimePicker timePicker;

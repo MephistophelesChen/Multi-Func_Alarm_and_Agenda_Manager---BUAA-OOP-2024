@@ -3,11 +3,11 @@ package com.example.myapplication;
 import java.util.ArrayList;
 
 public class Alarm {
-  public int hour;
-  public int minute;
-  ArrayList<Boolean> repeat=new ArrayList<Boolean>();//例如repeat.get（0）==true表示每周一重复
-  boolean isRing=false;
-  public int id;//id每增加一个闹铃都会增加，便于删除
+    public int hour;
+    public int minute;
+    ArrayList<Boolean> repeat = new ArrayList<Boolean>();//例如repeat.get（0）==true表示每周一重复
+    boolean isRing = false;
+    public int id;//id每增加一个闹铃都会增加，便于删除
 
     public Alarm(int hour, int minute, ArrayList<Boolean> repeat, boolean isRing) {
         this.hour = hour;
@@ -15,7 +15,9 @@ public class Alarm {
         this.repeat = repeat;
         this.isRing = isRing;
     }
-    public Alarm(){}
+
+    public Alarm() {
+    }
 
     public int compareTo(Alarm other) {
         if (this.hour != other.hour) {
@@ -41,8 +43,8 @@ public class Alarm {
         isRing = ring;  // ring = TRUE or False
     }
 
-    public void switchRing(){
-        isRing=!isRing; // switch the ring
+    public void switchRing() {
+        isRing = !isRing; // switch the ring
     }
 
     public int getHour() {
