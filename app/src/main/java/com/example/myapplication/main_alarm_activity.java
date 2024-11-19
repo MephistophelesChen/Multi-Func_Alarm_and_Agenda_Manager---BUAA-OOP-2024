@@ -31,7 +31,7 @@ public class main_alarm_activity extends AppCompatActivity {
     private ArrayList<String> repeat = new ArrayList<>();//pai
     private MyBaseAdapter adapter;
     private Map<String, Boolean> map1 = new HashMap<>();//pai
-    private ArrayList<Alarm> alarms = new ArrayList<>();//pai
+    static ArrayList<Alarm> alarms = new ArrayList<>();//pai
     private TextView nextRingTime;
     private Handler handler = new Handler(Looper.getMainLooper());
     ListView alarmList;
@@ -39,7 +39,7 @@ public class main_alarm_activity extends AppCompatActivity {
     private ImageButton add_alarm_btn;
     private Button cancle;
     private int alarm_id;
-    DataBaseHelper dbHelper;
+    static DataBaseHelper dbHelper;
     ContentValues values;
 
     public SQLiteDatabase db;
@@ -79,15 +79,16 @@ public class main_alarm_activity extends AppCompatActivity {
                     startActivityForResult(intent, REQUEST_CODE_CREATE_ALARM);
                 } else {
                     cancle_delete();
-                    for (int i = 0, j = 0; i < alarms.size(); i++, j++) {
-                        if (alarmList.isItemChecked(j)) {
+                    for (int i = 0; i < alarms.size(); i++) {
+                        if (alarms.get(i).is_checked) {
                             deleteSQL(i);
                             delete_alarm(i);
-                            i = i - 1;
+                            i-=1;
+                            adapter.notifyDataSetChanged();
+                            alarmList.invalidate();
                         }
                     }
                     adapter.notifyDataSetChanged();
-                    alarmList.invalidate();
                     updateNextRingTime();
                 }
 
@@ -201,8 +202,29 @@ public class main_alarm_activity extends AppCompatActivity {
         );
         wakeLock.acquire(30000); // 保持唤醒30秒
 
-        Intent intent = new Intent(this, activity_ring_alarm.class);
-        startActivity(intent);
+        // 获取下一个要响铃的闹钟
+        Alarm nextAlarm = getNextAlarmToRing();
+        if (nextAlarm != null) {
+            Intent intent = new Intent(this, activity_ring_alarm.class);
+            intent.putExtra("alarmId", nextAlarm.id);
+            startActivity(intent);
+        }
+    }
+    private Alarm getNextAlarmToRing() {
+        Calendar now = Calendar.getInstance();
+        for (Alarm alarm : alarms) {
+            if (alarm.isRing()) {
+                Calendar alarmTime = Calendar.getInstance();
+                alarmTime.set(Calendar.HOUR_OF_DAY, alarm.getHour());
+                alarmTime.set(Calendar.MINUTE, alarm.getMinute());
+                alarmTime.set(Calendar.SECOND, 0);
+
+                if (alarmTime.after(now)) {
+                    return alarm;
+                }
+            }
+        }
+        return null;
     }
 
     void setOnScroll(ListView list) {
@@ -255,8 +277,10 @@ public class main_alarm_activity extends AppCompatActivity {
                 if (isMultipleSelectionMode) {
                     if (list.isItemChecked(position)) {
                         view.setBackgroundColor(0xffaeaeae);
+                        alarms.get(position).is_checked = true;
                     } else {
                         view.setBackgroundColor(0xffffffff);
+                        alarms.get(position).is_checked = false;
                     }
                 }
 

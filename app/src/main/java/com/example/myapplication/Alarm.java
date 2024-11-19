@@ -8,6 +8,7 @@ public class Alarm {
     ArrayList<Boolean> repeat = new ArrayList<Boolean>();//例如repeat.get（0）==true表示每周一重复
     boolean isRing = false;
     public int id;//id每增加一个闹铃都会增加，便于删除
+    boolean is_checked = false;//是否被选中
 
     public Alarm(int hour, int minute, ArrayList<Boolean> repeat, boolean isRing) {
         this.hour = hour;
