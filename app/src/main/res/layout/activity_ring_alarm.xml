@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/analogClock1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="125dp" />
+
+    <AnalogClock
+        android:id="@+id/analogClock1"
+        android:layout_width="252dp"
+        android:layout_height="241dp"
+        android:layout_gravity="center"
+        android:layout_x="83dp"
+        android:layout_y="59dp"
+        android:dial="@drawable/pan_first"
+        android:hand_hour="@drawable/hourppp"
+        android:hand_minute="@drawable/minuteppp"
+
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="89dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/arrow_left"
+        android:layout_width="67dp"
+        android:layout_height="60dp"
+        android:background="@drawable/press_button"
+        android:paddingLeft="5dp"
+        android:src="@drawable/arrow_left_black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="5"
+        android:scaleY="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="延时五分钟"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/radioButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radioButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
