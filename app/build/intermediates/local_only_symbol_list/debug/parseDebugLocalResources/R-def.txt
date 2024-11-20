@@ -13,9 +13,11 @@ color red
 color red_press
 color white
 drawable arrow_left
+drawable bell_ringing
 drawable bottomshape
 drawable chevron_left
 drawable chevron_right
+drawable circle
 drawable delete_button
 drawable hourppp
 drawable ic_launcher_background
@@ -55,7 +57,11 @@ id repeatButton
 id schedule_date_picker
 id schedule_time_picker
 id schedule_time_skip
+id sleep_more
+id stop
 id switch_alarm
+id textClock
+id textView
 id threeDots
 id time
 id time_picker
@@ -66,6 +72,7 @@ id to_timer_btn
 id topText
 id week
 id yes
+layout activity_ring_alarm
 layout bottom_sheet_res
 layout create_alarm_time
 layout create_schedule_date
@@ -76,6 +83,7 @@ layout main_alarm
 layout main_date
 layout main_setting
 layout main_timer
+layout notification_res
 menu menu_pop
 mipmap ic_launcher
 mipmap ic_launcher_round

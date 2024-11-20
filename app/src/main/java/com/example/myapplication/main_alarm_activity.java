@@ -1,24 +1,37 @@
 package com.example.myapplication;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RemoteViews;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,6 +61,7 @@ public class main_alarm_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_alarm);
+
         alarm_id = 0;
         dbHelper = new DataBaseHelper(this);
 
@@ -99,6 +113,7 @@ public class main_alarm_activity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        alarm_id++;
         super.onStart();
         loadFromSQL();
         adapter.notifyDataSetChanged();
@@ -127,14 +142,14 @@ public class main_alarm_activity extends AppCompatActivity {
             int minute = data.getIntExtra("minute", 0);
             ArrayList<Boolean> repeatDays = (ArrayList<Boolean>) data.getSerializableExtra("repeatDays");
 
-            Alarm newAlarm = new Alarm(hour, minute, repeatDays, false);
+            Alarm newAlarm = new Alarm(hour, minute, repeatDays, true);
             newAlarm.id = alarm_id++;
             alarms.add(newAlarm);
             String timeStr = String.format("%02d:%02d%d", hour, minute, alarm_id);
             time.add(timeStr);
             String repeatStr = Tool.addrepeat(repeatDays);
             repeat.add(repeatStr);
-            map1.put(timeStr, false);
+            map1.put(timeStr, true);
 
             sort_alarm();
             saveToSQL(timeStr, repeatStr, newAlarm);
@@ -207,7 +222,8 @@ public class main_alarm_activity extends AppCompatActivity {
         if (nextAlarm != null) {
             Intent intent = new Intent(this, activity_ring_alarm.class);
             intent.putExtra("alarmId", nextAlarm.id);
-            startActivity(intent);
+            postNotification(nextAlarm.id);
+           // startActivity(intent);
         }
     }
     private Alarm getNextAlarmToRing() {
@@ -426,6 +442,41 @@ public class main_alarm_activity extends AppCompatActivity {
         String idToDelete = String.valueOf(id); // 确保这个值来自可信的源，或者已经过适当的清理和转义
         String removeSQL = "DELETE FROM string_table WHERE _id = '" + idToDelete + "'";
         db.execSQL(removeSQL);
+    }
+    void postNotification(int id)
+    {
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // 如果API级别 >= 26，创建通知渠道
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "My Channel";
+            String description = "Channel description";
+            int importance = NotificationManager.IMPORTANCE_MAX;
+            NotificationChannel channel = new NotificationChannel(Integer.toString(id), name, NotificationManager.IMPORTANCE_HIGH);
+            channel.setDescription(description);
+            notificationManager.createNotificationChannel(channel);
+        }
+        Intent intent=new Intent(this,activity_ring_alarm.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_MUTABLE);
+        RemoteViews remoteViews=new RemoteViews("com.example.myapplication",R.layout.notification_res);
+
+        Uri defaultRingtoneUri = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_RINGTONE);
+        Ringtone ringtone = RingtoneManager.getRingtone(this, defaultRingtoneUri);
+        Notification notification = new NotificationCompat.Builder(this, Integer.toString(id))
+                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+                .setCustomContentView(remoteViews)
+                .setContentTitle("闹钟")
+                .setCategory(Notification.CATEGORY_ALARM)
+                .setCustomBigContentView(remoteViews)
+                .setSmallIcon(R.drawable.chevron_left)
+                .setAutoCancel(false)
+                .setContentIntent(pendingIntent)
+                .setOngoing(true)
+                .build();
+        // 发送通知
+
+        notificationManager.notify(id, notification);
+        ringtone.play();
     }
 
     SQLiteDatabase getSQL() {

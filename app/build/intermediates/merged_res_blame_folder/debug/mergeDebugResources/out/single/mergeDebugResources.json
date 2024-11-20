@@ -4,6 +4,10 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\setting.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-4:/layout_notification_res.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/notification_res.xml"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_ic_launcher_background.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\ic_launcher_background.xml"
     },
@@ -28,6 +32,10 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\xml\\backup_rules.xml"
     },
     {
+        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_notification_res.xml.flat",
+        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\notification_res.xml"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_round_corner.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\round_corner.xml"
     },
@@ -36,16 +44,16 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\delete_button.xml"
     },
     {
-        "merged": "com.example.myapplication.app-debug-4:/layout_main_alarm.xml.flat",
-        "source": "com.example.myapplication.app-main-6:/layout/main_alarm.xml"
-    },
-    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_arrow_left.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\arrow_left.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_plus.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\plus.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/layout_activity_ring_alarm.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/activity_ring_alarm.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_hourppp.png.flat",
@@ -100,16 +108,16 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\chevron_left.xml"
     },
     {
+        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_trash.xml.flat",
+        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\trash.xml"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\ic_launcher_foreground.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\xml_data_extraction_rules.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\xml\\data_extraction_rules.xml"
-    },
-    {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_trash.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\trash.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_date_list_res.xml.flat",
@@ -136,12 +144,20 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_setting.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_main_timer.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_timer.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_bell_ringing.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/bell_ringing.xml"
+    },
+    {
+        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_activity_ring_alarm.xml.flat",
+        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\activity_ring_alarm.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-anydpi_ic_launcher.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_main_timer.xml.flat",
+        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_timer.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_create_schedule_time.xml.flat",
@@ -158,6 +174,10 @@
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_minit.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\minit.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/drawable_circle.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/circle.xml"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_bottomshape.xml.flat",
