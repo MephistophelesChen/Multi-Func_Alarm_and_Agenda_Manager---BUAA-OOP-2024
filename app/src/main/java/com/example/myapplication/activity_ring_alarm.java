@@ -2,19 +2,35 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import androidx.lifecycle.ViewModelProvider;
 
 public class activity_ring_alarm extends Activity {
+    ImageButton endButton;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ring_alarm);
-        MediaUtil.playRing(this);
+       // MediaUtil.playRing(this);
 
         // 获取传递过来的闹钟ID
         Intent intent = getIntent();
         int alarmId = intent.getIntExtra("alarmId", -1);
-
+        Toast.makeText(this,Integer.toString(alarmId),Toast.LENGTH_SHORT).show();
+         endButton=(ImageButton) findViewById(R.id.stop);
+         endButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 MediaUtil.stopRing();
+                 finish();
+             }
+         });
         // 检查所有在同一时间点的、不重复的闹钟，并将其关闭
         if (alarmId != -1) {
             Alarm ringingAlarm = null;
@@ -44,6 +60,6 @@ public class activity_ring_alarm extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        MediaUtil.stopRing();
+     //   MediaUtil.stopRing();
     }
 }
