@@ -54,7 +54,7 @@ public class main_alarm_activity extends AppCompatActivity {
     private int alarm_id;
     static DataBaseHelper dbHelper;
     ContentValues values;
-
+    public static MediaUtil mediaUtil;
     public SQLiteDatabase db;
 
     @Override
@@ -145,7 +145,7 @@ public class main_alarm_activity extends AppCompatActivity {
             Alarm newAlarm = new Alarm(hour, minute, repeatDays, true);
             newAlarm.id = alarm_id++;
             alarms.add(newAlarm);
-            String timeStr = String.format("%02d:%02d%d", hour, minute, alarm_id);
+            String timeStr = String.format("%02d:%02d%d", hour, minute, newAlarm.id);
             time.add(timeStr);
             String repeatStr = Tool.addrepeat(repeatDays);
             repeat.add(repeatStr);
@@ -161,7 +161,7 @@ public class main_alarm_activity extends AppCompatActivity {
     long calculateNextRingTime() {
         Calendar now = Calendar.getInstance();
         String nextTime = "无启用的闹钟";
-        long NextTimeInMillis = Long.MAX_VALUE;
+        long minDiff = Long.MAX_VALUE;
 
         for (int i = 0; i < alarms.size(); i++) {
             if (alarms.get(i).isRing()) {   // 如果闹钟开启
@@ -173,7 +173,7 @@ public class main_alarm_activity extends AppCompatActivity {
 
                 // 处理重复天数
                 ArrayList<Boolean> repeatDays = alarm.getRepeat();
-                int today = now.get(Calendar.DAY_OF_WEEK) - 1; // 将星期天设为0，星期一设为1，依此类推
+                int today = (now.get(Calendar.DAY_OF_WEEK) - 2 + 7) % 7; // 将星期天设为6，星期一设为0，依此类推
 
                 // 如果闹钟不重复而开启，且今天的闹钟时间已经过去，则将闹钟时间设为明天
                 if (!repeatDays.contains(true) && alarmTime.before(now)) {
@@ -181,30 +181,30 @@ public class main_alarm_activity extends AppCompatActivity {
                 } else if (repeatDays.contains(true)) {  // 闹钟按照星期重复
                     for (int j = 0; j <= 7; j++) {
                         int dayIndex = (today + j) % 7;
-                        if (repeatDays.get(dayIndex) && alarmTime.before(now)) {
+                        if (repeatDays.get(dayIndex) ) {
                             alarmTime.add(Calendar.DAY_OF_MONTH, j);
-                        }
-                        if (alarmTime.after(now)) {
                             break;
                         }
                     }
                 }
 
                 long diff = alarmTime.getTimeInMillis() - now.getTimeInMillis();
-                long hours = diff / (1000 * 60 * 60);
-                long minutes = (diff / (1000 * 60)) % 60;
-                if (diff % (1000 * 60) != 0) {
+                if (diff < minDiff) {
+                    minDiff = diff;
+                }
+                long hours = minDiff / (1000 * 60 * 60);
+                long minutes = (minDiff / (1000 * 60)) % 60;
+                if (minDiff % (1000 * 60) != 0) {
                     minutes++; // 如果有剩余的秒数，则向上取整
                 }
                 hours += minutes / 60;
                 minutes %= 60;
                 nextTime = String.format("还有%d小时%d分钟响铃", hours, minutes);
-                NextTimeInMillis = alarmTime.getTimeInMillis();
             }
         }
 
         nextRingTime.setText(nextTime);
-        return NextTimeInMillis;
+        return minDiff+now.getTimeInMillis();
     }
 
     void checkAndRing() {
@@ -220,8 +220,19 @@ public class main_alarm_activity extends AppCompatActivity {
         // 获取下一个要响铃的闹钟
         Alarm nextAlarm = getNextAlarmToRing();
         if (nextAlarm != null) {
-            Intent intent = new Intent(this, activity_ring_alarm.class);
-            intent.putExtra("alarmId", nextAlarm.id);
+            //Intent intent = new Intent(this, activity_ring_alarm.class);
+         //   intent.putExtra("alarmId", nextAlarm.id);
+            Toast.makeText(this,Integer.toString(nextAlarm.id),Toast.LENGTH_SHORT).show();
+            for(Alarm alarm:alarms)
+            {
+                if(alarm.hour==nextAlarm.hour && alarm.minute==nextAlarm.minute && (!alarm.repeat.contains(true)) )
+                {
+                    alarm.isRing=false;
+                    String timeStr = String.format("%02d:%02d%d", alarm.hour, alarm.minute, alarm.id);
+                    map1.replace(timeStr,false);
+                }
+            }
+            adapter.notifyDataSetChanged();
             postNotification(nextAlarm.id);
            // startActivity(intent);
         }
@@ -241,6 +252,41 @@ public class main_alarm_activity extends AppCompatActivity {
             }
         }
         return null;
+    }
+    void postNotification(int id)
+    {
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // 如果API级别 >= 26，创建通知渠道
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "My Channel";
+            String description = "Channel description";
+            int importance = NotificationManager.IMPORTANCE_MAX;
+            NotificationChannel channel = new NotificationChannel(Integer.toString(id), name, NotificationManager.IMPORTANCE_HIGH);
+            channel.setDescription(description);
+            notificationManager.createNotificationChannel(channel);
+        }
+        Intent intent=new Intent(this,activity_ring_alarm.class);
+        intent.putExtra("alarmId",id);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_MUTABLE);
+        RemoteViews remoteViews=new RemoteViews("com.example.myapplication",R.layout.notification_res);
+
+        Uri defaultRingtoneUri = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_RINGTONE);
+
+        Notification notification = new NotificationCompat.Builder(this, Integer.toString(id))
+                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+                .setCustomContentView(remoteViews)
+                .setContentTitle("闹钟")
+                .setCategory(Notification.CATEGORY_ALARM)
+                .setCustomBigContentView(remoteViews)
+                .setSmallIcon(R.drawable.chevron_left)
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+                .build();
+        // 发送通知
+
+        notificationManager.notify(id, notification);
+        MediaUtil.playRing(this);
     }
 
     void setOnScroll(ListView list) {
@@ -443,41 +489,7 @@ public class main_alarm_activity extends AppCompatActivity {
         String removeSQL = "DELETE FROM string_table WHERE _id = '" + idToDelete + "'";
         db.execSQL(removeSQL);
     }
-    void postNotification(int id)
-    {
-        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // 如果API级别 >= 26，创建通知渠道
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "My Channel";
-            String description = "Channel description";
-            int importance = NotificationManager.IMPORTANCE_MAX;
-            NotificationChannel channel = new NotificationChannel(Integer.toString(id), name, NotificationManager.IMPORTANCE_HIGH);
-            channel.setDescription(description);
-            notificationManager.createNotificationChannel(channel);
-        }
-        Intent intent=new Intent(this,activity_ring_alarm.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_MUTABLE);
-        RemoteViews remoteViews=new RemoteViews("com.example.myapplication",R.layout.notification_res);
-
-        Uri defaultRingtoneUri = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_RINGTONE);
-        Ringtone ringtone = RingtoneManager.getRingtone(this, defaultRingtoneUri);
-        Notification notification = new NotificationCompat.Builder(this, Integer.toString(id))
-                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-                .setCustomContentView(remoteViews)
-                .setContentTitle("闹钟")
-                .setCategory(Notification.CATEGORY_ALARM)
-                .setCustomBigContentView(remoteViews)
-                .setSmallIcon(R.drawable.chevron_left)
-                .setAutoCancel(false)
-                .setContentIntent(pendingIntent)
-                .setOngoing(true)
-                .build();
-        // 发送通知
-
-        notificationManager.notify(id, notification);
-        ringtone.play();
-    }
 
     SQLiteDatabase getSQL() {
         return this.db;
