@@ -18,6 +18,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -240,6 +241,7 @@ public class main_alarm_activity extends AppCompatActivity {
            // startActivity(intent);
         }
     }
+
     private Alarm getNextAlarmToRing() {
         Calendar now = Calendar.getInstance();
         for (Alarm alarm : alarms) {
@@ -256,10 +258,10 @@ public class main_alarm_activity extends AppCompatActivity {
         }
         return null;
     }
+
     void postNotification(int id)
     {
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-
         // 如果API级别 >= 26，创建通知渠道
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "My Channel";
@@ -286,8 +288,8 @@ public class main_alarm_activity extends AppCompatActivity {
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
                 .build();
-        // 发送通知
 
+        // 发送通知
         notificationManager.notify(id, notification);
         MediaUtil.playRing(this);
     }
@@ -306,7 +308,7 @@ public class main_alarm_activity extends AppCompatActivity {
                         layout.findViewById(R.id.switch_alarm).setVisibility(View.INVISIBLE);
                     }
                 } else {
-                    for (int i = firstVisibleItem; i < visibleItemCount - 1; i++) {
+                    for (int i = firstVisibleItem; i <= visibleItemCount - 1; i++) {
                         ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
                         layout.findViewById(R.id.switch_alarm).setVisibility(View.VISIBLE);
                     }
@@ -325,14 +327,14 @@ public class main_alarm_activity extends AppCompatActivity {
                 isMultipleSelectionMode = true;
                 add_alarm_btn.setBackgroundResource(R.drawable.delete_button);
                 add_alarm_btn.setImageResource(R.drawable.trash);
-                for (int i = 0; i < Math.min(alarmList.getCount(), 6); i++) {
+
+                for (int i = 0; i < alarmList.getChildCount(); i++) {
                     ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
                     layout.findViewById(R.id.switch_alarm).setVisibility(View.INVISIBLE);
                 }
                 return false;
             }
         });
-
     }
 
     void setItem(ListView list) {
@@ -371,7 +373,7 @@ public class main_alarm_activity extends AppCompatActivity {
         add_alarm_btn.setBackgroundResource(R.drawable.round_button);
         add_alarm_btn.setImageResource(R.drawable.plus);
         cancle.setVisibility(View.INVISIBLE);
-        for (int i = 0; i < Math.min(alarmList.getCount(), 6); i++) {
+        for (int i = 0; i < alarmList.getChildCount(); i++) {
             ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
             layout.findViewById(R.id.switch_alarm).setVisibility(View.VISIBLE);
         }
