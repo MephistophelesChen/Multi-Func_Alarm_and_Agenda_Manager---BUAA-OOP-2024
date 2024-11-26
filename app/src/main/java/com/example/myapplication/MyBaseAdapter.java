@@ -74,6 +74,18 @@ public class MyBaseAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        // 如果是隐藏的闹钟，仅设置最小高度
+        if (alarms.get(position).isHidden()) {
+            ViewGroup.LayoutParams params = convertView.getLayoutParams();
+            if (params == null) {
+                params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
+            } else {
+                params.height = 1;
+            }
+            convertView.setLayoutParams(params);
+            return convertView;
+        }
+
         holder.time.setText(list.get(position).substring(0,5));
         holder.repeat.setText(list1.get(position));
         holder.switch_alarm.setChecked(selectedMap.get(list.get(position)));
@@ -88,11 +100,12 @@ public class MyBaseAdapter extends BaseAdapter {
                     mSetOnClickDialogListener.onClickDialogListener(position, isChecked);
                 }
                 selectedMap.put(list.get(position), isChecked);
-                alarms.get(position).setRing(isChecked);// 更新闹钟的isRing状态
+                alarms.get(position).setRing(isChecked);
                 updataSQL(position,isChecked);
                 ((main_alarm_activity) context).updateNextRingTime();
             }
         });
+
         if (mactivity.getlist().isItemChecked(position) && main_alarm_activity.isMultipleSelectionMode) {
             convertView.setBackgroundColor(0xff999999);
         } else {
