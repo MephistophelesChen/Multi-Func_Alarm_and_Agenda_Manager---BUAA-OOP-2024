@@ -78,7 +78,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="贪睡五分"
+        android:text="延迟响铃"
         android:textSize="20dp"
         android:fontFamily="@font/font1"
         android:textStyle="bold"
