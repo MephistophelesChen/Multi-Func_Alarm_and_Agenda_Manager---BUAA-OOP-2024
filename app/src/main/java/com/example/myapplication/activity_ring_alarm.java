@@ -35,6 +35,7 @@ public class activity_ring_alarm extends Activity {
                  finish();
              }
          });
+
         ImageButton sleepMoreButton = findViewById(R.id.sleep_more);
         sleepMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +82,6 @@ public class activity_ring_alarm extends Activity {
         values.put(DataBaseHelper.COLUMN_ALARM_HOUR, String.valueOf(hour));
         values.put(DataBaseHelper.COLUMN_ALARM_MINUTE, String.valueOf(minute));
         values.put(DataBaseHelper.COLUMN_ALARM_RING, "1");  //打开
-
         db.update(DataBaseHelper.TABLE_NAME, values, "isHidden = ?", new String[]{"1"});
 
         // 更新内存中的隐藏闹钟

@@ -1,20 +1,29 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +33,7 @@ public class create_alarm_time_activity extends AppCompatActivity {
     private List<Model> repeatDay =new ArrayList<>();
     ButtonManager btnManager=new ButtonManager();
     public boolean mIsFromItem=false;
-
+     mNumberPicker numberPicker;
 @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -33,6 +42,34 @@ public class create_alarm_time_activity extends AppCompatActivity {
         setContentView(R.layout.create_alarm_time);
         ImageButton back=(ImageButton) findViewById(R.id.back);
         timePicker = (TimePicker) findViewById(R.id.time_picker);
+
+        Resources systemResources = Resources.getSystem();
+        int hourNumberPickerId = systemResources.getIdentifier("hour", "id", "android");
+        int minuteNumberPickerId = systemResources.getIdentifier("minute", "id", "android");
+        int dividerId = Resources.getSystem().getIdentifier("divider", "id", "android");
+        int ampmid=systemResources.getIdentifier("amPm","id","android");
+        NumberPicker ampmPicker=(NumberPicker)timePicker.findViewById(ampmid);
+        NumberPicker hourNumberPicker = (NumberPicker) timePicker.findViewById(hourNumberPickerId);
+        NumberPicker minuteNumberPicker = (NumberPicker) timePicker.findViewById(minuteNumberPickerId);
+        TextView divider=(TextView) timePicker.findViewById(dividerId);
+        divider.setText("");
+        hourNumberPicker.setSelectionDividerHeight(4);
+        hourNumberPicker.setTextColor(getColor(R.color.blue_4));
+        hourNumberPicker.setTextSize(80);
+        hourNumberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        minuteNumberPicker.setSelectionDividerHeight(4);
+        minuteNumberPicker.setTextColor(getColor(R.color.blue_4));
+        minuteNumberPicker.setTextSize(80);
+        ampmPicker.setSelectionDividerHeight(4);
+        ampmPicker.setTextColor(getColor(R.color.blue_4));
+        ampmPicker.setTextSize(50);
+        ViewGroup.LayoutParams params = hourNumberPicker.getLayoutParams();
+        params.width = 300; // 或者一个具体的像素值，如 300
+        hourNumberPicker.setLayoutParams(params);
+        minuteNumberPicker.setLayoutParams(params);
+        ampmPicker.setLayoutParams(params);
+
+
 
         Button repeat=(Button) findViewById(R.id.repeatButton);
         BottomSheetDialog dialog = new BottomSheetDialog(this);
@@ -112,4 +149,6 @@ public class create_alarm_time_activity extends AppCompatActivity {
     interface AllCheckListener {
         void onCheckedChanged(boolean b);
     }
+
+
     }

@@ -44,7 +44,7 @@ public class main_alarm_activity extends AppCompatActivity {
     private ArrayList<String> time = new ArrayList<>();//pai
     private ArrayList<String> repeat = new ArrayList<>();//pai
     private MyBaseAdapter adapter;
-    private Map<String, Boolean> map1 = new HashMap<>();//pai
+    static Map<String, Boolean> map1 = new HashMap<>();//pai
     static ArrayList<Alarm> alarms = new ArrayList<>();//pai
     private TextView nextRingTime;
     private Handler handler = new Handler(Looper.getMainLooper());
