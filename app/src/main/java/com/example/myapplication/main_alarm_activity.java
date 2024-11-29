@@ -287,7 +287,7 @@ public class main_alarm_activity extends AppCompatActivity {
                 .setCategory(Notification.CATEGORY_ALARM)
                 .setCustomBigContentView(remoteViews)
                 .setSmallIcon(R.drawable.chevron_left)
-                .setAutoCancel(true)
+                .setAutoCancel(false)
                 .setContentIntent(pendingIntent)
                 .build();
 
