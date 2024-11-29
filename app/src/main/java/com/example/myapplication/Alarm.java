@@ -7,6 +7,7 @@ public class Alarm {
     public int minute;
     ArrayList<Boolean> repeat = new ArrayList<Boolean>();//例如repeat.get（0）==true表示每周一重复
     boolean isRing = false;
+    public boolean isHidden = false; //是否隐藏
     public int id;//id每增加一个闹铃都会增加，便于删除
     boolean is_checked = false;//是否被选中
 
@@ -20,6 +21,9 @@ public class Alarm {
     public Alarm() {
     }
 
+    public boolean isHidden() {
+        return isHidden;
+    }
     public int compareTo(Alarm other) {
         if (this.hour != other.hour) {
             return Integer.compare(this.hour, other.hour);

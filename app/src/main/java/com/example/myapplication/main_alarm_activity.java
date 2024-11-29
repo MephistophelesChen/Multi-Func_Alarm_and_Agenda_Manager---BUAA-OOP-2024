@@ -226,11 +226,11 @@ public class main_alarm_activity extends AppCompatActivity {
         if (nextAlarm != null) {
             //Intent intent = new Intent(this, activity_ring_alarm.class);
          //   intent.putExtra("alarmId", nextAlarm.id);
-            Toast.makeText(this,Integer.toString(nextAlarm.id),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,Integer.toString(nextAlarm.id),Toast.LENGTH_SHORT).show();
             for(Alarm alarm:alarms)
             {
                 if(alarm.hour==nextAlarm.hour && alarm.minute==nextAlarm.minute && (!alarm.repeat.contains(true)) )
-                {
+                {//如果是不重复的闹钟，响铃后关闭
                     alarm.isRing=false;
                     String timeStr = String.format("%02d:%02d%d", alarm.hour, alarm.minute, alarm.id);
                     map1.replace(timeStr,false);
@@ -240,7 +240,9 @@ public class main_alarm_activity extends AppCompatActivity {
             postNotification(nextAlarm.id);
            // startActivity(intent);
         }
+
     }
+
 
     private Alarm getNextAlarmToRing() {
         Calendar now = Calendar.getInstance();
@@ -426,6 +428,7 @@ public class main_alarm_activity extends AppCompatActivity {
         values.put(DataBaseHelper.COLUMN_ID, String.valueOf(al.id));
         values.put(DataBaseHelper.COLUMN_ALARM_RING, al.isRing ? "1" : "0");
         values.put(DataBaseHelper.COLUMN_ALARM_REPEAT, Tool.booleanToString(al.repeat));
+        values.put(DataBaseHelper.COLUMN_IS_HIDDEN, al.isHidden ? "1" : "0");
 
         db.insert(DataBaseHelper.TABLE_NAME, null, values);
     }
@@ -433,53 +436,63 @@ public class main_alarm_activity extends AppCompatActivity {
     void loadFromSQL() {
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(
-                DataBaseHelper.TABLE_NAME,   // 表名
-                new String[]{DataBaseHelper.COLUMN_ID, DataBaseHelper.COLUMN_STRING1, DataBaseHelper.COLUMN_STRING2, DataBaseHelper.COLUMN_ALARM_RING, DataBaseHelper.COLUMN_ALARM_HOUR, DataBaseHelper.COLUMN_ALARM_MINUTE, DataBaseHelper.COLUMN_ALARM_REPEAT}, // 要返回的列
-                null,                          // WHERE子句的条件
-                null,                          // WHERE子句的参数
-                null,                          // 分组依据
-                null,                          // 过滤条件
-                null                           // 排序依据
+                DataBaseHelper.TABLE_NAME,
+                new String[]{DataBaseHelper.COLUMN_ID, DataBaseHelper.COLUMN_STRING1, DataBaseHelper.COLUMN_STRING2, DataBaseHelper.COLUMN_ALARM_RING, DataBaseHelper.COLUMN_ALARM_HOUR, DataBaseHelper.COLUMN_ALARM_MINUTE, DataBaseHelper.COLUMN_ALARM_REPEAT, DataBaseHelper.COLUMN_IS_HIDDEN},
+                null,
+                null,
+                null,
+                null,
+                null
         );
 
         while (cursor.moveToNext()) {
             String s, t;
             int i;
             Alarm al = new Alarm();
-            boolean bool;
             boolean re = false;
+
             s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ID));
-            i = Integer.parseInt(s);
-            al.id = i;
-
-            for (Alarm a : alarms) {
-                if (a.id == i) {
-                    re = true;
+            if (s != null) {
+                try {
+                    i = Integer.parseInt(s);
+                } catch (NumberFormatException e) {
+                    i = 0; // 或者根据需要处理错误
                 }
+                al.id = i;
+
+                for (Alarm a : alarms) {
+                    if (a.id == i) {
+                        re = true;
+                    }
+                }
+
+                if (!re) {
+                    t = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING1));
+                    time.add(t != null ? t : "");
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING2));
+                    repeat.add(s != null ? s : "");
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_HOUR));
+                    i = s != null ? Integer.parseInt(s) : 0;
+                    al.hour = i;
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_MINUTE));
+                    i = s != null ? Integer.parseInt(s) : 0;
+                    al.minute = i;
+
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_RING));
+                    i = s != null ? Integer.parseInt(s) : 0;
+                    al.isRing = i == 1;
+
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_IS_HIDDEN));
+                    i = s != null ? Integer.parseInt(s) : 0;
+                    al.isHidden = i == 1;
+
+                    map1.put(t, al.isRing);
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_REPEAT));
+                    al.repeat = Tool.StringToBoolean(s != null ? s : "0000000");
+                    alarms.add(al);
+                }
+                alarm_id++;
             }
-
-            if (re == false) {
-                t = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING1));
-                time.add(t);
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING2));
-                repeat.add(s);
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_HOUR));
-                i = Integer.parseInt(s);
-                al.hour = i;
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_MINUTE));
-                i = Integer.parseInt(s);
-                al.minute = i;
-
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_RING));
-                i = Integer.parseInt(s);
-                al.isRing = i == 1;
-
-                map1.put(t, al.isRing);
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_REPEAT));
-                al.repeat = Tool.StringToBoolean(s);
-                alarms.add(al);
-            }
-            alarm_id++;
         }
         sort_alarm();
     }
