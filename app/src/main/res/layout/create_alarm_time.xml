@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/gray_yellow">
+   >
     <ImageButton
         android:id="@+id/back"
         android:layout_width="60dp"
@@ -31,7 +31,7 @@
         android:id="@+id/time_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+
         android:layout_centerInParent="true"
         android:timePickerMode="spinner"
         app:layout_constraintTop_toBottomOf="@id/back"
@@ -52,7 +52,7 @@
         android:id="@+id/repeatButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+
         android:background="@drawable/press_button_repeat"
         android:text=" 重复"
         app:layout_constraintTop_toBottomOf="@id/time_picker"

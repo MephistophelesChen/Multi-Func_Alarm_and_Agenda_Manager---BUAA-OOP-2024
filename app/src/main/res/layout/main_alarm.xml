@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".main_alarm_activity"
     android:orientation="vertical"
-    android:background="@color/white"
+
     >
     <TextView
         android:id="@+id/topText"
@@ -52,6 +52,7 @@
         app:layout_constraintBottom_toTopOf="@id/digitalclock"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/circle_1"
        />
 
     <DigitalClock
@@ -93,6 +94,7 @@
             app:layout_constraintTop_toBottomOf="@id/digitalclock"
             app:layout_constraintBottom_toTopOf="@id/to_date_btn"
             android:focusable="true"
+            android:background="@color/white"
             />
 
     <ImageButton
