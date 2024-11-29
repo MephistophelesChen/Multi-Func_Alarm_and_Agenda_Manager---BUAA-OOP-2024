@@ -1366,6 +1366,8 @@ color black
 color blue_1
 color blue_1_press
 color blue_2
+color blue_3
+color blue_4
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -2995,7 +2997,10 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable alarm_clock
+drawable alarm_clock_1
 drawable arrow_left
+drawable arrow_left_black
 drawable avd_hide_password
 drawable avd_show_password
 drawable bell_ringing
@@ -3008,6 +3013,8 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable calendar_minus
+drawable calendar_minus_1
 drawable chevron_left
 drawable chevron_right
 drawable circle
@@ -3017,6 +3024,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable face_id
 drawable hourppp
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
@@ -3039,6 +3047,8 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
 drawable indeterminate_static
+drawable line
+drawable line_dotted
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
 drawable m3_bottom_sheet_drag_handle
@@ -3062,6 +3072,7 @@ drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
 drawable minit
 drawable minuteppp
+drawable moon_stars
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -3099,6 +3110,7 @@ drawable mtrl_switch_thumb_unchecked_pressed
 drawable mtrl_switch_track
 drawable mtrl_switch_track_decoration
 drawable mtrl_tabs_default_indicator
+drawable music_note_beamed
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -3114,12 +3126,17 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable pan_first
+drawable phone_vibrate
 drawable plus
 drawable press_button
 drawable press_button_repeat
+drawable press_button_repeat_bottom
+drawable press_button_repeat_nocorner
+drawable press_button_repeat_top
 drawable round_button
 drawable round_corner
 drawable setting
+drawable setting_1
 drawable test_level_drawable
 drawable three_dots_vertical
 drawable tooltip_frame_dark
@@ -3324,6 +3341,7 @@ id escape
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id face_identity
 id fade
 id fill
 id fill_horizontal
@@ -3511,6 +3529,7 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id ring_music
 id rounded
 id row_index_key
 id save_non_transition_alpha
@@ -3539,6 +3558,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id setting
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3611,6 +3631,7 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id theme
 id threeDots
 id time
 id time_picker
@@ -3643,6 +3664,7 @@ id unlabeled
 id up
 id useLogo
 id vertical_only
+id vibrate
 id view_offset_helper
 id view_transition
 id view_tree_lifecycle_owner
@@ -4389,6 +4411,7 @@ style BottomSheetStyleWrapper
 style CardView
 style CardView_Dark
 style CardView_Light
+style CustomTimePickerTheme
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Animation
 style MaterialAlertDialog_Material3_Body_Text
