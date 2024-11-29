@@ -17,4 +17,5 @@
         <item name="colorPrimaryDark">@color/blue_1</item>
         <item name="colorAccent">@color/blue_1</item>
     </style>
+
 </resources>

@@ -84,6 +84,16 @@ public class MyBaseAdapter extends BaseAdapter {
             }
             convertView.setLayoutParams(params);
             return convertView;
+        }else {
+            ViewGroup.LayoutParams params=convertView.getLayoutParams();
+            if(params==null)
+            {
+                params=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,233);
+            }else
+            {
+                params.height=233;
+            }
+            convertView.setLayoutParams(params);
         }
 
         holder.time.setText(list.get(position).substring(0,5));
