@@ -1,19 +1,23 @@
 package com.example.myapplication;
 
+
+
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.util.Log;
 
 public class MediaUtil {
-    private static MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer=new MediaPlayer();
 
     //播放铃声
-    public static void playRing(Context context) {
+    public static void playRing(Context context,Uri alert) {
         try {
             //获取手机默认铃声
-            Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
             mediaPlayer = new MediaPlayer();
+
             mediaPlayer.setDataSource(context, alert);//根据Uri加载音频文件
             //mediaPlayer播放铃声流
             mediaPlayer.setAudioStreamType(RingtoneManager.TYPE_RINGTONE);
@@ -27,10 +31,18 @@ public class MediaUtil {
 
     //播放停止
     public static void stopRing() {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.stop(); //停止播放
-            mediaPlayer.release();  //释放相关资源
-
-        }
+     //   if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            try {
+                mediaPlayer.stop();
+            }catch (IllegalStateException e)
+            {
+                Log.d("1111","11111");
+                mediaPlayer=null;
+                mediaPlayer=new MediaPlayer();
+            }
+            //停止播放
+            mediaPlayer.release();
+         //释放相关资源
+      //  }
     }
 }

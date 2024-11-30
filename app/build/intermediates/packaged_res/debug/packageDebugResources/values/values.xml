@@ -101,5 +101,10 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
     </style>
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication">
+        <item name="android:windowSplashScreenBackground">@android:color/white</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/alarm_clock_1</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+
+    </style>
 </resources>

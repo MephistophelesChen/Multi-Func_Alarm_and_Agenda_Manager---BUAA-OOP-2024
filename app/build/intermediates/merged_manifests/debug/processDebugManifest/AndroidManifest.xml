@@ -43,8 +43,8 @@
         android:debuggable="true"
         android:extractNativeLibs="false"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/alarm_clock_1"
+        android:roundIcon="@drawable/alarm_clock_1"
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
@@ -66,6 +66,7 @@
             android:name="com.example.myapplication.activity_ring_alarm"
             android:label="singleTask launchMode"
             android:launchMode="singleTask" />
+        <activity android:name="com.example.myapplication.music_select_activity" />
         <activity
             android:name="com.example.myapplication.main_alarm_activity"
             android:exported="true"

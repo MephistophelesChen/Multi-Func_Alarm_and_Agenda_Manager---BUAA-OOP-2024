@@ -57,6 +57,8 @@ public class main_alarm_activity extends AppCompatActivity {
     ContentValues values;
     public static MediaUtil mediaUtil;
     public SQLiteDatabase db;
+    public static Uri alert;
+    Button to_setting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,14 @@ public class main_alarm_activity extends AppCompatActivity {
         setlongclick(alarmList);
         setOnScroll(alarmList);
         nextRingTime = findViewById(R.id.next_ring_time);
+        to_setting=findViewById(R.id.to_setting_btn);
+        to_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(main_alarm_activity.this,main_setting_activity.class);
+                startActivity(intent);
+            }
+        });
         cancle = findViewById(R.id.cancle_button);
         cancle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +120,8 @@ public class main_alarm_activity extends AppCompatActivity {
             }
         });
         updateNextRingTime();
+        alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+    //    alert=RingtoneManager.getDefaultUri(R.raw.alarm_beep);
     }
 
     @Override
@@ -287,13 +299,14 @@ public class main_alarm_activity extends AppCompatActivity {
                 .setCategory(Notification.CATEGORY_ALARM)
                 .setCustomBigContentView(remoteViews)
                 .setSmallIcon(R.drawable.chevron_left)
-                .setAutoCancel(false)
+                .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
+                .setDeleteIntent(pendingIntent)
                 .build();
 
         // 发送通知
         notificationManager.notify(id, notification);
-        MediaUtil.playRing(this);
+        MediaUtil.playRing(this,alert);
     }
 
     void setOnScroll(ListView list) {
