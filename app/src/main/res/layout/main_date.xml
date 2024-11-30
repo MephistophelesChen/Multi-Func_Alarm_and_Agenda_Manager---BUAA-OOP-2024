@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
 
 
 
@@ -53,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintVertical_weight="5"
-        app:layout_constraintBottom_toTopOf="@id/to_timer_btn"
+        app:layout_constraintBottom_toTopOf="@id/to_date_btn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calendarView" />
@@ -73,51 +75,54 @@
 
 
     <Button
-        android:id="@+id/to_alarm_btn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_gravity="bottom"
-        android:text="闹钟"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_weight="1"
+        android:text="闹钟"
+        android:textSize="11dp"
+        android:id="@+id/to_alarm_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/to_date_btn" />
+        app:layout_constraintRight_toLeftOf="@id/to_date_btn"
+        android:drawableTop="@drawable/alarm_clock"
+        android:background="@drawable/press_button"
+        style="?android:attr/borderlessButtonStyle"
+        />
 
     <Button
-            android:id="@+id/to_date_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintHorizontal_weight="1"
-            android:text="日程"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/to_alarm_btn"
-            app:layout_constraintRight_toLeftOf="@id/to_timer_btn"
-            />
+        android:id="@+id/to_date_btn"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="日程"
+        android:textSize="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/to_alarm_btn"
+        app:layout_constraintRight_toLeftOf="@id/to_setting_btn"
+        android:background="@drawable/press_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:drawableTop="@drawable/calendar_minus_1"
+        />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintHorizontal_weight="1"
-            android:text="计时器"
-            android:id="@+id/to_timer_btn"
-            app:layout_constraintLeft_toRightOf="@id/to_date_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/to_setting_btn"
-            />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintHorizontal_weight="1"
-            android:text="设置"
-            android:id="@+id/to_setting_btn"
-            app:layout_constraintLeft_toRightOf="@id/to_timer_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="设置"
+        android:textSize="11dp"
+        android:drawableTop="@drawable/setting"
+        android:id="@+id/to_setting_btn"
+        app:layout_constraintLeft_toRightOf="@id/to_date_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/press_button"
+        style="?android:attr/borderlessButtonStyle"
+        />
 
 
 <!-- 日程管理和闹钟创建几乎相同，可以选择跳过time_picker来创建没有具体时间的某天的日程，在

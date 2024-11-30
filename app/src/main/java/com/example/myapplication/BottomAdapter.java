@@ -49,8 +49,6 @@ public class BottomAdapter extends BaseAdapter {
         Model mModel = data.get(i);
         hd = (ViewHoder) view.getTag();
         hd.textView.setText(mModel.getSt());
-
-        Log.e("myadapter", mModel.getSt() + "------" + mModel.ischeck());
         final ViewHoder hdFinal = hd;
         hd.checkBox.setChecked(mModel.ischeck());
         hd.checkBox.setOnClickListener(new View.OnClickListener() {

@@ -8,6 +8,28 @@
         android:minSdkVersion="28"
         android:targetSdkVersion="34" />
 
+    <!-- Add required permissions -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission
+        android:name="android.permission.START_ACTIVITIES_FROM_BACKGROUND"
+        android:protectionLevel="signature|privileged|vendorPrivileged|oem|verifier|role" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+
+    <!-- Declare hardware features -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <permission
         android:name="com.example.myapplication.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -27,6 +49,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
         <activity android:name="com.example.myapplication.create_alarm_time_activity" />
+        <activity android:name="com.example.myapplication.edit_alarm_time_activity" />
         <activity
             android:name="com.example.myapplication.main_date_activity"
             android:label="singleTask launchMode"
@@ -37,6 +60,10 @@
             android:launchMode="singleTask" />
         <activity
             android:name="com.example.myapplication.main_setting_activity"
+            android:label="singleTask launchMode"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.example.myapplication.activity_ring_alarm"
             android:label="singleTask launchMode"
             android:launchMode="singleTask" />
         <activity

@@ -20,5 +20,7 @@ public class main_setting_activity extends AppCompatActivity {
 
         Button to_date_btn = (Button) findViewById(R.id.to_date_btn);
         btnManager.switchToActivity_btn(to_date_btn, main_setting_activity.this, main_date_activity.class);
+
+
     }
 }

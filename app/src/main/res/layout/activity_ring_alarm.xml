@@ -2,10 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:background="@drawable/bell_ringing"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    />
     <TextClock
         android:id="@+id/textClock"
         android:layout_width="wrap_content"
@@ -40,37 +49,53 @@
         app:layout_constraintVertical_bias="0.151" />
 
     <ImageButton
-        android:id="@+id/arrow_left"
-        android:layout_width="67dp"
-        android:layout_height="60dp"
-        android:background="@drawable/press_button"
-        android:paddingLeft="5dp"
-        android:src="@drawable/arrow_left_black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:scaleX="5"
-        android:scaleY="5"
+        android:background="@drawable/press_button"
+        android:paddingLeft="5dp"
+        android:src="@drawable/circle"
+        app:layout_constraintLeft_toRightOf="@id/sleep_more"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textClock"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textClock"
-        app:layout_constraintVertical_bias="0.13" />
+        />
+
+   <ImageButton
+       android:id="@+id/sleep_more"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/circle"
+       android:background="@color/white"
+       app:layout_constraintTop_toBottomOf="@id/textClock"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintRight_toLeftOf="@id/stop"
+       app:layout_constraintLeft_toLeftOf="parent"
+       />
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="延时五分钟"
+        android:text="延迟响铃"
+        android:textSize="20dp"
+        android:fontFamily="@font/font1"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/radioButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/radioButton" />
+        app:layout_constraintBottom_toBottomOf="@+id/sleep_more"
+        app:layout_constraintRight_toRightOf="@id/sleep_more"
+        app:layout_constraintLeft_toLeftOf="@id/sleep_more"
+        app:layout_constraintTop_toTopOf="@+id/sleep_more" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="结束闹铃"
+        android:textSize="20dp"
+        android:fontFamily="@font/font1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/stop"
+        app:layout_constraintRight_toRightOf="@id/stop"
+        app:layout_constraintLeft_toLeftOf="@id/stop"
+        app:layout_constraintTop_toTopOf="@+id/stop"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

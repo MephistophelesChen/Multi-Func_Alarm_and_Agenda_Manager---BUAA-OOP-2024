@@ -1,24 +1,38 @@
 package com.example.myapplication;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RemoteViews;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,7 +44,7 @@ public class main_alarm_activity extends AppCompatActivity {
     private ArrayList<String> time = new ArrayList<>();//pai
     private ArrayList<String> repeat = new ArrayList<>();//pai
     private MyBaseAdapter adapter;
-    private Map<String, Boolean> map1 = new HashMap<>();//pai
+    static Map<String, Boolean> map1 = new HashMap<>();//pai
     static ArrayList<Alarm> alarms = new ArrayList<>();//pai
     private TextView nextRingTime;
     private Handler handler = new Handler(Looper.getMainLooper());
@@ -41,13 +55,14 @@ public class main_alarm_activity extends AppCompatActivity {
     private int alarm_id;
     static DataBaseHelper dbHelper;
     ContentValues values;
-
+    public static MediaUtil mediaUtil;
     public SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_alarm);
+
         alarm_id = 0;
         dbHelper = new DataBaseHelper(this);
 
@@ -99,6 +114,7 @@ public class main_alarm_activity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        alarm_id++;
         super.onStart();
         loadFromSQL();
         adapter.notifyDataSetChanged();
@@ -127,14 +143,14 @@ public class main_alarm_activity extends AppCompatActivity {
             int minute = data.getIntExtra("minute", 0);
             ArrayList<Boolean> repeatDays = (ArrayList<Boolean>) data.getSerializableExtra("repeatDays");
 
-            Alarm newAlarm = new Alarm(hour, minute, repeatDays, false);
+            Alarm newAlarm = new Alarm(hour, minute, repeatDays, true);
             newAlarm.id = alarm_id++;
             alarms.add(newAlarm);
-            String timeStr = String.format("%02d:%02d%d", hour, minute, alarm_id);
+            String timeStr = String.format("%02d:%02d%d", hour, minute, newAlarm.id);
             time.add(timeStr);
             String repeatStr = Tool.addrepeat(repeatDays);
             repeat.add(repeatStr);
-            map1.put(timeStr, false);
+            map1.put(timeStr, true);
 
             sort_alarm();
             saveToSQL(timeStr, repeatStr, newAlarm);
@@ -146,7 +162,7 @@ public class main_alarm_activity extends AppCompatActivity {
     long calculateNextRingTime() {
         Calendar now = Calendar.getInstance();
         String nextTime = "无启用的闹钟";
-        long NextTimeInMillis = Long.MAX_VALUE;
+        long minDiff = Long.MAX_VALUE;
 
         for (int i = 0; i < alarms.size(); i++) {
             if (alarms.get(i).isRing()) {   // 如果闹钟开启
@@ -158,38 +174,41 @@ public class main_alarm_activity extends AppCompatActivity {
 
                 // 处理重复天数
                 ArrayList<Boolean> repeatDays = alarm.getRepeat();
-                int today = now.get(Calendar.DAY_OF_WEEK) - 1; // 将星期天设为0，星期一设为1，依此类推
+                int today = (now.get(Calendar.DAY_OF_WEEK) - 2 + 7) % 7; // 将星期天设为6，星期一设为0，依此类推
 
                 // 如果闹钟不重复而开启，且今天的闹钟时间已经过去，则将闹钟时间设为明天
                 if (!repeatDays.contains(true) && alarmTime.before(now)) {
                     alarmTime.add(Calendar.DAY_OF_MONTH, 1);
-                } else if (repeatDays.contains(true)) {  // 闹钟按照星期重复
+                } else if (repeatDays.contains(true) ) {  // 闹钟按照星期重复
                     for (int j = 0; j <= 7; j++) {
-                        int dayIndex = (today + j) % 7;
-                        if (repeatDays.get(dayIndex) && alarmTime.before(now)) {
-                            alarmTime.add(Calendar.DAY_OF_MONTH, j);
+                        if(j==0 && repeatDays.get(today) && alarmTime.before(now)) {
+                            continue;
                         }
-                        if (alarmTime.after(now)) {
+                        int dayIndex = (today + j) % 7;
+                        if (repeatDays.get(dayIndex) ) {
+                            alarmTime.add(Calendar.DAY_OF_MONTH, j);
                             break;
                         }
                     }
                 }
 
                 long diff = alarmTime.getTimeInMillis() - now.getTimeInMillis();
-                long hours = diff / (1000 * 60 * 60);
-                long minutes = (diff / (1000 * 60)) % 60;
-                if (diff % (1000 * 60) != 0) {
+                if (diff < minDiff) {
+                    minDiff = diff;
+                }
+                long hours = minDiff / (1000 * 60 * 60);
+                long minutes = (minDiff / (1000 * 60)) % 60;
+                if (minDiff % (1000 * 60) >3 ) { //剩余秒数大于3秒
                     minutes++; // 如果有剩余的秒数，则向上取整
                 }
                 hours += minutes / 60;
                 minutes %= 60;
                 nextTime = String.format("还有%d小时%d分钟响铃", hours, minutes);
-                NextTimeInMillis = alarmTime.getTimeInMillis();
             }
         }
 
         nextRingTime.setText(nextTime);
-        return NextTimeInMillis;
+        return minDiff+now.getTimeInMillis();
     }
 
     void checkAndRing() {
@@ -205,11 +224,26 @@ public class main_alarm_activity extends AppCompatActivity {
         // 获取下一个要响铃的闹钟
         Alarm nextAlarm = getNextAlarmToRing();
         if (nextAlarm != null) {
-            Intent intent = new Intent(this, activity_ring_alarm.class);
-            intent.putExtra("alarmId", nextAlarm.id);
-            startActivity(intent);
+            //Intent intent = new Intent(this, activity_ring_alarm.class);
+         //   intent.putExtra("alarmId", nextAlarm.id);
+            //Toast.makeText(this,Integer.toString(nextAlarm.id),Toast.LENGTH_SHORT).show();
+            for(Alarm alarm:alarms)
+            {
+                if(alarm.hour==nextAlarm.hour && alarm.minute==nextAlarm.minute && (!alarm.repeat.contains(true)) )
+                {//如果是不重复的闹钟，响铃后关闭
+                    alarm.isRing=false;
+                    String timeStr = String.format("%02d:%02d%d", alarm.hour, alarm.minute, alarm.id);
+                    map1.replace(timeStr,false);
+                }
+            }
+            adapter.notifyDataSetChanged();
+            postNotification(nextAlarm.id);
+           // startActivity(intent);
         }
+
     }
+
+
     private Alarm getNextAlarmToRing() {
         Calendar now = Calendar.getInstance();
         for (Alarm alarm : alarms) {
@@ -227,6 +261,41 @@ public class main_alarm_activity extends AppCompatActivity {
         return null;
     }
 
+    void postNotification(int id)
+    {
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        // 如果API级别 >= 26，创建通知渠道
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "My Channel";
+            String description = "Channel description";
+            int importance = NotificationManager.IMPORTANCE_MAX;
+            NotificationChannel channel = new NotificationChannel(Integer.toString(id), name, NotificationManager.IMPORTANCE_HIGH);
+            channel.setDescription(description);
+            notificationManager.createNotificationChannel(channel);
+        }
+        Intent intent=new Intent(this,activity_ring_alarm.class);
+        intent.putExtra("alarmId",id);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_MUTABLE);
+        RemoteViews remoteViews=new RemoteViews("com.example.myapplication",R.layout.notification_res);
+
+        Uri defaultRingtoneUri = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_RINGTONE);
+
+        Notification notification = new NotificationCompat.Builder(this, Integer.toString(id))
+                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+                .setCustomContentView(remoteViews)
+                .setContentTitle("闹钟")
+                .setCategory(Notification.CATEGORY_ALARM)
+                .setCustomBigContentView(remoteViews)
+                .setSmallIcon(R.drawable.chevron_left)
+                .setAutoCancel(false)
+                .setContentIntent(pendingIntent)
+                .build();
+
+        // 发送通知
+        notificationManager.notify(id, notification);
+        MediaUtil.playRing(this);
+    }
+
     void setOnScroll(ListView list) {
         list.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -241,7 +310,7 @@ public class main_alarm_activity extends AppCompatActivity {
                         layout.findViewById(R.id.switch_alarm).setVisibility(View.INVISIBLE);
                     }
                 } else {
-                    for (int i = firstVisibleItem; i < visibleItemCount - 1; i++) {
+                    for (int i = firstVisibleItem; i <= visibleItemCount - 1; i++) {
                         ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
                         layout.findViewById(R.id.switch_alarm).setVisibility(View.VISIBLE);
                     }
@@ -260,14 +329,14 @@ public class main_alarm_activity extends AppCompatActivity {
                 isMultipleSelectionMode = true;
                 add_alarm_btn.setBackgroundResource(R.drawable.delete_button);
                 add_alarm_btn.setImageResource(R.drawable.trash);
-                for (int i = 0; i < Math.min(alarmList.getCount(), 6); i++) {
+
+                for (int i = 0; i < alarmList.getChildCount(); i++) {
                     ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
                     layout.findViewById(R.id.switch_alarm).setVisibility(View.INVISIBLE);
                 }
                 return false;
             }
         });
-
     }
 
     void setItem(ListView list) {
@@ -306,7 +375,7 @@ public class main_alarm_activity extends AppCompatActivity {
         add_alarm_btn.setBackgroundResource(R.drawable.round_button);
         add_alarm_btn.setImageResource(R.drawable.plus);
         cancle.setVisibility(View.INVISIBLE);
-        for (int i = 0; i < Math.min(alarmList.getCount(), 6); i++) {
+        for (int i = 0; i < alarmList.getChildCount(); i++) {
             ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
             layout.findViewById(R.id.switch_alarm).setVisibility(View.VISIBLE);
         }
@@ -359,6 +428,7 @@ public class main_alarm_activity extends AppCompatActivity {
         values.put(DataBaseHelper.COLUMN_ID, String.valueOf(al.id));
         values.put(DataBaseHelper.COLUMN_ALARM_RING, al.isRing ? "1" : "0");
         values.put(DataBaseHelper.COLUMN_ALARM_REPEAT, Tool.booleanToString(al.repeat));
+        values.put(DataBaseHelper.COLUMN_IS_HIDDEN, al.isHidden ? "1" : "0");
 
         db.insert(DataBaseHelper.TABLE_NAME, null, values);
     }
@@ -366,53 +436,63 @@ public class main_alarm_activity extends AppCompatActivity {
     void loadFromSQL() {
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(
-                DataBaseHelper.TABLE_NAME,   // 表名
-                new String[]{DataBaseHelper.COLUMN_ID, DataBaseHelper.COLUMN_STRING1, DataBaseHelper.COLUMN_STRING2, DataBaseHelper.COLUMN_ALARM_RING, DataBaseHelper.COLUMN_ALARM_HOUR, DataBaseHelper.COLUMN_ALARM_MINUTE, DataBaseHelper.COLUMN_ALARM_REPEAT}, // 要返回的列
-                null,                          // WHERE子句的条件
-                null,                          // WHERE子句的参数
-                null,                          // 分组依据
-                null,                          // 过滤条件
-                null                           // 排序依据
+                DataBaseHelper.TABLE_NAME,
+                new String[]{DataBaseHelper.COLUMN_ID, DataBaseHelper.COLUMN_STRING1, DataBaseHelper.COLUMN_STRING2, DataBaseHelper.COLUMN_ALARM_RING, DataBaseHelper.COLUMN_ALARM_HOUR, DataBaseHelper.COLUMN_ALARM_MINUTE, DataBaseHelper.COLUMN_ALARM_REPEAT, DataBaseHelper.COLUMN_IS_HIDDEN},
+                null,
+                null,
+                null,
+                null,
+                null
         );
 
         while (cursor.moveToNext()) {
             String s, t;
             int i;
             Alarm al = new Alarm();
-            boolean bool;
             boolean re = false;
+
             s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ID));
-            i = Integer.parseInt(s);
-            al.id = i;
-
-            for (Alarm a : alarms) {
-                if (a.id == i) {
-                    re = true;
+            if (s != null) {
+                try {
+                    i = Integer.parseInt(s);
+                } catch (NumberFormatException e) {
+                    i = 0; // 或者根据需要处理错误
                 }
+                al.id = i;
+
+                for (Alarm a : alarms) {
+                    if (a.id == i) {
+                        re = true;
+                    }
+                }
+
+                if (!re) {
+                    t = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING1));
+                    time.add(t != null ? t : "");
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING2));
+                    repeat.add(s != null ? s : "");
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_HOUR));
+                    i = s != null ? Integer.parseInt(s) : 0;
+                    al.hour = i;
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_MINUTE));
+                    i = s != null ? Integer.parseInt(s) : 0;
+                    al.minute = i;
+
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_RING));
+                    i = s != null ? Integer.parseInt(s) : 0;
+                    al.isRing = i == 1;
+
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_IS_HIDDEN));
+                    i = s != null ? Integer.parseInt(s) : 0;
+                    al.isHidden = i == 1;
+
+                    map1.put(t, al.isRing);
+                    s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_REPEAT));
+                    al.repeat = Tool.StringToBoolean(s != null ? s : "0000000");
+                    alarms.add(al);
+                }
+                alarm_id++;
             }
-
-            if (re == false) {
-                t = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING1));
-                time.add(t);
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_STRING2));
-                repeat.add(s);
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_HOUR));
-                i = Integer.parseInt(s);
-                al.hour = i;
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_MINUTE));
-                i = Integer.parseInt(s);
-                al.minute = i;
-
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_RING));
-                i = Integer.parseInt(s);
-                al.isRing = i == 1;
-
-                map1.put(t, al.isRing);
-                s = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.COLUMN_ALARM_REPEAT));
-                al.repeat = Tool.StringToBoolean(s);
-                alarms.add(al);
-            }
-            alarm_id++;
         }
         sort_alarm();
     }
@@ -427,6 +507,7 @@ public class main_alarm_activity extends AppCompatActivity {
         String removeSQL = "DELETE FROM string_table WHERE _id = '" + idToDelete + "'";
         db.execSQL(removeSQL);
     }
+
 
     SQLiteDatabase getSQL() {
         return this.db;
