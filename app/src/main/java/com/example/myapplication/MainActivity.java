@@ -97,16 +97,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.addSchedule:
-                addMySchedule();
-                break;
-            case R.id.checkAdd:
-                checkAddSchedule();
-                break;
-            case R.id.schedule1:case R.id.schedule2:case R.id.schedule3:case R.id.schedule4:case R.id.schedule5:
-                editSchedule(v);
-                break;
+        int id = v.getId();
+        if (id == R.id.addSchedule) {
+            addMySchedule();
+        } else if (id == R.id.checkAdd) {
+            checkAddSchedule();
+        } else if (id == R.id.schedule1 || id == R.id.schedule2 || id == R.id.schedule3 || id == R.id.schedule4 || id == R.id.schedule5) {
+            editSchedule(v);
         }
     }
     private void editSchedule(View v) {

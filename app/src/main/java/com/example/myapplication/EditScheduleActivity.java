@@ -47,13 +47,11 @@ public class EditScheduleActivity extends AppCompatActivity  implements View.OnC
 
     @Override
     public void onClick(View v){
-        switch (v.getId()){
-            case R.id.deleteSchedule:
-                deleteMySchedule();
-                break;
-            case R.id.editBtn:
-                editSchedule();
-                break;
+        int id = v.getId();
+        if (id == R.id.deleteSchedule) {
+            deleteMySchedule();
+        } else if (id == R.id.editBtn) {
+            editSchedule();
         }
     }
 
