@@ -58,6 +58,12 @@ public class main_alarm_activity extends AppCompatActivity {
     public static MediaUtil mediaUtil;
     public SQLiteDatabase db;
 
+    //---------main_date_activity--------------
+    private Button to_date_btn;
+
+
+    //---------main_date_activity---------------
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +116,16 @@ public class main_alarm_activity extends AppCompatActivity {
             }
         });
         updateNextRingTime();
+
+        to_date_btn = findViewById(R.id.to_date_btn);
+        to_date_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setClass(main_alarm_activity.this, main_date_activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
