@@ -1,14 +1,11 @@
 package com.example.myapplication;
 
 import android.app.Activity;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
-
-import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 

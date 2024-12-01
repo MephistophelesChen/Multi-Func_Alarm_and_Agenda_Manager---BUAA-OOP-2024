@@ -4,14 +4,9 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
-import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Calendar;
 

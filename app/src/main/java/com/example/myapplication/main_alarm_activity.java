@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -17,8 +16,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -27,9 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RemoteViews;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
@@ -60,11 +55,10 @@ public class main_alarm_activity extends AppCompatActivity {
     public static Uri alert;
     Button to_setting;
 
-    //---------main_date_activity--------------
     private Button to_date_btn;
+    public static boolean EnableVibrate = true;
+    public static boolean isVibrating = false;
 
-
-    //---------main_date_activity---------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -252,7 +246,7 @@ public class main_alarm_activity extends AppCompatActivity {
         Alarm nextAlarm = getNextAlarmToRing();
         if (nextAlarm != null) {
             //Intent intent = new Intent(this, activity_ring_alarm.class);
-         //   intent.putExtra("alarmId", nextAlarm.id);
+            //Intent.putExtra("alarmId", nextAlarm.id);
             //Toast.makeText(this,Integer.toString(nextAlarm.id),Toast.LENGTH_SHORT).show();
             for(Alarm alarm:alarms)
             {
@@ -265,6 +259,11 @@ public class main_alarm_activity extends AppCompatActivity {
             }
             adapter.notifyDataSetChanged();
             postNotification(nextAlarm.id);
+            // 启动振动
+            if (EnableVibrate && !isVibrating) {
+                VibrateUtil.startVibration(this, new long[]{0, 1000, 1000}, 0);
+                isVibrating = true;
+            }
            // startActivity(intent);
         }
 
@@ -322,6 +321,11 @@ public class main_alarm_activity extends AppCompatActivity {
         // 发送通知
         notificationManager.notify(id, notification);
         MediaUtil.playRing(this,alert);
+        if(EnableVibrate && !isVibrating)
+        {
+            VibrateUtil.startVibration(this, new long[]{0, 1000, 1000}, 0);
+            isVibrating=true;
+        }
     }
 
     void setOnScroll(ListView list) {
