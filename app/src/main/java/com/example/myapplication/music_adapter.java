@@ -24,7 +24,7 @@ public class music_adapter extends BaseAdapter{
     Context context;
     ArrayList<String> list;
     private LayoutInflater inflater;
-    public HashMap<Integer, Boolean> states = new HashMap<Integer, Boolean>();  //储存已改变的选项数据
+    public static HashMap<Integer, Boolean> states = new HashMap<Integer, Boolean>();  //储存已改变的选项数据
     public HashMap<Integer,Boolean> if_play=new HashMap<Integer,Boolean>();
     ListView listView;
 
