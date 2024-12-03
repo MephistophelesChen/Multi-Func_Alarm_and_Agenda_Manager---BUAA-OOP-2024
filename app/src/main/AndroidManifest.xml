@@ -38,6 +38,9 @@
         <activity android:name=".main_date_activity"
             android:label="singleTask launchMode"
             android:launchMode="singleTask"/>
+        <activity android:name="edit_schedule"
+            android:label="singleTask launchMode"
+            android:launchMode="singleTask"/>
 
         <activity android:name=".main_timer_activity"
             android:label="singleTask launchMode"
