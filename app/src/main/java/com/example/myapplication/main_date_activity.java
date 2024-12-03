@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class main_date_activity extends AppCompatActivity {
-    private Button to_alarm_btn;
+    private Button to_alarm_btn,to_setting_btn;
     String TAG="mtTag";
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -21,7 +20,16 @@ public class main_date_activity extends AppCompatActivity {
         to_alarm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent=new Intent(main_date_activity.this,main_alarm_activity.class);
+                startActivity(intent);
+            }
+        });
+        to_setting_btn=findViewById(R.id.to_setting_btn);
+        to_setting_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(main_date_activity.this,main_setting_activity.class);
+                startActivity(intent);
             }
         });
     }

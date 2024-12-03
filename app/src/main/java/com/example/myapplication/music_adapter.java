@@ -2,20 +2,14 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.net.Uri;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +18,7 @@ public class music_adapter extends BaseAdapter{
     Context context;
     ArrayList<String> list;
     private LayoutInflater inflater;
-    public HashMap<Integer, Boolean> states = new HashMap<Integer, Boolean>();  //储存已改变的选项数据
+    public static HashMap<Integer, Boolean> states = new HashMap<Integer, Boolean>();  //储存已改变的选项数据
     public HashMap<Integer,Boolean> if_play=new HashMap<Integer,Boolean>();
     ListView listView;
 

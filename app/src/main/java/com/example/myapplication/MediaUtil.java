@@ -1,9 +1,7 @@
 package com.example.myapplication;
 
 
-
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -41,8 +39,13 @@ public class MediaUtil {
                 mediaPlayer=new MediaPlayer();
             }
             //停止播放
-            mediaPlayer.release();
          //释放相关资源
-      //  }
+        // 停止振动，把这个放在这边纯属方便
+        if (main_alarm_activity.isVibrating) {
+            VibrateUtil.stopVibration();
+            main_alarm_activity.isVibrating = false;
+        }
+        mediaPlayer.release();
+
     }
 }

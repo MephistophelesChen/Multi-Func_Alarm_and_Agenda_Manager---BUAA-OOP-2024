@@ -3,9 +3,9 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
-
-import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ public class music_select_activity extends Activity {
     public static ArrayList<Integer> music_list=new ArrayList<Integer>();
     public static ArrayList<String> music_name=new ArrayList<String>();
     public ListView music_listview;
-
+   public ImageButton ensure,back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,29 @@ public class music_select_activity extends Activity {
        music_listview=(ListView) findViewById(R.id.music_list);
         music_adapter musicAdapter=new music_adapter(music_select_activity.this,music_name,music_listview);
        music_listview.setAdapter(musicAdapter);
+       ensure=(ImageButton) findViewById(R.id.yes);
+       back=(ImageButton) findViewById(R.id.back);
+       ensure.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               for(int i=0;i<music_adapter.states.size();i++)
+               {
+                   if(music_adapter.states.get(i))
+                   {
+                       main_alarm_activity.alert=Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" +music_list.get(i));
+                   }
+               }
+               finish();
+           }
+       });
+       back.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               MediaUtil.mediaPlayer.stop();
+               MediaUtil.mediaPlayer.release();
+               finish();
+           }
+       });
     }
     void init()
     {

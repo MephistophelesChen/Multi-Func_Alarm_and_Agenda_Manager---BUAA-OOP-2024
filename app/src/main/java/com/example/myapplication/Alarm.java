@@ -10,6 +10,7 @@ public class Alarm {
     public boolean isHidden = false; //是否隐藏
     public int id;//id每增加一个闹铃都会增加，便于删除
     boolean is_checked = false;//是否被选中
+    public boolean EnableVibrate = false;//是否开启震动，暂时没用到
 
     public Alarm(int hour, int minute, ArrayList<Boolean> repeat, boolean isRing) {
         this.hour = hour;
@@ -30,6 +31,14 @@ public class Alarm {
         } else {
             return Integer.compare(this.minute, other.minute);
         }
+    }
+
+    public boolean EnableVibrate() {
+        return EnableVibrate;
+    }
+
+    public void setEnableVibrate(boolean enableVibrate) {
+        EnableVibrate = enableVibrate;
     }
 
     public ArrayList<Boolean> getRepeat() {
