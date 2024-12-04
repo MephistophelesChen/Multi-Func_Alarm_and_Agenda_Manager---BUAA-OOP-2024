@@ -55,6 +55,10 @@
             android:label="singleTask launchMode"
             android:launchMode="singleTask" />
         <activity
+            android:name="com.example.myapplication.edit_schedule"
+            android:label="singleTask launchMode"
+            android:launchMode="singleTask" />
+        <activity
             android:name="com.example.myapplication.main_timer_activity"
             android:label="singleTask launchMode"
             android:launchMode="singleTask" />

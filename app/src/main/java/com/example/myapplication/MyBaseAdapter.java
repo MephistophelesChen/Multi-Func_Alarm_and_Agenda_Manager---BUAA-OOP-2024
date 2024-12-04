@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
@@ -116,11 +118,6 @@ public class MyBaseAdapter extends BaseAdapter {
             }
         });
 
-        if (mactivity.getlist().isItemChecked(position) && main_alarm_activity.isMultipleSelectionMode) {
-            convertView.setBackgroundColor(0xff999999);
-        } else {
-            convertView.setBackgroundColor(0xffffffff);
-        }
         return convertView;
     }
 

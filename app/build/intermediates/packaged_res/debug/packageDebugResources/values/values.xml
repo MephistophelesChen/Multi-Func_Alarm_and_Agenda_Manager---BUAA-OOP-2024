@@ -6,6 +6,8 @@
         <item>闹钟3_____time3___________________switch_button3</item>
         <item>.....</item>
     </string-array>
+    <color name="background">#FFFFFF</color>
+    <color name="background_item">#FFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="blue_1">#34c7e8</color>
     <color name="blue_1_press">#1baece</color>
@@ -18,7 +20,8 @@
     <color name="gray_yellow">#f5f9d5</color>
     <color name="red">#ff0000</color>
     <color name="red_press">#a30000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="text_color">#000000</color>
+    <color name="white">#FFFFFF</color>
     <string description="Text for a snackbar that indicates a button was clicked. [CHAR LIMIT=NONE]" name="cat_button_clicked">Button clicked</string>
     <string name="cat_button_enable" translatable="false">Enabled</string>
     <string name="cat_button_label_cheese">Cheese</string>
@@ -101,10 +104,14 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
     </style>
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication">
+    <style name="MyListViewStyle" parent="Widget.AppCompat.ListView">
+        <item name="android:background">@color/background_item</item>
+        
+    </style>
+    <style name="Theme.MyApplication" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowSplashScreenBackground">@android:color/white</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/alarm_clock_1</item>
         <item name="android:windowSplashScreenAnimationDuration">1000</item>
-
+        <item name="android:listViewStyle">@style/MyListViewStyle</item>
     </style>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -7,8 +8,12 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -25,7 +30,9 @@ import android.widget.ListView;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 
@@ -36,8 +43,8 @@ import java.util.Map;
 
 public class main_alarm_activity extends AppCompatActivity {
     private static final int REQUEST_CODE_CREATE_ALARM = 1;
-    private ArrayList<String> time = new ArrayList<>();//pai
-    private ArrayList<String> repeat = new ArrayList<>();//pai
+    private static ArrayList<String> time = new ArrayList<>();//pai
+    private static ArrayList<String> repeat = new ArrayList<>();//pai
     private MyBaseAdapter adapter;
     static Map<String, Boolean> map1 = new HashMap<>();//pai
     static ArrayList<Alarm> alarms = new ArrayList<>();//pai
@@ -54,29 +61,50 @@ public class main_alarm_activity extends AppCompatActivity {
     public SQLiteDatabase db;
     public static Uri alert;
     Button to_setting;
-
+    boolean isChecked;
     private Button to_date_btn;
     public static boolean EnableVibrate = true;
     public static boolean isVibrating = false;
-
+   Button test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_alarm);
-
+      //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         alarm_id = 0;
-        dbHelper = new DataBaseHelper(this);
+        SharedPreferences sharedPreferences=getSharedPreferences("appcompat",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+      isChecked=sharedPreferences.getBoolean("isChecked",false);
+        test=(Button) findViewById(R.id.test);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+        if(isChecked)
+        {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            editor.putBoolean("isChecked",false).commit();
+            recreate();
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            editor.putBoolean("isChecked",true).commit();
+           recreate();
+        }
+            }
+        });
 
+        dbHelper = new DataBaseHelper(this);
         alarmList = findViewById(R.id.list_test);
-        adapter = new MyBaseAdapter(main_alarm_activity.this, this.time, repeat, map1, alarms, db, dbHelper);
+        adapter = new MyBaseAdapter(main_alarm_activity.this, time, repeat, map1, alarms, db, dbHelper);
         adapter.setMactivity(this);
         alarmList.setAdapter(adapter);
-
-
         loadFromSQL();
         adapter.notifyDataSetChanged();
 
+
+        System.out.println(alarms.size());
+        System.out.println(time.size());
         setlongclick(alarmList);
         setOnScroll(alarmList);
         nextRingTime = findViewById(R.id.next_ring_time);
@@ -133,14 +161,20 @@ public class main_alarm_activity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     protected void onStart() {
-        alarm_id++;
         super.onStart();
+        alarm_id++;
+        System.out.println("start");
         loadFromSQL();
         adapter.notifyDataSetChanged();
+        cancle_delete();
+        System.out.println(alarms.size());
 
     }
+
 
     void updateNextRingTime() {
         Calendar now = Calendar.getInstance();
@@ -159,6 +193,7 @@ public class main_alarm_activity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("result");
         if (requestCode == REQUEST_CODE_CREATE_ALARM && resultCode == RESULT_OK) {
             int hour = data.getIntExtra("hour", 0);
             int minute = data.getIntExtra("minute", 0);
@@ -227,7 +262,6 @@ public class main_alarm_activity extends AppCompatActivity {
                 nextTime = String.format("还有%d小时%d分钟响铃", hours, minutes);
             }
         }
-
         nextRingTime.setText(nextTime);
         return minDiff+now.getTimeInMillis();
     }
@@ -373,14 +407,17 @@ public class main_alarm_activity extends AppCompatActivity {
 
     void setItem(ListView list) {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (isMultipleSelectionMode) {
                     if (list.isItemChecked(position)) {
-                        view.setBackgroundColor(0xffaeaeae);
+                        int color=getResources().getColor(R.color.gray_2,getTheme());
+                        view.setBackgroundColor(color);
                         alarms.get(position).is_checked = true;
                     } else {
-                        view.setBackgroundColor(0xffffffff);
+                        int color=getResources().getColor(R.color.background_item, getTheme());
+                        view.setBackgroundColor(color);
                         alarms.get(position).is_checked = false;
                     }
                 }
@@ -407,12 +444,15 @@ public class main_alarm_activity extends AppCompatActivity {
         add_alarm_btn.setBackgroundResource(R.drawable.round_button);
         add_alarm_btn.setImageResource(R.drawable.plus);
         cancle.setVisibility(View.INVISIBLE);
+
         for (int i = 0; i < alarmList.getChildCount(); i++) {
             ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
             layout.findViewById(R.id.switch_alarm).setVisibility(View.VISIBLE);
         }
         for (int i = 0; i < alarms.size(); i++) {
-            findView(i, alarmList).setBackgroundColor(0xffffffff);
+            int color;
+            color = getResources().getColor(R.color.background_item,getTheme());
+            findView(i, alarmList).setBackgroundColor(color);
         }
     }
 
@@ -527,6 +567,7 @@ public class main_alarm_activity extends AppCompatActivity {
             }
         }
         sort_alarm();
+
     }
 
     ListView getlist() {

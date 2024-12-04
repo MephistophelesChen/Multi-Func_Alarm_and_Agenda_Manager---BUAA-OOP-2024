@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    >
+    tools:ignore="UseSwitchCompatOrMaterialXml">
 
     <TextView
         android:id="@+id/setting"
@@ -63,21 +63,32 @@
         android:textSize="18dp"
         app:layout_constraintTop_toBottomOf="@id/vibrate"
         tools:layout_editor_absoluteX="0dp" />
+    <Switch
+        android:id="@+id/switch_vibrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/vibrate"
+        app:layout_constraintBottom_toBottomOf="@id/vibrate"
+        app:layout_constraintRight_toRightOf="parent"
+        android:elevation="16dp"
+        />
+
 
     <Button
         android:id="@+id/vibrate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/press_button_repeat_bottom"
+        android:background="@drawable/press_button_repeat_nocorner"
         android:drawableLeft="@drawable/phone_vibrate"
-        android:drawableRight="@drawable/chevron_right"
+
         android:gravity="left|center"
         android:paddingLeft="15dp"
         android:text="  设置震动"
         android:textSize="18dp"
-        app:layout_constraintTop_toBottomOf="@id/face_identity"
         app:layout_constraintBottom_toTopOf="@id/ring_music"
-        />
+        app:layout_constraintTop_toBottomOf="@id/face_identity"
+
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:layout_width="0dp"

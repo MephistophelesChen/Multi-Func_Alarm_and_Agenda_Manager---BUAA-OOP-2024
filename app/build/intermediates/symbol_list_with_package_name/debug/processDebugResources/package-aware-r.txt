@@ -1358,8 +1358,10 @@ color accent_material_dark
 color accent_material_light
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color background
 color background_floating_material_dark
 color background_floating_material_light
+color background_item
 color background_material_dark
 color background_material_light
 color black
@@ -2112,6 +2114,7 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color text_color
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -3220,7 +3223,9 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addSchedule
 id add_alarm_btn
+id add_schedule
 id alertTitle
 id aligned
 id all
@@ -3255,6 +3260,7 @@ id buttonPanel
 id button_schedule_ensure
 id button_schedule_ensure2
 id cache_measures
+id calendar
 id calendarView
 id callMeasure
 id cancel_button
@@ -3268,6 +3274,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id checkAdd
 id checkBox
 id checkbox
 id checked
@@ -3291,6 +3298,9 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id create_confirm
+id create_schedule_name
+id create_schedule_tips
 id currentState
 id custom
 id customPanel
@@ -3302,6 +3312,7 @@ id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
 id delete
+id deleteSchedule
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -3332,6 +3343,7 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editBtn
 id edit_query
 id edit_text_id
 id elastic
@@ -3370,6 +3382,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id guideline2
 id header_title
 id hide_ime_id
 id hideable
@@ -3544,9 +3557,18 @@ id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
+id schedule1
+id schedule2
+id schedule3
+id schedule4
+id schedule5
+id scheduleDetailInput
+id scheduleInput
 id schedule_date_picker
+id schedule_name
 id schedule_time_picker
 id schedule_time_skip
+id schedule_tips
 id screen
 id scroll
 id scrollIndicatorDown
@@ -3607,6 +3629,7 @@ id submenuarrow
 id submit_area
 id supportScrollUp
 id switch_alarm
+id switch_vibrate
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3621,6 +3644,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id test
 id text
 id text2
 id textClock
@@ -3807,6 +3831,8 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_edit_schedule
+layout activity_main_schedule
 layout activity_ring_alarm
 layout bottom_sheet_res
 layout create_alarm_time
@@ -3830,6 +3856,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_bottom_sheet
+layout edit_schedule
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout m3_alert_dialog
@@ -3895,6 +3922,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout schedule_list_item
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -4458,6 +4486,7 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
 style MyBottomSheetDialog
+style MyListViewStyle
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents

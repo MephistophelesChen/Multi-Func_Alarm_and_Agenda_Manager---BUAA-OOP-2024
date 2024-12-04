@@ -4,14 +4,15 @@
     android:layout_height="80dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:descendantFocusability="blocksDescendants"
-    android:background="@drawable/press_button"
+    android:background="@color/background_item"
     >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/time"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color"
+        android:text="11111"
         android:textSize="20dp"
         android:paddingLeft="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,7 +26,8 @@
         app:layout_constraintTop_toBottomOf="@id/time"
         app:layout_constraintLeft_toLeftOf="parent"
         android:paddingLeft="10dp"
-
+        android:textColor="@color/text_color"
+        android:text="11111"
         />
 
     <Switch
