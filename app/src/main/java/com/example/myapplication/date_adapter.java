@@ -35,7 +35,9 @@ public class date_adapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-         convertView=LayoutInflater.from(mContext).inflate(resource, parent,false);
+           if(convertView==null) {
+               convertView = LayoutInflater.from(mContext).inflate(resource, parent, false);
+           }
          //ImageView img_icon = (ImageView)convertView.findViewById(R.id.back);
         TextView xingxing=(TextView) convertView.findViewById(R.id.schedule_name);
         TextView tips=(TextView) convertView.findViewById(R.id.schedule_tips);
@@ -45,6 +47,10 @@ public class date_adapter extends BaseAdapter {
         return convertView;
     }
 
-
+    public void updateDate(LinkedList<date_attribute> Date){
+           this.mData.clear();
+           this.mData.addAll(Date);
+           notifyDataSetChanged();
+    }
 }
 
