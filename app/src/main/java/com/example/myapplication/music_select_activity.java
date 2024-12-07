@@ -17,7 +17,10 @@ public class music_select_activity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
+        if (music_list.isEmpty()) {
+            init();
+        }
+
        setContentView(R.layout.setting_select_music);
        music_listview=(ListView) findViewById(R.id.music_list);
         music_adapter musicAdapter=new music_adapter(music_select_activity.this,music_name,music_listview);
@@ -40,8 +43,7 @@ public class music_select_activity extends Activity {
        back.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               MediaUtil.mediaPlayer.stop();
-               MediaUtil.mediaPlayer.release();
+            MediaUtil.stopRing();
                finish();
            }
        });
