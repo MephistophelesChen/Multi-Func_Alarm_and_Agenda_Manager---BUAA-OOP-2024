@@ -9,8 +9,8 @@
         android:id="@+id/create_schedule_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="21dp"
         android:ems="10"
         android:hint="请输入日程名称"
@@ -36,13 +36,23 @@
         android:id="@+id/create_schedule_tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="请输入tips"
         android:inputType="text"
         android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/create_schedule_name"
         app:layout_constraintStart_toStartOf="@+id/create_schedule_name"
         app:layout_constraintTop_toBottomOf="@+id/create_schedule_name" />
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/press_button"
+        android:paddingLeft="7dp"
+        android:src="@drawable/x"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
