@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +19,13 @@ public class edit_schedule extends AppCompatActivity {
     private EditText create_schedule_name;
     private EditText create_schedule_tips;
     private Button create_confirm;
+    private ImageButton create_schedule_back;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_schedule);
-
+        create_schedule_back=findViewById(R.id.back);
         create_schedule_name=findViewById(R.id.create_schedule_name);
         create_schedule_tips=findViewById(R.id.create_schedule_tips);
         create_confirm = findViewById(R.id.create_confirm);
@@ -34,12 +37,19 @@ public class edit_schedule extends AppCompatActivity {
                 if(dateAttribute!=null){
                     main_date_activity.getDateMap().computeIfAbsent(main_date_activity.getLocalDate(), k -> new LinkedList<date_attribute>());
                     main_date_activity.getDateMap().get(main_date_activity.getLocalDate()).add(dateAttribute);
+                    main_date_activity.insertData(main_date_activity.getLocalDate(),dateAttribute);
                     finish();
                 }
                 for (Map.Entry<LocalDate, LinkedList<date_attribute>> entry : main_date_activity.getDateMap().entrySet()) {
                     Log.d("help","Key: " + entry.getKey() + ", Value: " + entry.getValue());
                 }
 
+            }
+        });
+        create_schedule_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
