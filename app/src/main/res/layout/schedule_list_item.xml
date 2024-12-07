@@ -9,7 +9,7 @@
         android:id="@+id/schedule_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="6dp"
         android:text="TextView"
         android:textColor="@color/black"
@@ -22,12 +22,13 @@
         android:id="@+id/schedule_tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="2dp"
         android:text="TextView"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="@+id/schedule_name"
-        app:layout_constraintStart_toStartOf="@+id/schedule_name" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -35,11 +36,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="59dp" />
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
