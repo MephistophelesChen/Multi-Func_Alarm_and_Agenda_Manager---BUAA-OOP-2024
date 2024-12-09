@@ -63,6 +63,19 @@
         android:textSize="18dp"
         app:layout_constraintTop_toBottomOf="@id/vibrate"
         tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/music_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="默认铃声"
+        android:textSize="15dp"
+        android:textColor="@color/gray_3"
+        app:layout_constraintTop_toTopOf="@id/ring_music"
+        android:elevation="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/ring_music"
+        app:layout_constraintRight_toRightOf="@id/ring_music"
+        android:paddingRight="30dp"
+        />
     <Switch
         android:id="@+id/switch_vibrate"
         android:layout_width="wrap_content"
@@ -121,8 +134,6 @@
         style="?android:attr/borderlessButtonStyle"
         android:drawableTop="@drawable/calendar_minus"
         />
-
-
 
     <Button
         android:layout_width="0dp"

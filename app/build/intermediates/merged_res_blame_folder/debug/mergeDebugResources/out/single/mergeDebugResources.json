@@ -1,378 +1,374 @@
 [
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_phone_vibrate.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\phone_vibrate.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_pan_first.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/pan_first.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_setting.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\setting.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_notification_res.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/notification_res.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_ic_launcher_background.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_setting.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/setting.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_end.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\end.xml"
+        "merged": "com.example.myapplication.app-debug-4:/xml_track.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/xml/track.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_huawei_alarm.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\huawei_alarm.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/layout_create_alarm_time.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/create_alarm_time.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_setting_select_music.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\setting_select_music.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_activity_edit_schedule.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/activity_edit_schedule.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-debug-4:/layout_create_schedule_time.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/create_schedule_time.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_bugle.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\bugle.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_hourppp.png.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/hourppp.png"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\menu_menu_pop.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\menu\\menu_pop.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_press_button_repeat.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/press_button_repeat.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-anydpi_schedule.jpg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-anydpi\\schedule.jpg"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_bottomshape.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/bottomshape.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_three_dots_vertical.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\three_dots_vertical.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_x.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/x.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\xml_backup_rules.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\xml\\backup_rules.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_press_button.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/press_button.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_notification_res.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\notification_res.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_round_corner.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\round_corner.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_delete_button.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\delete_button.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_calendar_minus.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/calendar_minus.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_fresh_air.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\fresh_air.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_arrow_left.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\arrow_left.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_main_alarm.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/main_alarm.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_plus.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\plus.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_start.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/start.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_calendar_minus.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\calendar_minus.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_hourppp.png.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\hourppp.png"
+        "merged": "com.example.myapplication.app-debug-4:/layout_music_item_res.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/music_item_res.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-debug-4:/layout_activity_ring_alarm.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/activity_ring_alarm.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_round_button.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/round_button.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_alarm_classic.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\alarm_classic.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_face_id.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/face_id.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_timer_beep.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\timer_beep.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_end.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/end.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\font_font_1.otf.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\font\\font_1.otf"
+        "merged": "com.example.myapplication.app-debug-4:/raw_huawei_alarm.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/huawei_alarm.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_setting_1.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\setting_1.xml"
+        "merged": "com.example.myapplication.app-debug-4:/xml_backup_rules.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/xml/backup_rules.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-anydpi_timer_list.jpg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-anydpi\\timer_list.jpg"
+        "merged": "com.example.myapplication.app-debug-4:/font_font1.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/font/font1.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-anydpi\\ic_launcher_round.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_press_button_repeat_top.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/press_button_repeat_top.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_minuteppp.png.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\minuteppp.png"
+        "merged": "com.example.myapplication.app-debug-4:/layout_main_setting.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/main_setting.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_schedule_list_item.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\schedule_list_item.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_pan_first.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\pan_first.webp"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_yes.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/yes.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_creamy.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\creamy.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_music_note_beamed.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/music_note_beamed.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_ios.mp3.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\ios.mp3"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-anydpi/ic_launcher.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_activity_edit_schedule.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\activity_edit_schedule.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_main_date.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/main_date.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_x.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\x.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_press_button_repeat_nocorner.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/press_button_repeat_nocorner.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_start.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\start.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_creamy.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/creamy.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_yes.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\yes.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_alarm_clock.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/alarm_clock.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_circle.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\circle.xml"
+        "merged": "com.example.myapplication.app-debug-4:/menu_menu_music.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/menu/menu_music.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_activity_main_schedule.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\activity_main_schedule.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_main_alarm.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_alarm.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_alarm_classic.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/alarm_classic.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-debug-4:/raw_guitar_heaven.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/guitar_heaven.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\menu_menu_music.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\menu\\menu_music.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_alarm_rooster.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\alarm_rooster.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_phone_vibrate.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/phone_vibrate.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_chevron_left.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\chevron_left.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-anydpi_timer_list.jpg.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-anydpi/timer_list.jpg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_trash.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\trash.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-anydpi/ic_launcher_round.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_bell_ringing.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/bell_ringing.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\xml_data_extraction_rules.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\xml\\data_extraction_rules.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_setting_select_music.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/setting_select_music.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_date_list_res.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\date_list_res.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_ios.mp3.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/ios.mp3"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_arrow_left_black.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\arrow_left_black.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_round_corner.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/round_corner.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_face_id.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\face_id.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_timer_beep.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/timer_beep.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-debug-4:/layout_activity_main_schedule.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/activity_main_schedule.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_main_date.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_date.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_alarm_beep.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/alarm_beep.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_bell_ringing.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\bell_ringing.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_create_schedule_date.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/create_schedule_date.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_chevron_right.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\chevron_right.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_alarm_rooster.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/alarm_rooster.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_bottom_sheet_res.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\bottom_sheet_res.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_minuteppp.png.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/minuteppp.png"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_main_setting.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_setting.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_alarm_clock_1.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/alarm_clock_1.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_activity_ring_alarm.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\activity_ring_alarm.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_dialog_bottom_sheet.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/dialog_bottom_sheet.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-anydpi\\ic_launcher.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_bugle.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/bugle.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_main_timer.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_timer.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_moon_stars.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/moon_stars.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_create_schedule_time.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\create_schedule_time.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_hawaii.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\hawaii.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_arrow_left_black.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/arrow_left_black.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_circle_1.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\circle_1.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_setting_1.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/setting_1.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\xml_track.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\xml\\track.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_trash.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/trash.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-debug-4:/raw_fresh_air.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/fresh_air.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_edit_schedule.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\edit_schedule.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_ripple.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/ripple.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_minit.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\minit.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_hawaii.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/hawaii.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_press_button_repeat_bottom.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\press_button_repeat_bottom.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_chevron_right.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/chevron_right.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_line.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\line.xml"
+        "merged": "com.example.myapplication.app-debug-4:/font_font_1.otf.flat",
+        "source": "com.example.myapplication.app-main-6:/font/font_1.otf"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_alarm_clock.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\alarm_clock.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_press_button_repeat_bottom.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/press_button_repeat_bottom.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_alarm_clock_1.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\alarm_clock_1.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_main_timer.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/main_timer.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_bottomshape.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\bottomshape.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_circle.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/circle.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_calendar_minus_1.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\calendar_minus_1.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_three_dots_vertical.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/three_dots_vertical.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-anydpi_schedule.jpg.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-anydpi/schedule.jpg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_press_button_repeat_top.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\press_button_repeat_top.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_guitar_heaven.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\guitar_heaven.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_line_dotted.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/line_dotted.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_alarm_beep.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\alarm_beep.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_press_button.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\press_button.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_calendar_minus_1.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/calendar_minus_1.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_line_dotted.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\line_dotted.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_arrow_left.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/arrow_left.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_chevron_left.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/chevron_left.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_round_button.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\round_button.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_plus.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/plus.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\font_font1.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\font\\font1.xml"
+        "merged": "com.example.myapplication.app-debug-4:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-6:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_moon_stars.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\moon_stars.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_line.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/line.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_dialog_bottom_sheet.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\dialog_bottom_sheet.xml"
+        "merged": "com.example.myapplication.app-debug-4:/layout_bottom_sheet_res.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/bottom_sheet_res.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/drawable_minit.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/minit.xml"
     },
     {
         "merged": "com.example.myapplication.app-debug-4:/layout_date_list_res.xml.flat",
         "source": "com.example.myapplication.app-main-6:/layout/date_list_res.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_press_button_repeat_nocorner.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\press_button_repeat_nocorner.xml"
+        "merged": "com.example.myapplication.app-debug-4:/raw_sakura_drop.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/sakura_drop.ogg"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_sakura_drop.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\sakura_drop.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/layout_edit_schedule.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/edit_schedule.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_delete_button.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/delete_button.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_press_button_repeat.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\press_button_repeat.xml"
+        "merged": "com.example.myapplication.app-debug-4:/drawable_circle_1.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/drawable/circle_1.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_music_note_beamed.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\music_note_beamed.xml"
+        "merged": "com.example.myapplication.app-debug-4:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_create_schedule_date.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\create_schedule_date.xml"
+        "merged": "com.example.myapplication.app-debug-4:/menu_menu_pop.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/menu/menu_pop.xml"
     },
     {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_music_item_res.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\music_item_res.xml"
-    },
-    {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_create_alarm_time.xml.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\create_alarm_time.xml"
-    },
-    {
-        "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\raw_ripple.ogg.flat",
-        "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\ripple.ogg"
+        "merged": "com.example.myapplication.app-debug-4:/layout_schedule_list_item.xml.flat",
+        "source": "com.example.myapplication.app-main-6:/layout/schedule_list_item.xml"
     }
 ]

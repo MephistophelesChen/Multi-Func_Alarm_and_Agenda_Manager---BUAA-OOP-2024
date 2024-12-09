@@ -17,6 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     static final String COLUMN_ALARM_RING = "string_value_ring";
     static final String COLUMN_ALARM_REPEAT = "string_value_arepeat";
     static final String COLUMN_IS_HIDDEN = "isHidden"; // Added the isHidden column
+
     static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_NAME + "(" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -35,9 +36,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
-
         // Add initial record for hidden alarm
-
         ContentValues values = new ContentValues();
         values.put(COLUMN_STRING1, "hidden_alarm");
         values.put(COLUMN_STRING2, "hidden_repeat");

@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +37,11 @@ public class music_select_activity extends Activity {
                    if(music_adapter.states.get(i))
                    {
                        main_alarm_activity.alert=Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" +music_list.get(i));
+                       SharedPreferences sharedPreferences=getSharedPreferences("music", Context.MODE_PRIVATE);
+                       SharedPreferences.Editor editor=sharedPreferences.edit();
+                       editor.putString("ring_music","android.resource://"+getApplicationContext().getPackageName()+ "/" +music_list.get(i)).apply();
+                       editor.putString("music_name",music_name.get(i)).apply();
+                       break;
                    }
                }
                finish();

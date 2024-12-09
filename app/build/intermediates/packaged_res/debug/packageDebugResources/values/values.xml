@@ -113,5 +113,6 @@
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/alarm_clock_1</item>
         <item name="android:windowSplashScreenAnimationDuration">1000</item>
         <item name="android:listViewStyle">@style/MyListViewStyle</item>
+
     </style>
 </resources>

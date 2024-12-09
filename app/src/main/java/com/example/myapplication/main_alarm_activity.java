@@ -61,7 +61,7 @@ public class main_alarm_activity extends AppCompatActivity {
     public SQLiteDatabase db;
     public static Uri alert;
     Button to_setting;
-    boolean isChecked;
+    static boolean isChecked;
     private Button to_date_btn;
     public static boolean EnableVibrate = true;
     public static boolean isVibrating = false;
@@ -93,6 +93,7 @@ public class main_alarm_activity extends AppCompatActivity {
         }
             }
         });
+
 
         dbHelper = new DataBaseHelper(this);
         alarmList = findViewById(R.id.list_test);
@@ -172,7 +173,15 @@ public class main_alarm_activity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         cancle_delete();
         System.out.println(alarms.size());
-
+        SharedPreferences sharedPreferences=getSharedPreferences("music",Context.MODE_PRIVATE);
+       String path=sharedPreferences.getString("ring_music","null");
+        if(!path.equals("null"))
+        {
+            alert=Uri.parse(path);
+        }
+        else {
+            alert=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        }
     }
 
 
@@ -374,6 +383,7 @@ public class main_alarm_activity extends AppCompatActivity {
                     for (int i = firstVisibleItem; i <= visibleItemCount - 1; i++) {
                         ConstraintLayout layout = (ConstraintLayout) alarmList.getChildAt(i);
                         layout.findViewById(R.id.switch_alarm).setVisibility(View.INVISIBLE);
+                        
                     }
                 } else {
                     for (int i = firstVisibleItem; i <= visibleItemCount - 1; i++) {
@@ -413,11 +423,11 @@ public class main_alarm_activity extends AppCompatActivity {
                 if (isMultipleSelectionMode) {
                     if (list.isItemChecked(position)) {
                         int color=getResources().getColor(R.color.gray_2,getTheme());
-                        view.setBackgroundColor(color);
+                        findView(position,list).setBackgroundColor(color);
                         alarms.get(position).is_checked = true;
                     } else {
                         int color=getResources().getColor(R.color.background_item, getTheme());
-                        view.setBackgroundColor(color);
+                        findView(position,list).setBackgroundColor(color);
                         alarms.get(position).is_checked = false;
                     }
                 }

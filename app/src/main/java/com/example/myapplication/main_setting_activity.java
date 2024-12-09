@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.PopupMenu;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,5 +64,12 @@ public class main_setting_activity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences sharedPreferences=getSharedPreferences("music", Context.MODE_PRIVATE);
+        TextView music_name=(TextView) findViewById(R.id.music_name);
+        music_name.setText(sharedPreferences.getString("music_name","默认铃声"));
     }
+}
 

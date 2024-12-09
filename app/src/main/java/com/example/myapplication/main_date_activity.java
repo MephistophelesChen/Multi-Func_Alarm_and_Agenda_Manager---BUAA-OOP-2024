@@ -59,7 +59,9 @@ public class main_date_activity extends AppCompatActivity {
         to_alarm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent();
+                intent.setClass(main_date_activity.this, main_alarm_activity.class);
+                startActivity(intent);
             }
         });
 
