@@ -118,6 +118,18 @@ public class MyBaseAdapter extends BaseAdapter {
             }
         });
 
+        if (mactivity.getlist().isItemChecked(position) && main_alarm_activity.isMultipleSelectionMode) {
+                convertView.setBackgroundColor(0xffaeaeae);
+        } else {
+            if(main_alarm_activity.isChecked)
+            {
+                convertView.setBackgroundColor(0x696965);
+            }
+            else
+            {
+                convertView.setBackgroundColor(0xffffffff);
+            }
+        }
         return convertView;
     }
 
