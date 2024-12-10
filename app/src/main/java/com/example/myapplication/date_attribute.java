@@ -1,21 +1,28 @@
 package com.example.myapplication;
 
-public class date_attribute{
+public class date_attribute {
 
 
     private String name;
     private String tips;
+    private boolean isSwitchOn;
+
+
     // private int icon;
 
     public date_attribute(){
 
     }
-    public date_attribute(String name,String tips){
-        // this.icon=icon;
+    public date_attribute(String name, String tips){
         this.tips=tips;
         this.name=name;
+        this.isSwitchOn=true;
     }
-
+    public date_attribute(String name, String tips, boolean isSwitchOn){
+        this.tips=tips;
+        this.name=name;
+        this.isSwitchOn=isSwitchOn;
+    }
     public String getName() {
         return name;
     }
@@ -32,7 +39,14 @@ public class date_attribute{
         this.tips = tips;
     }
 
-//    public int getIcon() {
+    public boolean getIsSwitchOn() {return isSwitchOn;}
+
+    public void setIsSwitchOn(boolean switchOn) {
+        isSwitchOn = switchOn;
+    }
+
+
+    //    public int getIcon() {
 //        return icon;
 //    }
 //
