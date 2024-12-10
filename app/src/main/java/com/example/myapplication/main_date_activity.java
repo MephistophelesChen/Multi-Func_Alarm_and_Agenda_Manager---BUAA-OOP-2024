@@ -2,10 +2,14 @@ package com.example.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +21,7 @@ import java.util.*;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class main_date_activity extends AppCompatActivity {
@@ -38,8 +43,7 @@ public class main_date_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_date);
         dbHelper = new MySQLiteOpenHelper(this);
-
-
+//        dbHelper.deleteSQL();
         loadDateMapFromDatabase();
 
         Calendar calendar = Calendar.getInstance();
@@ -101,17 +105,40 @@ public class main_date_activity extends AppCompatActivity {
                 if(dateMap.get(selectedDate)!=null) {
                     mDate=dateMap.get(selectedDate);
                     mAdapter.updateDate(mDate);
+                    listView.requestFocus();
 
                 }
                 else{
                     dateMap.put(selectedDate,new LinkedList<date_attribute>());
                     mDate=dateMap.get(selectedDate);
                     mAdapter.updateDate(mDate);
+                    listView.requestFocus();
                 }
             }
         });
+            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                view.setBackgroundColor(Color.GRAY);
+                Log.d(TAG,"长按了第"+(position+1)+"项");
+                AlertDialog.Builder builder = new AlertDialog.Builder(main_date_activity.this);
+                builder.setItems(new String[]{"删除", "编辑"}, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            // 删除操作
+                            Log.d(TAG, "删除第" + (position + 1) + "项");
+                        } else if (which == 1) {
+                            // 编辑操作
+                            Log.d(TAG, "编辑第" + (position + 1) + "项");
+                        }
+                    }
+                });
+                builder.show();
+                return true;
 
-
+            }
+        });
 
 
 
@@ -159,6 +186,10 @@ public class main_date_activity extends AppCompatActivity {
         return dateMap;
     }
 
+    public static MySQLiteOpenHelper getDbHelper() {
+        return dbHelper;
+    }
+
     public void createSchedule(){
         Intent intent = new Intent();
         intent.setClass(main_date_activity.this, edit_schedule.class);
@@ -172,62 +203,16 @@ public class main_date_activity extends AppCompatActivity {
         if(dateMap.get(selectedDate)!=null) {
             mDate=dateMap.get(selectedDate);
             mAdapter.updateDate(mDate);
+            listView.requestFocus();
         }
         else{
             dateMap.put(selectedDate,new LinkedList<date_attribute>());
             mDate=dateMap.get(selectedDate);
             mAdapter.updateDate(mDate);
+            listView.requestFocus();
         }
     }
 
-    static void insertData(LocalDate localDate,date_attribute dateAttribute){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        ContentValues dateAttributesValues = new ContentValues();
-        dateAttributesValues.put("attribute1",dateAttribute.getName());
-        dateAttributesValues.put("attribute2",dateAttribute.getTips());
-        long dateAttributeId = db.insert("DateAttribute",null,dateAttributesValues);
-
-        ContentValues localDateValues = new ContentValues();
-        localDateValues.put("date",localDate.toString());
-        localDateValues.put("dateAttributeId",dateAttributeId);
-        db.insert("LocalDateMap",null,localDateValues);
-
-    }
-    private LinkedList<date_attribute> queryDate(String date){
-        LinkedList<date_attribute> dateAttributes = new LinkedList<>();
-
-        SQLiteDatabase db =dbHelper.getReadableDatabase();
-
-        Cursor localDateCursor = db.query(
-                "LocalDateMap",
-                new String[]{"dateAttributeId"},
-                "date = ?",
-                new String[]{date},
-                null,null,null
-        );
-        while(localDateCursor.moveToNext()){
-            long dateAttributeId = localDateCursor.getLong(localDateCursor.getColumnIndexOrThrow("dateAttributeId"));
-
-            Cursor dateAttributeCursor = db.query(
-                "DateAttribute",
-                new String[]{"attribute1","attribute2"},
-                "id = ?",
-                new String[]{String.valueOf(dateAttributeId)},
-                null,null,null
-            );
-
-            if(dateAttributeCursor.moveToNext()){
-                String attribute1=dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("attribute1"));
-                String attribute2=dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("attribute2"));
-                dateAttributes.add(new date_attribute(attribute1,attribute2));
-            }
-            //dateAttributeCursor.close();
-        }
-        //localDateCursor.close();
-
-        return dateAttributes;
-    }
     private void loadDateMapFromDatabase(){
         dateMap.clear();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -244,7 +229,7 @@ public class main_date_activity extends AppCompatActivity {
             // 使用 dateAttributeId 查询 DateAttribute 表以获取属性
             Cursor dateAttributeCursor = db.query(
                     "DateAttribute",
-                    new String[]{"attribute1", "attribute2"},
+                    new String[]{"attribute1", "attribute2", "isSwitchOn"},
                     "id = ?",
                     new String[]{String.valueOf(dateAttributeId)},
                     null, null, null
@@ -252,14 +237,61 @@ public class main_date_activity extends AppCompatActivity {
             if (dateAttributeCursor.moveToNext()) {
                 String attribute1 = dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("attribute1"));
                 String attribute2 = dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("attribute2"));
-                date_attribute dateAttribute = new date_attribute(attribute1, attribute2);
+                int isSwitch = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("isSwitchOn"));
+                boolean isSwitchOn;
+                if(isSwitch==1){
+                    isSwitchOn=true;
+                }
+                else{
+                    isSwitchOn=false;
+                }
+                date_attribute dateAttribute = new date_attribute(attribute1, attribute2 , isSwitchOn);
 
                 // 将 dateAttribute 添加到 dateMap 中对应的日期下
                 dateMap.computeIfAbsent(localDate, k -> new LinkedList<>()).add(dateAttribute);
-            }//dateAttributeCursor.close();
+            }dateAttributeCursor.close();
         }
-        //localDateCursor.close();
+        localDateCursor.close();
+
+    }
+
+        public static int getIdByAttributes(SQLiteDatabase db ,String attribute1,String attribute2){
+        String[] selectionArgs = {attribute1,attribute2};
+        Cursor cursor = db.query(
+                "DateAttribute",
+                new String[] {"id"},
+                "attribute1 = ? AND attribute2 = ?",
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        try{
+            if(cursor.moveToFirst()){
+                int Index = cursor.getColumnIndexOrThrow("id");
+                return cursor.getInt(Index);
+            }else{
+                return -1;
+            }
+        }finally {
+            cursor.close();
+        }
+
+    }
+    public static void updateIsSwitchOnById(SQLiteDatabase db,int id,boolean isSwitchOn){
+        String updateQuery = "UPDATE DateAttribute SET isSwitchOn = ? WHERE id = ?";
+        SQLiteStatement stmt = db.compileStatement(updateQuery);
+
+
+        stmt.bindLong(1, isSwitchOn?1:0);
+        stmt.bindLong(2, id);
+        stmt.execute();
+    }
+    public void deleteSchedule(){
 
     }
 
 }
+
+
