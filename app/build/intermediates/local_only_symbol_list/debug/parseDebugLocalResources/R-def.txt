@@ -16,6 +16,7 @@ color gray_yellow
 color red
 color red_press
 color text_color
+color true_white
 color white
 drawable alarm_clock
 drawable alarm_clock_1
@@ -42,6 +43,7 @@ drawable minuteppp
 drawable moon_stars
 drawable music_note_beamed
 drawable pan_first
+drawable pan_first_night
 drawable phone_vibrate
 drawable plus
 drawable press_button
@@ -88,6 +90,7 @@ id main
 id music_list
 id music_name
 id next_ring_time
+id no
 id one
 id play_button
 id please_select
@@ -145,9 +148,11 @@ layout main_timer
 layout music_item_res
 layout notification_res
 layout schedule_list_item
+layout setting_select_local_music
 layout setting_select_music
 menu menu_music
 menu menu_pop
+mipmap com_pan_first_night
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap schedule

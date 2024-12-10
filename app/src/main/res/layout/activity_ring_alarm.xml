@@ -40,7 +40,7 @@
         android:dial="@drawable/pan_first"
         android:hand_hour="@drawable/hourppp"
         android:hand_minute="@drawable/minuteppp"
-
+        android:background="@drawable/circle_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

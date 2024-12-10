@@ -222,9 +222,9 @@ public class main_date_activity extends AppCompatActivity {
                 String attribute2=dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("attribute2"));
                 dateAttributes.add(new date_attribute(attribute1,attribute2));
             }
-            dateAttributeCursor.close();
+            //dateAttributeCursor.close();
         }
-        localDateCursor.close();
+        //localDateCursor.close();
 
         return dateAttributes;
     }
@@ -256,9 +256,9 @@ public class main_date_activity extends AppCompatActivity {
 
                 // 将 dateAttribute 添加到 dateMap 中对应的日期下
                 dateMap.computeIfAbsent(localDate, k -> new LinkedList<>()).add(dateAttribute);
-            }dateAttributeCursor.close();
+            }//dateAttributeCursor.close();
         }
-        localDateCursor.close();
+        //localDateCursor.close();
 
     }
 

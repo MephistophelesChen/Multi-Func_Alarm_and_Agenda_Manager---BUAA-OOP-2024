@@ -3,7 +3,7 @@
     android:shape="oval">
 
     <!-- 设置圆形的颜色 -->
-    <solid android:color="@color/white" /> <!-- 这里设置为红色，您可以根据需要更改颜色 -->
+    <solid android:color="@color/true_white" /> <!-- 这里设置为红色，您可以根据需要更改颜色 -->
 
 
     <stroke

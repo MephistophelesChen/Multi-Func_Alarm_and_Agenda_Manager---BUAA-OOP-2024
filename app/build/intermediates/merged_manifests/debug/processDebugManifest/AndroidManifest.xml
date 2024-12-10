@@ -51,32 +51,16 @@
         android:theme="@style/Theme.MyApplication" >
         <activity android:name="com.example.myapplication.create_alarm_time_activity" />
         <activity android:name="com.example.myapplication.edit_alarm_time_activity" />
-        <activity
-            android:name="com.example.myapplication.main_date_activity"
-            android:label="singleTask launchMode"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="com.example.myapplication.edit_schedule"
-            android:label="singleTask launchMode"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="com.example.myapplication.main_timer_activity"
-            android:label="singleTask launchMode"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="com.example.myapplication.main_setting_activity"
-            android:label="singleTask launchMode"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="com.example.myapplication.activity_ring_alarm"
-            android:label="singleTask launchMode"
-            android:launchMode="singleTask" />
+        <activity android:name="com.example.myapplication.main_date_activity" />
+        <activity android:name="com.example.myapplication.edit_schedule" />
+        <activity android:name="com.example.myapplication.local_music_select_activity" />
+        <activity android:name="com.example.myapplication.main_timer_activity" />
+        <activity android:name="com.example.myapplication.main_setting_activity" />
+        <activity android:name="com.example.myapplication.activity_ring_alarm" />
         <activity android:name="com.example.myapplication.music_select_activity" />
         <activity
             android:name="com.example.myapplication.main_alarm_activity"
-            android:exported="true"
-            android:label="singleTask launchMode"
-            android:launchMode="singleTask" >
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

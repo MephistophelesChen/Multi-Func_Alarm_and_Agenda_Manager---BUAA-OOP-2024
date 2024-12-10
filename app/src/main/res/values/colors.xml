@@ -3,6 +3,7 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="true_white">#FFFFFF</color>
     <color name="background">#FFFFFF</color>
     <color name="background_item">#FFFFFF</color>
     <color name="text_color">#000000</color>

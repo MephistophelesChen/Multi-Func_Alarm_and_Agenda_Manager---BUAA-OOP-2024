@@ -2117,6 +2117,7 @@ color switch_thumb_normal_material_light
 color text_color
 color tooltip_background_dark
 color tooltip_background_light
+color true_white
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -3131,6 +3132,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable pan_first
+drawable pan_first_night
 drawable phone_vibrate
 drawable plus
 drawable press_button
@@ -3491,6 +3493,7 @@ id never
 id neverCompleteToEnd
 id neverCompleteToStart
 id next_ring_time
+id no
 id noScroll
 id noState
 id none
@@ -3926,10 +3929,12 @@ layout schedule_list_item
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout setting_select_local_music
 layout setting_select_music
 layout support_simple_spinner_dropdown_item
 menu menu_music
 menu menu_pop
+mipmap com_pan_first_night
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap schedule
