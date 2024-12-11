@@ -115,6 +115,16 @@ public class MyBaseAdapter extends BaseAdapter {
                 alarms.get(position).setRing(isChecked);
                 updataSQL(position,isChecked);
                 ((main_alarm_activity) context).updateNextRingTime();
+                boolean ring=false;
+                for(Alarm alarm:main_alarm_activity.alarms)
+                {
+                    if(alarm.isRing)
+                    {
+                       ring=true;
+                        break;
+                    }
+                }
+                main_alarm_activity.willring= ring;
             }
         });
 

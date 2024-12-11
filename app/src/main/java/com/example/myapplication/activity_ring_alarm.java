@@ -27,6 +27,16 @@ public class activity_ring_alarm extends Activity {
              @Override
              public void onClick(View v) {
                  MediaUtil.stopRing();
+                 boolean ring=false;
+                 for(Alarm alarm:main_alarm_activity.alarms)
+                 {
+                     if(alarm.isRing)
+                     {
+                         ring=true;
+                         break;
+                     }
+                 }
+                 main_alarm_activity.willring= ring;
                  finish();
              }
          });

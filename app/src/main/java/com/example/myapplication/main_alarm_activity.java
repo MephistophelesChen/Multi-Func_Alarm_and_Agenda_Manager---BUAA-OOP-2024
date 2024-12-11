@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import static java.lang.Thread.sleep;
+
 import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -26,6 +28,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AbsListView;
@@ -36,6 +39,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RemoteViews;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -73,18 +77,19 @@ public class main_alarm_activity extends AppCompatActivity {
     private Button to_date_btn;
     public static boolean EnableVibrate = true;
     public static boolean isVibrating = false;
-   Button test;
-
+    Button test;
+    int test111=0;
+    static boolean willring=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_alarm);
       //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        alarm_id = 0;
+        alarm_id = 1;
         SharedPreferences sharedPreferences=getSharedPreferences("appcompat",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
       isChecked=sharedPreferences.getBoolean("isChecked",false);
-        test=(Button) findViewById(R.id.test);
+        test=(Button) findViewById(R.id.test1);
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,9 +182,21 @@ public class main_alarm_activity extends AppCompatActivity {
         super.onStart();
         alarm_id++;
         System.out.println("start");
-        loadFromSQL();
-        adapter.notifyDataSetChanged();
-        cancle_delete();
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(
+                DataBaseHelper.TABLE_NAME,
+                new String[]{DataBaseHelper.COLUMN_ID, DataBaseHelper.COLUMN_STRING1, DataBaseHelper.COLUMN_STRING2, DataBaseHelper.COLUMN_ALARM_RING, DataBaseHelper.COLUMN_ALARM_HOUR, DataBaseHelper.COLUMN_ALARM_MINUTE, DataBaseHelper.COLUMN_ALARM_REPEAT, DataBaseHelper.COLUMN_IS_HIDDEN},
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        if(cursor.getCount()!=0) {
+            loadFromSQL();
+            adapter.notifyDataSetChanged();
+            cancle_delete();
+        }
         System.out.println(alarms.size());
         SharedPreferences sharedPreferences=getSharedPreferences("music",Context.MODE_PRIVATE);
        String path=sharedPreferences.getString("ring_music","null");
@@ -200,9 +217,11 @@ public class main_alarm_activity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (calculateNextRingTime() - now.getTimeInMillis() <= 1000)
-                    checkAndRing();
-                updateNextRingTime();
+                if(willring) {
+                    if (calculateNextRingTime() - now.getTimeInMillis() <= 1000)
+                        checkAndRing();
+                    updateNextRingTime();
+                }
             }
         }, delay);
     }
@@ -224,7 +243,7 @@ public class main_alarm_activity extends AppCompatActivity {
             String repeatStr = Tool.addrepeat(repeatDays);
             repeat.add(repeatStr);
             map1.put(timeStr, true);
-
+            willring=true;
             sort_alarm();
             saveToSQL(timeStr, repeatStr, newAlarm);
             adapter.notifyDataSetChanged();
@@ -238,7 +257,8 @@ public class main_alarm_activity extends AppCompatActivity {
         long minDiff = Long.MAX_VALUE;
 
         for (int i = 0; i < alarms.size(); i++) {
-            if (alarms.get(i).isRing()) {   // 如果闹钟开启
+            if (alarms.get(i).isRing()) {
+             // 如果闹钟开启
                 Alarm alarm = alarms.get(i);
                 Calendar alarmTime = Calendar.getInstance();
                 alarmTime.set(Calendar.HOUR_OF_DAY, alarm.getHour());
@@ -278,6 +298,7 @@ public class main_alarm_activity extends AppCompatActivity {
                 minutes %= 60;
                 nextTime = String.format("还有%d小时%d分钟响铃", hours, minutes);
             }
+
         }
         nextRingTime.setText(nextTime);
         return minDiff+now.getTimeInMillis();
@@ -553,6 +574,7 @@ public class main_alarm_activity extends AppCompatActivity {
                 for (Alarm a : alarms) {
                     if (a.id == i) {
                         re = true;
+                        break;
                     }
                 }
 

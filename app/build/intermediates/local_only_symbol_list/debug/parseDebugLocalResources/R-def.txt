@@ -113,9 +113,10 @@ id schedule_tips
 id setting
 id sleep_more
 id stop
+id switch1
 id switch_alarm
 id switch_vibrate
-id test
+id test1
 id textClock
 id textView
 id theme
@@ -152,7 +153,6 @@ layout setting_select_local_music
 layout setting_select_music
 menu menu_music
 menu menu_pop
-mipmap com_pan_first_night
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap schedule

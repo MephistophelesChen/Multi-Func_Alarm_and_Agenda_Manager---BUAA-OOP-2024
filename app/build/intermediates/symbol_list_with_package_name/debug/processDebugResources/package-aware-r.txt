@@ -3631,6 +3631,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switch1
 id switch_alarm
 id switch_vibrate
 id tabMode
@@ -3647,7 +3648,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
-id test
+id test1
 id text
 id text2
 id textClock
@@ -3934,7 +3935,6 @@ layout setting_select_music
 layout support_simple_spinner_dropdown_item
 menu menu_music
 menu menu_pop
-mipmap com_pan_first_night
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap schedule

@@ -13,7 +13,6 @@ public class ButtonManager{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(from, toClass);
-                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 from.startActivity(intent);
             }
         });

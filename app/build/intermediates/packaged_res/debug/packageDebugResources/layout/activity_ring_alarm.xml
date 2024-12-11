@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:background="@drawable/bell_ringing"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    />
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/analogClock1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <AnalogClock
+        android:id="@+id/analogClock1"
+        android:layout_width="252dp"
+        android:layout_height="241dp"
+        android:layout_gravity="center"
+        android:layout_x="83dp"
+        android:layout_y="59dp"
+        android:dial="@drawable/pan_first"
+        android:hand_hour="@drawable/hourppp"
+        android:hand_minute="@drawable/minuteppp"
+        android:background="@drawable/circle_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.151" />
+
+    <ImageButton
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/press_button"
+        android:paddingLeft="5dp"
+        android:src="@drawable/circle"
+        app:layout_constraintLeft_toRightOf="@id/sleep_more"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textClock"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+   <ImageButton
+       android:id="@+id/sleep_more"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/circle"
+       android:background="@color/white"
+       app:layout_constraintTop_toBottomOf="@id/textClock"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintRight_toLeftOf="@id/stop"
+       app:layout_constraintLeft_toLeftOf="parent"
+       />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="延迟响铃"
+        android:textSize="20dp"
+        android:fontFamily="@font/font1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sleep_more"
+        app:layout_constraintRight_toRightOf="@id/sleep_more"
+        app:layout_constraintLeft_toLeftOf="@id/sleep_more"
+        app:layout_constraintTop_toTopOf="@+id/sleep_more" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="结束闹铃"
+        android:textSize="20dp"
+        android:fontFamily="@font/font1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/stop"
+        app:layout_constraintRight_toRightOf="@id/stop"
+        app:layout_constraintLeft_toLeftOf="@id/stop"
+        app:layout_constraintTop_toTopOf="@+id/stop"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
