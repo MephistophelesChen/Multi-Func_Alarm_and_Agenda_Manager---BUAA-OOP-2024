@@ -143,7 +143,7 @@ public class MyBaseAdapter extends BaseAdapter {
         return convertView;
     }
 
-  private void updataSQL(int position,boolean isChecked)
+  public  void updataSQL(int position,boolean isChecked)
   {
       db=dbHelper.getWritableDatabase();
       String updateSQL = "UPDATE string_table SET string_value_ring = ? WHERE _id = ?";

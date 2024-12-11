@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class VibrateUtil {
 
-    private static Vibrator vibrator;
+    public static Vibrator vibrator;
 
     // 开始振动milliseconds毫秒
     public static void startVibration(Context context, long milliseconds) {

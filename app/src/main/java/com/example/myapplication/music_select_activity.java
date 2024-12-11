@@ -66,7 +66,7 @@ public class music_select_activity extends Activity {
         music_list.add(R.raw.guitar_heaven);
         music_list.add(R.raw.hawaii);
         music_list.add(R.raw.huawei_alarm);
-        music_list.add(R.raw.ios);
+
         music_list.add(R.raw.ripple);
         music_list.add(R.raw.sakura_drop);
         music_list.add(R.raw.timer_beep);
@@ -79,7 +79,7 @@ public class music_select_activity extends Activity {
         music_name.add("吉他天堂");
         music_name.add("夏威夷1");
         music_name.add("夏威夷2");
-        music_name.add("ios同款");
+
         music_name.add("涟漪");
         music_name.add("樱花落");
         music_name.add("计时器");

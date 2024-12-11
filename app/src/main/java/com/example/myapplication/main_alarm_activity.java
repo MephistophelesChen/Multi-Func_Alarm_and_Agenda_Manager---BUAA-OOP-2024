@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.VibrateUtil.vibrator;
 import static java.lang.Thread.sleep;
 
 import android.app.ActivityManager;
@@ -29,6 +30,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 import android.os.SystemClock;
+import android.os.VibrationEffect;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AbsListView;
@@ -79,13 +81,16 @@ public class main_alarm_activity extends AppCompatActivity {
     public static boolean isVibrating = false;
     Button test;
     int test111=0;
-    static boolean willring=false;
+    static boolean willring;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_alarm);
       //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         alarm_id = 1;
+        willring=false;
         SharedPreferences sharedPreferences=getSharedPreferences("appcompat",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
       isChecked=sharedPreferences.getBoolean("isChecked",false);
@@ -156,6 +161,7 @@ public class main_alarm_activity extends AppCompatActivity {
                         }
                     }
                     adapter.notifyDataSetChanged();
+                    willring=if_will_ring();
                     updateNextRingTime();
                 }
 
@@ -182,21 +188,10 @@ public class main_alarm_activity extends AppCompatActivity {
         super.onStart();
         alarm_id++;
         System.out.println("start");
-        db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(
-                DataBaseHelper.TABLE_NAME,
-                new String[]{DataBaseHelper.COLUMN_ID, DataBaseHelper.COLUMN_STRING1, DataBaseHelper.COLUMN_STRING2, DataBaseHelper.COLUMN_ALARM_RING, DataBaseHelper.COLUMN_ALARM_HOUR, DataBaseHelper.COLUMN_ALARM_MINUTE, DataBaseHelper.COLUMN_ALARM_REPEAT, DataBaseHelper.COLUMN_IS_HIDDEN},
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-        if(cursor.getCount()!=0) {
             loadFromSQL();
             adapter.notifyDataSetChanged();
             cancle_delete();
-        }
+
         System.out.println(alarms.size());
         SharedPreferences sharedPreferences=getSharedPreferences("music",Context.MODE_PRIVATE);
        String path=sharedPreferences.getString("ring_music","null");
@@ -207,9 +202,22 @@ public class main_alarm_activity extends AppCompatActivity {
         else {
             alert=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         }
+        willring=if_will_ring();
     }
 
-
+static boolean if_will_ring()
+{
+    boolean will=false;
+    for(Alarm alarm:main_alarm_activity.alarms)
+    {
+        if(alarm.isRing)
+        {
+            will=true;
+            break;
+        }
+    }
+    return will;
+}
     void updateNextRingTime() {
         Calendar now = Calendar.getInstance();
         long delay = 60 - now.get(Calendar.SECOND) * 1000L;
@@ -320,17 +328,21 @@ public class main_alarm_activity extends AppCompatActivity {
             //Intent intent = new Intent(this, activity_ring_alarm.class);
             //Intent.putExtra("alarmId", nextAlarm.id);
             //Toast.makeText(this,Integer.toString(nextAlarm.id),Toast.LENGTH_SHORT).show();
+            int i=0;
             for(Alarm alarm:alarms)
             {
                 if(alarm.hour==nextAlarm.hour && alarm.minute==nextAlarm.minute && (!alarm.repeat.contains(true)) )
                 {//如果是不重复的闹钟，响铃后关闭
                     alarm.isRing=false;
+                    updataSQL(i,false);
                     String timeStr = String.format("%02d:%02d%d", alarm.hour, alarm.minute, alarm.id);
                     map1.replace(timeStr,false);
                 }
+                i++;
             }
             adapter.notifyDataSetChanged();
             postNotification(nextAlarm.id);
+
             // 启动振动
             if (EnableVibrate && !isVibrating) {
                 VibrateUtil.startVibration(this, new long[]{0, 1000, 1000}, 0);
@@ -393,6 +405,7 @@ public class main_alarm_activity extends AppCompatActivity {
         // 发送通知
         notificationManager.notify(id, notification);
         MediaUtil.playRing(this,alert);
+
         if(EnableVibrate && !isVibrating)
         {
             VibrateUtil.startVibration(this, new long[]{0, 1000, 1000}, 0);
@@ -620,7 +633,21 @@ public class main_alarm_activity extends AppCompatActivity {
         String removeSQL = "DELETE FROM string_table WHERE _id = '" + idToDelete + "'";
         db.execSQL(removeSQL);
     }
+    public  void updataSQL(int position,boolean isChecked)
+    {
+        db=dbHelper.getWritableDatabase();
+        String updateSQL = "UPDATE string_table SET string_value_ring = ? WHERE _id = ?";
+        long idToUpdate = alarms.get(position).id;
+        String newValue;
+        if(isChecked) {
+            newValue = "1";
+        }
+        else {
+            newValue = "0";
+        }
 
+        db.execSQL(updateSQL, new String[]{newValue,  String.valueOf(idToUpdate)});
+    }
 
     SQLiteDatabase getSQL() {
         return this.db;

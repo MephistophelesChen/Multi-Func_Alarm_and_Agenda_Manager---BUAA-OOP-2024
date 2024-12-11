@@ -166,7 +166,6 @@ raw fresh_air
 raw guitar_heaven
 raw hawaii
 raw huawei_alarm
-raw ios
 raw ripple
 raw sakura_drop
 raw timer_beep

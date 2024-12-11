@@ -72,6 +72,10 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_alarm.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-4:/raw_creamy.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/creamy.ogg"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_chevron_left.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\chevron_left.xml"
     },
@@ -82,6 +86,10 @@
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_date_list_res.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\date_list_res.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/raw_alarm_classic.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/alarm_classic.ogg"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_bell_ringing.xml.flat",
@@ -112,12 +120,28 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\minit.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-4:/raw_bugle.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/bugle.ogg"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_line.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\line.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-4:/raw_fresh_air.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/fresh_air.ogg"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_alarm_clock_1.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\alarm_clock_1.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/raw_ripple.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/ripple.ogg"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/raw_hawaii.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/hawaii.ogg"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_bottomshape.xml.flat",
@@ -192,10 +216,6 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\raw\\fresh_air.ogg"
     },
     {
-        "merged": "com.example.myapplication.app-debug-4:/layout_main_alarm.xml.flat",
-        "source": "com.example.myapplication.app-main-6:/layout/main_alarm.xml"
-    },
-    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_arrow_left.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\arrow_left.xml"
     },
@@ -214,6 +234,10 @@
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/raw_huawei_alarm.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/huawei_alarm.ogg"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-mdpi_ic_launcher.webp.flat",
@@ -288,6 +312,10 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
+        "merged": "com.example.myapplication.app-debug-4:/raw_guitar_heaven.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/guitar_heaven.ogg"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_main_date.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\layout\\main_date.xml"
     },
@@ -312,8 +340,20 @@
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\circle_1.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-4:/raw_timer_beep.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/timer_beep.ogg"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/raw_alarm_beep.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/alarm_beep.ogg"
+    },
+    {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\xml_track.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\xml\\track.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/raw_alarm_rooster.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/alarm_rooster.ogg"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\layout_edit_schedule.xml.flat",
@@ -362,6 +402,10 @@
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\drawable_press_button_repeat_nocorner.xml.flat",
         "source": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-main-6:\\drawable\\press_button_repeat_nocorner.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-4:/raw_sakura_drop.ogg.flat",
+        "source": "com.example.myapplication.app-main-6:/raw/sakura_drop.ogg"
     },
     {
         "merged": "D:\\gradle\\daemon\\8.7\\com.example.myapplication.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.webp.flat",

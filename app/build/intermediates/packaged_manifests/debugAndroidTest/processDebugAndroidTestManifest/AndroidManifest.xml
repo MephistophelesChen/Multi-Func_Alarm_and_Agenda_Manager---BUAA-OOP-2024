@@ -3,7 +3,7 @@
     package="com.example.myapplication.test" >
 
     <uses-sdk
-        android:minSdkVersion="28"
+        android:minSdkVersion="31"
         android:targetSdkVersion="34" />
 
     <instrumentation
