@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/bell_ringing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bell_ringing"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/bell_ringing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <FrameLayout
+        android:id="@+id/camera_frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintTop_toBottomOf="@id/textClock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="40dp"
+        android:background="@drawable/circle_1">
+
+        <View
+            android:id="@+id/camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/press_button"
+        android:paddingLeft="5dp"
+        android:src="@drawable/circle"
+        app:layout_constraintTop_toBottomOf="@id/camera_frame"
+        app:layout_constraintStart_toEndOf="@id/sleep_more"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.8"
+        android:layout_marginTop="100dp"/>
+
+    <ImageButton
+        android:id="@+id/sleep_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:src="@drawable/circle"
+        app:layout_constraintTop_toBottomOf="@id/camera_frame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/stop"
+        app:layout_constraintVertical_bias="0.8"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="延迟响铃"
+        android:textSize="20dp"
+        android:fontFamily="@font/font1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/sleep_more"
+        app:layout_constraintRight_toRightOf="@id/sleep_more"
+        app:layout_constraintLeft_toLeftOf="@id/sleep_more"
+        app:layout_constraintTop_toTopOf="@id/sleep_more" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="结束闹铃"
+        android:textSize="20dp"
+        android:fontFamily="@font/font1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/stop"
+        app:layout_constraintRight_toRightOf="@id/stop"
+        app:layout_constraintLeft_toLeftOf="@id/stop"
+        app:layout_constraintTop_toTopOf="@id/stop" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,23 +1,39 @@
 package com.example.myapplication;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.Calendar;
 
 public class activity_ring_alarm extends Activity {
+    private static final int CAMERA_PERMISSION_REQUEST_CODE = 200;
     ImageButton endButton;
+    EmoRecog emoRecogHelper;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ring_alarm);
+        setContentView(R.layout.activity_ring_emo);
        // MediaUtil.playRing(this);
 
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+        } else {
+            initializeEmoRecog();
+        }
         // 获取传递过来的闹钟ID
         Intent intent = getIntent();
         int alarmId = intent.getIntExtra("alarmId", -1);
@@ -73,8 +89,11 @@ public class activity_ring_alarm extends Activity {
                 }
             }
         }
-
-        // TODO: UI、响铃逻辑、关闭/延迟（懒人模式）逻辑、铃声选择逻辑
+    }
+    private void initializeEmoRecog() {
+        emoRecogHelper = new EmoRecog();
+        ViewGroup parent = findViewById(R.id.camera_frame);
+        emoRecogHelper.initialize(this, parent, R.id.camera_view);
     }
     public void delayAlarm() {
         SQLiteDatabase db = main_alarm_activity.dbHelper.getWritableDatabase();
@@ -105,5 +124,16 @@ public class activity_ring_alarm extends Activity {
     protected void onDestroy() {
         super.onDestroy();
      //   MediaUtil.stopRing();
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                initializeEmoRecog();
+            } else {
+                Log.e("Camera", "Camera permission denied");
+            }
+        }
     }
 }

@@ -38,10 +38,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(files("libs\\java-api-1.0-SNAPSHOT-jar-with-dependencies.jar"))
-    implementation(files("libs\\java-api-1.0-SNAPSHOT-jar-with-dependencies.jar"))
-    implementation(files("libs\\java-api-1.0-SNAPSHOT-jar-with-dependencies.jar"))
-    implementation(files("libs\\java-api-1.0-SNAPSHOT-jar-with-dependencies.jar"))
+    //implementation(libs.opencv.android)
+
+    implementation(files("libs/java-api-1.0-SNAPSHOT-jar-with-dependencies.jar"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
