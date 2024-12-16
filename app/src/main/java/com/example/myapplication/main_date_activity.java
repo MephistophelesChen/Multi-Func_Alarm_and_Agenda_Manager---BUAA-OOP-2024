@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,15 +28,21 @@ import androidx.appcompat.app.AppCompatActivity;
 public class main_date_activity extends AppCompatActivity {
     private Button to_alarm_btn;
     private Button to_setting_btn;
+    private Button delete_cancle;
     private ImageButton add_schedule;
+    private ImageButton delete_schedule;
+    private TextView nothing_to_do;
     private static LinkedList<date_attribute> mDate = null;
     private Context mContext;
-    private date_adapter mAdapter = null;
+    private static date_adapter mAdapter = null;
+    private boolean isMultiSelectMode=false;
     private ListView listView;
     private CalendarView calendarView;
     private static LocalDate selectedDate;
     private static Map<LocalDate,LinkedList<date_attribute>> dateMap = new HashMap<>();
     static MySQLiteOpenHelper dbHelper;
+    static SQLiteDatabase db;
+
     String TAG="mtTag";
 
     @Override
@@ -43,8 +50,9 @@ public class main_date_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_date);
         dbHelper = new MySQLiteOpenHelper(this);
-//        dbHelper.deleteSQL();
+      //  dbHelper.deleteSQL();
         loadDateMapFromDatabase();
+        db=dbHelper.getWritableDatabase();
 
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -93,9 +101,9 @@ public class main_date_activity extends AppCompatActivity {
 
         //---------------------------------------------------------------
         mAdapter = new date_adapter(mDate,this,R.layout.schedule_list_item);
+        nothing_to_do = findViewById(R.id.nothing_to_do);
         listView.setAdapter(mAdapter);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 selectedDate = LocalDate.of(year, month + 1, dayOfMonth);
@@ -106,6 +114,12 @@ public class main_date_activity extends AppCompatActivity {
                     mDate=dateMap.get(selectedDate);
                     mAdapter.updateDate(mDate);
                     listView.requestFocus();
+                    if(mDate.isEmpty()){
+                        nothing_to_do.setVisibility(View.VISIBLE);
+                    }
+                    else{
+                        nothing_to_do.setVisibility(View.GONE);
+                    }
 
                 }
                 else{
@@ -113,39 +127,98 @@ public class main_date_activity extends AppCompatActivity {
                     mDate=dateMap.get(selectedDate);
                     mAdapter.updateDate(mDate);
                     listView.requestFocus();
+                    if(mDate.isEmpty()){
+                        nothing_to_do.setVisibility(View.VISIBLE);
+                    }
+                    else{
+                        nothing_to_do.setVisibility(View.GONE);
+                    }
                 }
             }
         });
+
+            delete_schedule=findViewById(R.id.deleteSchedule);
+            delete_cancle=findViewById(R.id.delete_cancel);
+        HashSet<Integer> selectedIdx = new HashSet<>();
+        HashSet<Integer> selectedPosition = new HashSet<>();
             listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                view.setBackgroundColor(Color.GRAY);
-                Log.d(TAG,"长按了第"+(position+1)+"项");
-                AlertDialog.Builder builder = new AlertDialog.Builder(main_date_activity.this);
-                builder.setItems(new String[]{"删除", "编辑"}, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0) {
-                            // 删除操作
-                            Log.d(TAG, "删除第" + (position + 1) + "项");
-                        } else if (which == 1) {
-                            // 编辑操作
-                            Log.d(TAG, "编辑第" + (position + 1) + "项");
-                        }
-                    }
-                });
-                builder.show();
-                return true;
 
+                add_schedule.setVisibility(View.GONE);
+                delete_schedule.setVisibility(View.VISIBLE);
+                delete_cancle.setVisibility(View.VISIBLE);
+                isMultiSelectMode=true;
+                view.setBackgroundColor(getResources().getColor(R.color.gray_2,getTheme()));
+                selectedPosition.add(position);
+                selectedIdx.add(((date_attribute)mAdapter.getItem(position)).getId());
+
+//                mAdapter.notifyDataSetChanged();
+                return true;
             }
         });
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if(isMultiSelectMode){
+                        if(selectedPosition.contains(position)){
+                            view.setBackgroundColor(Color.WHITE);
+                            selectedPosition.remove(position);
+                            selectedIdx.remove(((date_attribute)mAdapter.getItem(position)).getId());
+                        }
+                        else {
 
-
-
+                            view.setBackgroundColor(getResources().getColor(R.color.gray_2,getTheme()));
+                            selectedPosition.add(position);
+                            selectedIdx.add(((date_attribute)mAdapter.getItem(position)).getId());
+                        }
+                    }
+                }
+            });
+            delete_schedule.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for(int id : selectedIdx){
+                        deleteInSQL(dbHelper.getWritableDatabase(),id);
+                        removeDateInMap(id,dateMap.get(getLocalDate()));
+                    }
+                    mAdapter.updateDate(dateMap.get(getLocalDate()));
+                    isMultiSelectMode=false;
+                    for(int i=0;i<listView.getCount();i++){
+                        View itemView = listView.getChildAt(i);
+                        if(itemView!=null){
+                            itemView.setBackgroundColor(Color.WHITE);
+                        }
+                    }
+                    selectedPosition.clear();
+                    selectedIdx.clear();
+                    delete_schedule.setVisibility(View.GONE);
+                    delete_cancle.setVisibility(View.GONE);
+                    add_schedule.setVisibility(View.VISIBLE);
+                }
+            });
+            delete_cancle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    isMultiSelectMode=false;
+                    delete_schedule.setVisibility(View.GONE);
+                    delete_cancle.setVisibility(View.GONE);
+                    add_schedule.setVisibility(View.VISIBLE);
+                    for(int i=0;i<listView.getCount();i++){
+                        View itemView = listView.getChildAt(i);
+                        if(itemView!=null&&selectedPosition.contains(i)){
+                            itemView.setBackgroundColor(Color.WHITE);
+                        }
+                    }
+                    selectedPosition.clear();
+                    selectedIdx.clear();
+                }
+            });
+    }
 //----------------------------------------------------------
 
 
-    }
 
 
     @Override
@@ -157,7 +230,6 @@ public class main_date_activity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         showOnResume(selectedDate);
-
         Log.d(TAG,"onResume: ");
     }
     @Override
@@ -179,6 +251,7 @@ public class main_date_activity extends AppCompatActivity {
     @Override
     public void onDestroy(){
         super.onDestroy();
+        db.close();
         Log.d(TAG,"onDestroy: ");
     }
 
@@ -188,6 +261,14 @@ public class main_date_activity extends AppCompatActivity {
 
     public static MySQLiteOpenHelper getDbHelper() {
         return dbHelper;
+    }
+
+    public static date_adapter getmAdapter() {
+        return mAdapter;
+    }
+
+    public static SQLiteDatabase getDb() {
+        return db;
     }
 
     public void createSchedule(){
@@ -204,12 +285,25 @@ public class main_date_activity extends AppCompatActivity {
             mDate=dateMap.get(selectedDate);
             mAdapter.updateDate(mDate);
             listView.requestFocus();
+            if(mDate.isEmpty()){
+                nothing_to_do.setVisibility(View.VISIBLE);
+            }
+            else{
+                nothing_to_do.setVisibility(View.GONE);
+            }
+
         }
         else{
             dateMap.put(selectedDate,new LinkedList<date_attribute>());
             mDate=dateMap.get(selectedDate);
             mAdapter.updateDate(mDate);
             listView.requestFocus();
+            if(mDate.isEmpty()){
+                nothing_to_do.setVisibility(View.VISIBLE);
+            }
+            else{
+                nothing_to_do.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -229,7 +323,7 @@ public class main_date_activity extends AppCompatActivity {
             // 使用 dateAttributeId 查询 DateAttribute 表以获取属性
             Cursor dateAttributeCursor = db.query(
                     "DateAttribute",
-                    new String[]{"attribute1", "attribute2", "isSwitchOn"},
+                    new String[]{"attribute1", "attribute2", "idx","isSwitchOn"},
                     "id = ?",
                     new String[]{String.valueOf(dateAttributeId)},
                     null, null, null
@@ -237,6 +331,7 @@ public class main_date_activity extends AppCompatActivity {
             if (dateAttributeCursor.moveToNext()) {
                 String attribute1 = dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("attribute1"));
                 String attribute2 = dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("attribute2"));
+                int id = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("idx"));
                 int isSwitch = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("isSwitchOn"));
                 boolean isSwitchOn;
                 if(isSwitch==1){
@@ -246,6 +341,7 @@ public class main_date_activity extends AppCompatActivity {
                     isSwitchOn=false;
                 }
                 date_attribute dateAttribute = new date_attribute(attribute1, attribute2 , isSwitchOn);
+                dateAttribute.setId(id);
 
                 // 将 dateAttribute 添加到 dateMap 中对应的日期下
                 dateMap.computeIfAbsent(localDate, k -> new LinkedList<>()).add(dateAttribute);
@@ -277,8 +373,17 @@ public class main_date_activity extends AppCompatActivity {
         }finally {
             cursor.close();
         }
-
     }
+    public static void updateInSQLid(SQLiteDatabase db,long ID){
+        String updateQuery = "UPDATE DateAttribute SET idx = ? WHERE id = ?";
+        SQLiteStatement stmt =db.compileStatement(updateQuery);
+
+        stmt.bindLong(1,ID);
+        stmt.bindLong(2,ID);
+        stmt.execute();
+        stmt.close();
+    }
+
     public static void updateIsSwitchOnById(SQLiteDatabase db,int id,boolean isSwitchOn){
         String updateQuery = "UPDATE DateAttribute SET isSwitchOn = ? WHERE id = ?";
         SQLiteStatement stmt = db.compileStatement(updateQuery);
@@ -287,9 +392,32 @@ public class main_date_activity extends AppCompatActivity {
         stmt.bindLong(1, isSwitchOn?1:0);
         stmt.bindLong(2, id);
         stmt.execute();
+        stmt.close();
     }
-    public void deleteSchedule(){
+    public static void deleteInSQL(SQLiteDatabase db,int id){
+        String deleteQuery1 = "DELETE FROM LocalDateMap WHERE dateAttributeId = ?";
+        SQLiteStatement stmt1 = db.compileStatement(deleteQuery1);
 
+        stmt1.bindLong(1,id);
+        stmt1.execute();
+        stmt1.close();
+
+        String deleteQuery2 = "DELETE FROM DateAttribute WHERE id = ?";
+        SQLiteStatement stmt2 = db.compileStatement(deleteQuery2);
+
+        stmt2.bindLong(1,id);
+        stmt2.execute();
+        stmt2.close();
+    }
+    public void removeDateInMap(int id,LinkedList<date_attribute> list){
+        Iterator<date_attribute> iterator = list.iterator();
+        while(iterator.hasNext()){
+            date_attribute dateAttribute = iterator.next();
+            if(dateAttribute.getId() == id){
+                iterator.remove();
+                break;
+            }
+        }
     }
 
 }

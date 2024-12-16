@@ -22,7 +22,6 @@ public class date_adapter extends BaseAdapter {
        private LinkedList<date_attribute> mData;
        private Context mContext;
        private int resource;
-       static SQLiteDatabase db = main_date_activity.getDbHelper().getWritableDatabase();
 
 
        private static class ViewHolder{
@@ -80,9 +79,10 @@ public class date_adapter extends BaseAdapter {
             currentItem.setIsSwitchOn(isChecked); // 更新数据模型
             main_date_activity.getDateMap().get(main_date_activity.getLocalDate()).get(currentIndex).setIsSwitchOn(isChecked);
             // 更新数据库（注意：这里应该在一个异步任务中执行，以避免阻塞UI线程）
-            int id = main_date_activity.getIdByAttributes(db, currentItem.getName(), currentItem.getTips());
+            int id = currentItem.getId();
+            Log.d("mtTag",String.valueOf(id));
             if (id != -1) {
-                main_date_activity.updateIsSwitchOnById(db, id, isChecked);
+                main_date_activity.updateIsSwitchOnById(main_date_activity.getDbHelper().getWritableDatabase(), id, isChecked);
             } else {
                 Log.d("mtTag", "No matching record found for attributes");
             }
