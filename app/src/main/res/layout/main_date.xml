@@ -41,15 +41,29 @@
             app:layout_constraintBottom_toTopOf="@id/calendarView"
             />
 
+
+    <ImageButton
+        android:id="@+id/deleteSchedule"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/delete_button"
+        android:elevation="8dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/trash"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/data_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
         app:layout_constraintBottom_toTopOf="@id/data_list"
         app:layout_constraintTop_toBottomOf="@id/topText"
-        />
-
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-118dp" />
 
     <ListView
         android:id="@+id/data_list"
@@ -126,10 +140,40 @@
         style="?android:attr/borderlessButtonStyle"
         />
 
+    <Button
+        android:id="@+id/delete_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="8dp"
+        android:visibility="gone"
+        android:text="取消删除"
+        app:layout_constraintBottom_toTopOf="@+id/to_setting_btn"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-<!-- 日程管理和闹钟创建几乎相同，可以选择跳过time_picker来创建没有具体时间的某天的日程，在
-listView中要记录日程名称，日程具体时间（如果有的话），完成按钮（右侧）。通过这个
-calendarView来选择显示对应日期的listView，当该日期无日程时，将listView部分
-替换为TextView：“今日无事”
--->
+    <TextView
+        android:id="@+id/nothing_to_do"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
+        android:shadowDx="@integer/material_motion_duration_long_1"
+        android:shadowDy="@integer/material_motion_duration_long_1"
+        android:text="今日无事"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/data_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/data_list"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+
+
+    <!-- 日程管理和闹钟创建几乎相同，可以选择跳过time_picker来创建没有具体时间的某天的日程，在
+    listView中要记录日程名称，日程具体时间（如果有的话），完成按钮（右侧）。通过这个
+    calendarView来选择显示对应日期的listView，当该日期无日程时，将listView部分
+    替换为TextView：“今日无事”
+    -->
 </androidx.constraintlayout.widget.ConstraintLayout>
