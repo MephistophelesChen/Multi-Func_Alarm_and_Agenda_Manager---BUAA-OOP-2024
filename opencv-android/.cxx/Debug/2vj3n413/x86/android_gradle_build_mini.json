@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "D:\\Android\\Multi-Func_Alarm_and_Agenda_Manager_COPY\\opencv-android\\libcxx_helper\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "D:\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\Android\\Multi-Func_Alarm_and_Agenda_Manager_COPY\\opencv-android\\.cxx\\Debug\\2vj3n413\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "D:\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\Android\\Multi-Func_Alarm_and_Agenda_Manager_COPY\\opencv-android\\.cxx\\Debug\\2vj3n413\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "opencv_jni_shared::@6890427a1f51a3e7e1df": {
+      "artifactName": "opencv_jni_shared",
+      "abi": "x86",
+      "output": "D:\\Android\\Multi-Func_Alarm_and_Agenda_Manager_COPY\\opencv-android\\.cxx\\Debug\\2vj3n413\\x86\\libopencv_jni_shared.a",
+      "runtimeFiles": []
+    }
+  }
+}

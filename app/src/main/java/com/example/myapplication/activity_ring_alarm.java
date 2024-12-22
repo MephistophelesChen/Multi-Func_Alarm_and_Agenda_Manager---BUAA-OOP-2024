@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import java.util.Calendar;
@@ -15,8 +16,13 @@ public class activity_ring_alarm extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ring_alarm);
-       // MediaUtil.playRing(this);
+        //setContentView(R.layout.activity_ring_alarm);
+        setContentView(R.layout.activity_ring_emo);
+
+        ViewGroup parent = findViewById(R.id.camera_frame);
+        EmoRecog emoRecog = new EmoRecog();
+        emoRecog.initialize(this, parent, R.id.camera_view);
+        // MediaUtil.playRing(this);
 
         // 获取传递过来的闹钟ID
         Intent intent = getIntent();

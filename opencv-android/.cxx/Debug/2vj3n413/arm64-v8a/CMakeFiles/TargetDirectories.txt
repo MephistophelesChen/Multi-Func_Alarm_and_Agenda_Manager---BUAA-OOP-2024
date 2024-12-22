@@ -1,0 +1,3 @@
+D:/Android/Multi-Func_Alarm_and_Agenda_Manager_COPY/opencv-android/.cxx/Debug/2vj3n413/arm64-v8a/CMakeFiles/opencv_jni_shared.dir
+D:/Android/Multi-Func_Alarm_and_Agenda_Manager_COPY/opencv-android/.cxx/Debug/2vj3n413/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Android/Multi-Func_Alarm_and_Agenda_Manager_COPY/opencv-android/.cxx/Debug/2vj3n413/arm64-v8a/CMakeFiles/rebuild_cache.dir

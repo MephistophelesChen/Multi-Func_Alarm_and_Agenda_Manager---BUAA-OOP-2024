@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Android\Multi-Func_Alarm_and_Agenda_Manager_COPY\opencv-android\libcxx_helper\CMakeFiles\2b87355a093d1a34bb0bba9685cc0c3c\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{8BEBA299-AC5C-342F-B08F-07232EB1B958}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
