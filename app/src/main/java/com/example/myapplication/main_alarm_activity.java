@@ -225,11 +225,11 @@ static boolean if_will_ring()
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(willring) {
+                
                     if (calculateNextRingTime() - now.getTimeInMillis() <= 1000)
                         checkAndRing();
                     updateNextRingTime();
-                }
+
             }
         }, delay);
     }

@@ -1,7 +1,0 @@
-#Thu Dec 12 03:38:07 CST 2024
-base.0=D\:\\andriod_workplace\\MyApplication4\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex
-base.1=D\:\\andriod_workplace\\MyApplication4\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
-path.0=classes.dex
-path.1=0/classes.dex
-renamed.0=classes.dex
-renamed.1=classes2.dex
