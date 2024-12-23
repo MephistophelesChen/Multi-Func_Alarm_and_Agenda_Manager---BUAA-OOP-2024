@@ -6,6 +6,7 @@ public class date_attribute {
     private String name;
     private String tips;
     private boolean isSwitchOn;
+    private int  id;
 
 
     // private int icon;
@@ -45,8 +46,14 @@ public class date_attribute {
         isSwitchOn = switchOn;
     }
 
+    public int getId() {
+        return id;
+    }
 
-    //    public int getIcon() {
+    public void setId(int id) {
+        this.id = id;
+    }
+//    public int getIcon() {
 //        return icon;
 //    }
 //
