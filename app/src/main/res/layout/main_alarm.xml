@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".main_alarm_activity"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@color/white"
     >
     <Button
         android:id="@+id/test1"

@@ -20,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class main_setting_activity extends AppCompatActivity {
     ButtonManager btnManager = new ButtonManager();
     Button btn_music;
-    Button btn_vibrate;
     Switch switch_vibrate;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,9 @@ public class main_setting_activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 main_alarm_activity.isVibrating=isChecked;
+                SharedPreferences sharedPreferences=getSharedPreferences("vibrate", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putBoolean("isVibrate",main_alarm_activity.isVibrating).apply();
                 System.out.println(main_alarm_activity.isVibrating);
             }
         });

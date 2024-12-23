@@ -137,7 +137,7 @@ public class MyBaseAdapter extends BaseAdapter {
             }
             else
             {
-                convertView.setBackgroundColor(0xffffffff);
+                convertView.setBackgroundColor(0xffffff);
             }
         }
         return convertView;

@@ -202,6 +202,9 @@ public class main_alarm_activity extends AppCompatActivity {
         else {
             alert=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         }
+        sharedPreferences=getSharedPreferences("vibrate", Context.MODE_PRIVATE);
+        isChecked=sharedPreferences.getBoolean("isVibrate",false);
+        System.out.println("now vibrate mode is"+isChecked);
         willring=if_will_ring();
     }
 
@@ -225,11 +228,11 @@ static boolean if_will_ring()
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                
+                if(willring) {
                     if (calculateNextRingTime() - now.getTimeInMillis() <= 1000)
                         checkAndRing();
                     updateNextRingTime();
-
+                }
             }
         }, delay);
     }

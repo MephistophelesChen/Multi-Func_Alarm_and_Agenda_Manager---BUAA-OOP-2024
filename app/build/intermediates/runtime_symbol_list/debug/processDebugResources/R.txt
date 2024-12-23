@@ -3948,9 +3948,9 @@ int raw fresh_air 0x7f120005
 int raw guitar_heaven 0x7f120006
 int raw hawaii 0x7f120007
 int raw huawei_alarm 0x7f120008
-int raw ripple 0x7f12000a
-int raw sakura_drop 0x7f12000b
-int raw timer_beep 0x7f12000c
+int raw ripple 0x7f120009
+int raw sakura_drop 0x7f12000a
+int raw timer_beep 0x7f12000b
 int string abc_action_bar_home_description 0x7f130000
 int string abc_action_bar_up_description 0x7f130001
 int string abc_action_menu_overflow_description 0x7f130002
