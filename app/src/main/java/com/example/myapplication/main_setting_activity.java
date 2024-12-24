@@ -29,15 +29,16 @@ public class main_setting_activity extends AppCompatActivity {
 
         setContentView(R.layout.main_setting);
         switch_vibrate=(Switch) findViewById(R.id.switch_vibrate);
+        switch_vibrate.setChecked(main_alarm_activity.EnableVibrate);
         switch_vibrate.bringToFront();
         switch_vibrate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                main_alarm_activity.isVibrating=isChecked;
+                main_alarm_activity.EnableVibrate=isChecked;
                 SharedPreferences sharedPreferences=getSharedPreferences("vibrate", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor=sharedPreferences.edit();
-                editor.putBoolean("isVibrate",main_alarm_activity.isVibrating).apply();
-                System.out.println(main_alarm_activity.isVibrating);
+                editor.putBoolean("isVibrate",main_alarm_activity.EnableVibrate).apply();
+                System.out.println(main_alarm_activity.EnableVibrate);
             }
         });
         Button to_alarm_btn = (Button) findViewById(R.id.to_alarm_btn);
@@ -116,6 +117,7 @@ popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
         }else if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM){
             textView.setText("跟随系统");
         }
+        switch_vibrate.setChecked(main_alarm_activity.EnableVibrate);
     }
 }
 

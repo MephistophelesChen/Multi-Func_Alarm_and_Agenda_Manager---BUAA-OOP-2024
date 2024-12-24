@@ -79,7 +79,7 @@ public class main_alarm_activity extends AppCompatActivity {
     Button to_setting;
     static int themeNum;
     private Button to_date_btn;
-    public static boolean EnableVibrate = true;
+    public static boolean EnableVibrate = false;
     public static boolean isVibrating = false;
     Button test;
     int test111=0;
@@ -199,8 +199,8 @@ public class main_alarm_activity extends AppCompatActivity {
             alert=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         }
         sharedPreferences=getSharedPreferences("vibrate", Context.MODE_PRIVATE);
-        isVibrating=sharedPreferences.getBoolean("isVibrate",false);
-        System.out.println("now vibrate mode is"+isVibrating);
+        EnableVibrate=sharedPreferences.getBoolean("isVibrate",false);
+
         willring=if_will_ring();
     }
 
