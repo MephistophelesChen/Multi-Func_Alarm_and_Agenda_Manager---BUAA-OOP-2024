@@ -39,10 +39,12 @@ public class edit_schedule extends AppCompatActivity {
                 date_attribute dateAttribute;
                 dateAttribute=create();
                 if(dateAttribute!=null){
-                    main_date_activity.getDateMap().computeIfAbsent(main_date_activity.getLocalDate(), k -> new LinkedList<date_attribute>());
-                    main_date_activity.getDateMap().get(main_date_activity.getLocalDate()).add(dateAttribute);
 
+                    main_date_activity.getDateMap().computeIfAbsent(main_date_activity.getLocalDate(), k -> new LinkedList<date_attribute>());
                     insertData(main_date_activity.getLocalDate(),dateAttribute,main_date_activity.getDbHelper());
+                    main_date_activity.getDateMap().get(main_date_activity.getLocalDate()).add(dateAttribute);
+                    main_date_activity.getmAdapter().updateDate(main_date_activity.getDateMap().get(main_date_activity.getLocalDate()));
+
                     finish();
                 }
                 for (Map.Entry<LocalDate, LinkedList<date_attribute>> entry : main_date_activity.getDateMap().entrySet()) {
@@ -78,9 +80,9 @@ public class edit_schedule extends AppCompatActivity {
     }
 
 
-    public static long insertDateAttribute(String name, String tips, MySQLiteOpenHelper dbHelper) {
+    public static int insertDateAttribute(String name, String tips, MySQLiteOpenHelper dbHelper) {
         SQLiteDatabase db = null;
-        long dateAttributeId = -1; // 初始化为一个无效的值，比如-1
+        int dateAttributeId = -1; // 初始化为一个无效的值，比如-1
         try {
             db = dbHelper.getWritableDatabase();
 
@@ -90,8 +92,8 @@ public class edit_schedule extends AppCompatActivity {
             dateAttributesValues.put("isSwitchOn",1);
 
             // 插入记录并获取生成的ID
-            dateAttributeId = db.insert("DateAttribute", null, dateAttributesValues);
-
+            dateAttributeId = (int) db.insert("DateAttribute", null, dateAttributesValues);
+            Log.d("mtTag",name+" "+tips+" "+String.valueOf(dateAttributeId));
         } catch (SQLException e) {
             // 捕获并处理SQL异常
             Log.d("mtTag", "Error inserting DateAttribute into database", e);
@@ -100,17 +102,23 @@ public class edit_schedule extends AppCompatActivity {
                 db.close();
             }
         }
+
+
+
+
         return dateAttributeId; // 返回生成的ID，如果插入失败则返回-1或其他错误码
     }
 
     public static void insertData(LocalDate localDate, date_attribute dateAttribute, MySQLiteOpenHelper dbHelper) {
         // 首先插入DateAttribute并获取ID
-        long dateAttributeId = insertDateAttribute(dateAttribute.getName(), dateAttribute.getTips(), dbHelper);
+        int dateAttributeId = insertDateAttribute(dateAttribute.getName(), dateAttribute.getTips(), dbHelper);
         if (dateAttributeId == -1) {
             // 处理插入DateAttribute失败的情况
             Log.d("mtTag", "Failed to insert DateAttribute");
             return;
         }
+        dateAttribute.setId(dateAttributeId);
+        main_date_activity.updateInSQLid(main_date_activity.getDbHelper().getWritableDatabase(),dateAttributeId);
 
         SQLiteDatabase db = null;
         try {
