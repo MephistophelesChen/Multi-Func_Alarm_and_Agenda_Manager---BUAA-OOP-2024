@@ -4,6 +4,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,35 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MyBaseAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<String> list, list1;
+
+    public ArrayList<String> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<String> list) {
+        this.list = list;
+    }
+
+    public ArrayList<String> list;
+
+    public ArrayList<String> getList1() {
+        return list1;
+    }
+
+    public void setList1(ArrayList<String> list1) {
+        this.list1 = list1;
+    }
+
+    public ArrayList<String> list1;
     private Map<String, Boolean> selectedMap = new HashMap<>();
     private ArrayList<Alarm> alarms;
     private ViewHolder holder = null;
@@ -100,7 +123,7 @@ public class MyBaseAdapter extends BaseAdapter {
 
         holder.time.setText(list.get(position).substring(0,5));
         holder.repeat.setText(list1.get(position));
-        holder.switch_alarm.setChecked(selectedMap.get(list.get(position)));
+        holder.switch_alarm.setChecked(Boolean.TRUE.equals(selectedMap.get(list.get(position))));
 
         holder.switch_alarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -131,14 +154,7 @@ public class MyBaseAdapter extends BaseAdapter {
         if (mactivity.getlist().isItemChecked(position) && main_alarm_activity.isMultipleSelectionMode) {
                 convertView.setBackgroundColor(0xffaeaeae);
         } else {
-            if(main_alarm_activity.isChecked)
-            {
-                convertView.setBackgroundColor(0x696965);
-            }
-            else
-            {
-                convertView.setBackgroundColor(0xffffff);
-            }
+                convertView.setBackgroundColor(ContextCompat.getColor(holder.switch_alarm.getContext(),R.color.background_item));
         }
         return convertView;
     }

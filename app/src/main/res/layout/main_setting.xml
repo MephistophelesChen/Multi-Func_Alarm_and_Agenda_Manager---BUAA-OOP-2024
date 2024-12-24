@@ -20,20 +20,35 @@ android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         />
+
     <Button
         android:id="@+id/theme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/press_button_repeat_top"
-        android:text=" 主题选择"
-        app:layout_constraintTop_toBottomOf="@id/setting"
-        app:layout_constraintBottom_toTopOf="@id/face_identity"
-        android:gravity="left|center"
-        android:textSize="18dp"
-        android:paddingLeft="15dp"
-        android:drawableRight="@drawable/chevron_right"
         android:drawableLeft="@drawable/moon_stars"
+        android:drawableRight="@drawable/chevron_right"
+        android:gravity="left|center"
+        android:paddingLeft="15dp"
+        android:text=" 主题选择"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@id/face_identity"
+        app:layout_constraintTop_toBottomOf="@id/setting"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/themeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="白天"
+        android:textSize="15dp"
+        android:textColor="@color/gray_3"
+        app:layout_constraintTop_toTopOf="@id/theme"
+        android:elevation="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/theme"
+        app:layout_constraintRight_toRightOf="@id/theme"
+        android:paddingRight="30dp"
         />
+
     <Button
         android:id="@+id/face_identity"
         android:layout_width="match_parent"

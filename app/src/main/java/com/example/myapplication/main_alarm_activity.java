@@ -3,6 +3,7 @@ package com.example.myapplication;
 import static com.example.myapplication.VibrateUtil.vibrator;
 import static java.lang.Thread.sleep;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -57,6 +58,7 @@ import java.util.Map;
 
 public class main_alarm_activity extends AppCompatActivity {
     private static final int REQUEST_CODE_CREATE_ALARM = 1;
+    private static final int REQUEST_CODE_ALTER_ALARM = 2;
     private static ArrayList<String> time = new ArrayList<>();//pai
     private static ArrayList<String> repeat = new ArrayList<>();//pai
     private MyBaseAdapter adapter;
@@ -75,14 +77,14 @@ public class main_alarm_activity extends AppCompatActivity {
     public SQLiteDatabase db;
     public static Uri alert;
     Button to_setting;
-    static boolean isChecked;
+    static int themeNum;
     private Button to_date_btn;
     public static boolean EnableVibrate = true;
     public static boolean isVibrating = false;
     Button test;
     int test111=0;
     static boolean willring;
-
+     int temp_alter_position=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,28 +93,23 @@ public class main_alarm_activity extends AppCompatActivity {
       //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         alarm_id = 1;
         willring=false;
-        SharedPreferences sharedPreferences=getSharedPreferences("appcompat",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-      isChecked=sharedPreferences.getBoolean("isChecked",false);
-        test=(Button) findViewById(R.id.test1);
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-        if(isChecked)
-        {
+        SharedPreferences sharedPreferences=getSharedPreferences("theme", Context.MODE_PRIVATE);
+        int theme=sharedPreferences.getInt("themeSelect",0);
+        if(theme==0){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            editor.putBoolean("isChecked",false).commit();
-            recreate();
-        }
-        else {
+        }else if (theme==1){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            editor.putBoolean("isChecked",true).commit();
-           recreate();
+        }else if (theme==2){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         }
-            }
-        });
 
+        test=findViewById(R.id.test1);
+   test.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View view) {
 
+       }
+   });
         dbHelper = new DataBaseHelper(this);
         alarmList = findViewById(R.id.list_test);
         adapter = new MyBaseAdapter(main_alarm_activity.this, time, repeat, map1, alarms, db, dbHelper);
@@ -186,7 +183,6 @@ public class main_alarm_activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        alarm_id++;
         System.out.println("start");
             loadFromSQL();
             adapter.notifyDataSetChanged();
@@ -194,7 +190,7 @@ public class main_alarm_activity extends AppCompatActivity {
 
         System.out.println(alarms.size());
         SharedPreferences sharedPreferences=getSharedPreferences("music",Context.MODE_PRIVATE);
-       String path=sharedPreferences.getString("ring_music","null");
+         String path=sharedPreferences.getString("ring_music","null");
         if(!path.equals("null"))
         {
             alert=Uri.parse(path);
@@ -203,8 +199,8 @@ public class main_alarm_activity extends AppCompatActivity {
             alert=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         }
         sharedPreferences=getSharedPreferences("vibrate", Context.MODE_PRIVATE);
-        isChecked=sharedPreferences.getBoolean("isVibrate",false);
-        System.out.println("now vibrate mode is"+isChecked);
+        isVibrating=sharedPreferences.getBoolean("isVibrate",false);
+        System.out.println("now vibrate mode is"+isVibrating);
         willring=if_will_ring();
     }
 
@@ -259,6 +255,20 @@ static boolean if_will_ring()
             saveToSQL(timeStr, repeatStr, newAlarm);
             adapter.notifyDataSetChanged();
             updateNextRingTime();
+        }else if(requestCode == REQUEST_CODE_ALTER_ALARM && resultCode == RESULT_OK){
+            int hour = data.getIntExtra("hour", 0);
+            int minute = data.getIntExtra("minute", 0);
+            ArrayList<Boolean> repeatDays = (ArrayList<Boolean>) data.getSerializableExtra("repeatDays");
+            alarms.get(temp_alter_position).hour=hour;
+            alarms.get(temp_alter_position).minute=minute;
+            alarms.get(temp_alter_position).repeat=repeatDays;
+            adapter.getList().set(temp_alter_position,String.format("%02d:%02d%d", hour, minute, alarms.get(temp_alter_position).id));
+            adapter.getList1().set(temp_alter_position,Tool.addrepeat(repeatDays));
+            Toast.makeText(main_alarm_activity.this,Integer.toString(temp_alter_position),Toast.LENGTH_SHORT).show();
+            updataSQL(temp_alter_position,hour,minute,repeatDays);
+            sort_alarm();
+            loadFromSQL();
+            adapter.notifyDataSetChanged();
         }
     }
 
@@ -462,7 +472,6 @@ static boolean if_will_ring()
 
     void setItem(ListView list) {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (isMultipleSelectionMode) {
@@ -471,10 +480,14 @@ static boolean if_will_ring()
                         findView(position,list).setBackgroundColor(color);
                         alarms.get(position).is_checked = true;
                     } else {
-                        int color=getResources().getColor(R.color.background_item, getTheme());
+                        int color=getResources().getColor(R.color.background_item,getTheme());
                         findView(position,list).setBackgroundColor(color);
                         alarms.get(position).is_checked = false;
                     }
+                }else {
+                    Intent intent = new Intent(main_alarm_activity.this, create_alarm_time_activity.class);
+                    temp_alter_position=position;
+                    startActivityForResult(intent, REQUEST_CODE_ALTER_ALARM);
                 }
 
             }
@@ -649,6 +662,26 @@ static boolean if_will_ring()
             newValue = "0";
         }
 
+        db.execSQL(updateSQL, new String[]{newValue,  String.valueOf(idToUpdate)});
+    }
+    public void updataSQL(int position, int hour, int minute, ArrayList<Boolean> repeat){
+        db=dbHelper.getWritableDatabase();
+
+        String updateSQL = "UPDATE string_table SET string_value_hour = ? WHERE _id = ?";
+        long idToUpdate = alarms.get(position).id;
+        String newValue=Integer.toString(hour);
+        db.execSQL(updateSQL, new String[]{newValue,  String.valueOf(idToUpdate)});
+
+        updateSQL = "UPDATE string_table SET string_value_minute = ? WHERE _id = ?";
+        newValue=Integer.toString(minute);
+        db.execSQL(updateSQL, new String[]{newValue,  String.valueOf(idToUpdate)});
+
+        updateSQL = "UPDATE string_table SET string_value_arepeat = ? WHERE _id = ?";
+        newValue=Tool.booleanToString(repeat);
+        db.execSQL(updateSQL, new String[]{newValue,  String.valueOf(idToUpdate)});
+
+        updateSQL = "UPDATE string_table SET string_value_time = ? WHERE _id = ?";
+        newValue= String.format("%02d:%02d%d", hour, minute, alarms.get(position).id);
         db.execSQL(updateSQL, new String[]{newValue,  String.valueOf(idToUpdate)});
     }
 
