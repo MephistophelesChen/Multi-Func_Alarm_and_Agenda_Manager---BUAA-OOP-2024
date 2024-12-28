@@ -93,7 +93,6 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-
     <ListView
         android:id="@+id/list_test"
         android:layout_width="match_parent"

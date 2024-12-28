@@ -64,7 +64,16 @@
         app:layout_constraintTop_toBottomOf="@id/topText"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-118dp" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color_thin"
+        android:text="sadfdaedasd"
+        android:textSize="30dp"
+        app:layout_constraintTop_toTopOf="@id/data_list"
+        app:layout_constraintBottom_toBottomOf="@id/data_list"
+        android:elevation="8dp"
+        />
     <ListView
         android:id="@+id/data_list"
         android:layout_width="match_parent"
