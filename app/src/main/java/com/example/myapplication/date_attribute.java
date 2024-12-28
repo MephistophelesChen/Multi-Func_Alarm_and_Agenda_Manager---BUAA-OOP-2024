@@ -7,7 +7,8 @@ public class date_attribute {
     private String tips;
     private boolean isSwitchOn;
     private int  id;
-
+  private boolean zhongyao;
+  private boolean jinji;
 
     // private int icon;
 

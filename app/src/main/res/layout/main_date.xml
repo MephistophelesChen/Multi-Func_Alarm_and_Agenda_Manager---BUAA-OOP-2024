@@ -67,13 +67,15 @@
 
     <ListView
         android:id="@+id/data_list"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="5"
+        android:background="@color/background_item"
+        android:focusable="true"
         app:layout_constraintBottom_toTopOf="@id/to_date_btn"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calendarView" />
+        app:layout_constraintTop_toBottomOf="@id/calendarView"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_weight="5"
+        tools:layout_editor_absoluteX="0dp" />
 
     <ImageButton
           android:id="@+id/add_schedule"

@@ -94,17 +94,17 @@
         />
 
 
-
-        <ListView
-            android:id="@+id/list_test"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintVertical_weight="5"
-            app:layout_constraintTop_toBottomOf="@id/digitalclock"
-            app:layout_constraintBottom_toTopOf="@id/to_date_btn"
-            android:focusable="true"
-            android:background="@color/background_item"
-            />
+    <ListView
+        android:id="@+id/list_test"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/background_item"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@id/to_date_btn"
+        app:layout_constraintTop_toBottomOf="@id/digitalclock"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_weight="5"
+        tools:layout_editor_absoluteX="0dp" />
 
     <ImageButton
         android:id="@+id/add_alarm_btn"

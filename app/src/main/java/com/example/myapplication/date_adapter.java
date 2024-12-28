@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ public class date_adapter extends BaseAdapter {
        private static class ViewHolder{
            TextView xingxing;
            TextView tips;
-           Switch switchView;
+            CheckBox checkBox;
            int position;
        }
        public date_adapter(LinkedList<date_attribute> mData, Context context, int resource){
@@ -59,7 +60,7 @@ public class date_adapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.xingxing = convertView.findViewById(R.id.schedule_name);
             holder.tips = convertView.findViewById(R.id.schedule_tips);
-            holder.switchView = convertView.findViewById(R.id.switch1);
+            holder.checkBox = convertView.findViewById(R.id.checkBox);
             convertView.setTag(holder);
         }
         else{
@@ -70,10 +71,10 @@ public class date_adapter extends BaseAdapter {
         date_attribute dateAttribute = (date_attribute) getItem(position);
         holder.xingxing.setText(dateAttribute.getName());
         holder.tips.setText(dateAttribute.getTips());
-        holder.switchView.setChecked(dateAttribute.getIsSwitchOn());
+        holder.checkBox.setChecked(dateAttribute.getIsSwitchOn());
 
 
-        holder.switchView.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             int currentIndex = holder.position; // 使用holder中的position
             date_attribute currentItem = (date_attribute) getItem(currentIndex);
             currentItem.setIsSwitchOn(isChecked); // 更新数据模型
