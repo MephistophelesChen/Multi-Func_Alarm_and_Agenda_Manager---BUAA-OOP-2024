@@ -44,15 +44,68 @@
         app:layout_constraintEnd_toEndOf="@+id/create_schedule_name"
         app:layout_constraintStart_toStartOf="@+id/create_schedule_name"
         app:layout_constraintTop_toBottomOf="@+id/create_schedule_name" />
+
     <ImageButton
         android:id="@+id/back"
         android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         android:background="@drawable/press_button"
         android:paddingLeft="7dp"
         android:src="@drawable/x"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/Urgent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Urgent"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Important"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/Important" />
+
+    <RadioButton
+        android:id="@+id/Important"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="446dp"
+        android:text="Important"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="253dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/Important"
+        app:layout_constraintGuide_begin="39dp"
+        app:layout_constraintTop_toBottomOf="@+id/back" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="358dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

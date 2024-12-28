@@ -28,7 +28,7 @@ public class date_adapter extends BaseAdapter {
        private static class ViewHolder{
            TextView xingxing;
            TextView tips;
-            CheckBox checkBox;
+           CheckBox checkBox;
            int position;
        }
        public date_adapter(LinkedList<date_attribute> mData, Context context, int resource){

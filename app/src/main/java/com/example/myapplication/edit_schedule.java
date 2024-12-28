@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,8 @@ public class edit_schedule extends AppCompatActivity {
     private EditText create_schedule_tips;
     private Button create_confirm;
     private ImageButton create_schedule_back;
+    private RadioButton important;
+    private RadioButton urgent;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -33,6 +36,8 @@ public class edit_schedule extends AppCompatActivity {
         create_schedule_name=findViewById(R.id.create_schedule_name);
         create_schedule_tips=findViewById(R.id.create_schedule_tips);
         create_confirm = findViewById(R.id.create_confirm);
+        important = findViewById(R.id.Important);
+        urgent = findViewById(R.id.Urgent);
         create_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +71,8 @@ public class edit_schedule extends AppCompatActivity {
     public date_attribute create(){
            String name = create_schedule_name.getText().toString();
            String tips = create_schedule_tips.getText().toString();
+           boolean Important = important.isChecked();
+           boolean Urgent = urgent.isChecked();
            date_attribute dateAttribute;
            if(name.isEmpty()){
                Toast toast = Toast.makeText(getApplicationContext(),"日程名称为空",Toast.LENGTH_SHORT);
@@ -73,14 +80,14 @@ public class edit_schedule extends AppCompatActivity {
                return null;
            }
            else{
-               dateAttribute = new date_attribute(name,tips);
+               dateAttribute = new date_attribute(name,tips,false,Important,Urgent);
                return dateAttribute;
            }
 
     }
 
 
-    public static int insertDateAttribute(String name, String tips, MySQLiteOpenHelper dbHelper) {
+    public static int insertDateAttribute(String name, String tips,boolean important,boolean urgent ,MySQLiteOpenHelper dbHelper) {
         SQLiteDatabase db = null;
         int dateAttributeId = -1; // 初始化为一个无效的值，比如-1
         try {
@@ -89,7 +96,9 @@ public class edit_schedule extends AppCompatActivity {
             ContentValues dateAttributesValues = new ContentValues();
             dateAttributesValues.put("attribute1", name);
             dateAttributesValues.put("attribute2", tips);
-            dateAttributesValues.put("isSwitchOn",1);
+            dateAttributesValues.put("isSwitchOn",0);
+            dateAttributesValues.put("zhongyao",important?1:0);
+            dateAttributesValues.put("jinji",urgent?1:0);
 
             // 插入记录并获取生成的ID
             dateAttributeId = (int) db.insert("DateAttribute", null, dateAttributesValues);
@@ -111,7 +120,7 @@ public class edit_schedule extends AppCompatActivity {
 
     public static void insertData(LocalDate localDate, date_attribute dateAttribute, MySQLiteOpenHelper dbHelper) {
         // 首先插入DateAttribute并获取ID
-        int dateAttributeId = insertDateAttribute(dateAttribute.getName(), dateAttribute.getTips(), dbHelper);
+        int dateAttributeId = insertDateAttribute(dateAttribute.getName(), dateAttribute.getTips(),dateAttribute.isZhongyao(), dateAttribute.isJinji(), dbHelper);
         if (dateAttributeId == -1) {
             // 处理插入DateAttribute失败的情况
             Log.d("mtTag", "Failed to insert DateAttribute");

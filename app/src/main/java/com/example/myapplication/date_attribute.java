@@ -7,8 +7,8 @@ public class date_attribute {
     private String tips;
     private boolean isSwitchOn;
     private int  id;
-  private boolean zhongyao;
-  private boolean jinji;
+    private boolean zhongyao;
+    private boolean jinji;
 
     // private int icon;
 
@@ -18,12 +18,21 @@ public class date_attribute {
     public date_attribute(String name, String tips){
         this.tips=tips;
         this.name=name;
-        this.isSwitchOn=true;
+        this.isSwitchOn=false;
+        this.zhongyao = false;
+        this.jinji = false;
     }
     public date_attribute(String name, String tips, boolean isSwitchOn){
         this.tips=tips;
         this.name=name;
         this.isSwitchOn=isSwitchOn;
+    }
+    public date_attribute(String name,String tips,boolean isSwitchOn,boolean zhongyao,boolean jinji){
+        this.tips=tips;
+        this.name=name;
+        this.isSwitchOn=isSwitchOn;
+        this.zhongyao=zhongyao;
+        this.jinji=jinji;
     }
     public String getName() {
         return name;
@@ -54,7 +63,23 @@ public class date_attribute {
     public void setId(int id) {
         this.id = id;
     }
-//    public int getIcon() {
+
+    public boolean isZhongyao() {
+        return zhongyao;
+    }
+
+    public void setZhongyao(boolean zhongyao) {
+        this.zhongyao = zhongyao;
+    }
+
+    public boolean isJinji() {
+        return jinji;
+    }
+
+    public void setJinji(boolean jinji) {
+        this.jinji = jinji;
+    }
+    //    public int getIcon() {
 //        return icon;
 //    }
 //
