@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -25,8 +27,9 @@ public class edit_schedule extends AppCompatActivity {
     private EditText create_schedule_tips;
     private Button create_confirm;
     private ImageButton create_schedule_back;
-    private RadioButton important;
-    private RadioButton urgent;
+    private CheckBox important;
+    private CheckBox urgent;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
