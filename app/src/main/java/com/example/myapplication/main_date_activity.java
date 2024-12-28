@@ -50,7 +50,7 @@ public class main_date_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_date);
         dbHelper = new MySQLiteOpenHelper(this);
-      //  dbHelper.deleteSQL();
+//        dbHelper.deleteSQL();
         loadDateMapFromDatabase();
         db=dbHelper.getWritableDatabase();
 
@@ -323,7 +323,7 @@ public class main_date_activity extends AppCompatActivity {
             // 使用 dateAttributeId 查询 DateAttribute 表以获取属性
             Cursor dateAttributeCursor = db.query(
                     "DateAttribute",
-                    new String[]{"attribute1", "attribute2", "idx","isSwitchOn"},
+                    new String[]{"attribute1", "attribute2", "idx","isSwitchOn","zhongyao","jinji"},
                     "id = ?",
                     new String[]{String.valueOf(dateAttributeId)},
                     null, null, null
@@ -333,14 +333,18 @@ public class main_date_activity extends AppCompatActivity {
                 String attribute2 = dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("attribute2"));
                 int id = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("idx"));
                 int isSwitch = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("isSwitchOn"));
+                int isImportant = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("zhongyao"));
+                int isUrgent = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("jinji"));
                 boolean isSwitchOn;
+                boolean important = isImportant == 1;
+                boolean urgent = isUrgent==1;
                 if(isSwitch==1){
                     isSwitchOn=true;
                 }
                 else{
                     isSwitchOn=false;
                 }
-                date_attribute dateAttribute = new date_attribute(attribute1, attribute2 , isSwitchOn);
+                date_attribute dateAttribute = new date_attribute(attribute1, attribute2 , isSwitchOn,important,urgent);
                 dateAttribute.setId(id);
 
                 // 将 dateAttribute 添加到 dateMap 中对应的日期下
