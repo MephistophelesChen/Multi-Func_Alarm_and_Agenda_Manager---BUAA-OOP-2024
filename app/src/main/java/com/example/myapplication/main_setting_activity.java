@@ -46,6 +46,8 @@ public class main_setting_activity extends AppCompatActivity {
 
         Button to_date_btn = (Button) findViewById(R.id.to_date_btn);
         btnManager.switchToActivity_btn(to_date_btn, main_setting_activity.this, main_date_activity.class);
+        Button to_todolist_btn=(Button) findViewById(R.id.to_todolist_btn);
+        btnManager.switchToActivity_btn(to_todolist_btn,main_setting_activity.this,main_todolist_activity.class);
         theme_select=(Button) findViewById(R.id.theme);
         theme_select.setOnClickListener(new View.OnClickListener() {
             @Override

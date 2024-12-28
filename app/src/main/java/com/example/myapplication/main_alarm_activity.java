@@ -117,7 +117,9 @@ public class main_alarm_activity extends AppCompatActivity {
         alarmList.setAdapter(adapter);
         loadFromSQL();
         adapter.notifyDataSetChanged();
-
+        ButtonManager btnManager=new ButtonManager();
+        Button to_todolist_btn=(Button) findViewById(R.id.to_todolist_btn);
+        btnManager.switchToActivity_btn(to_todolist_btn,main_alarm_activity.this,main_todolist_activity.class);
 
         System.out.println(alarms.size());
         System.out.println(time.size());

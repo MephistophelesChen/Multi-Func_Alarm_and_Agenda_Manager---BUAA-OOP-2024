@@ -39,7 +39,7 @@
         <activity android:name=".main_date_activity" />
         <activity android:name="edit_schedule" />
         <activity android:name=".local_music_select_activity"/>
-        <activity android:name=".main_timer_activity" />
+        <activity android:name=".main_todolist_activity" />
 
         <activity android:name=".main_setting_activity" />
 

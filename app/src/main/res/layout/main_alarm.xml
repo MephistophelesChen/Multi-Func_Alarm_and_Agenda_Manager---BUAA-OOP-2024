@@ -154,13 +154,26 @@
         android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/to_alarm_btn"
-        app:layout_constraintRight_toLeftOf="@id/to_setting_btn"
+        app:layout_constraintRight_toLeftOf="@id/to_todolist_btn"
         android:background="@drawable/press_button"
         style="?android:attr/borderlessButtonStyle"
         android:drawableTop="@drawable/calendar_minus"
         />
-
-
+    <Button
+        android:id="@+id/to_todolist_btn"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="待办"
+        android:textSize="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/to_date_btn"
+        app:layout_constraintRight_toLeftOf="@id/to_setting_btn"
+        android:background="@drawable/press_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:drawableTop="@drawable/todo_list1"
+        />
 
     <Button
         android:layout_width="0dp"
@@ -171,7 +184,7 @@
         android:textSize="11dp"
         android:drawableTop="@drawable/setting"
         android:id="@+id/to_setting_btn"
-        app:layout_constraintLeft_toRightOf="@id/to_date_btn"
+        app:layout_constraintLeft_toRightOf="@id/to_todolist_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/press_button"

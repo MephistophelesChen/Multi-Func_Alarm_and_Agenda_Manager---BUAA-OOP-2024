@@ -5,7 +5,7 @@
         >
         <shape>
 
-            <solid android:color="@color/white"/>
+            <solid android:color="@color/background_item"/>
         </shape>
     </item>
 

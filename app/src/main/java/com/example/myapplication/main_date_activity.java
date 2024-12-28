@@ -42,7 +42,7 @@ public class main_date_activity extends AppCompatActivity {
     private static Map<LocalDate,LinkedList<date_attribute>> dateMap = new HashMap<>();
     static MySQLiteOpenHelper dbHelper;
     static SQLiteDatabase db;
-
+  private ButtonManager btnManager=new ButtonManager();
     String TAG="mtTag";
 
     @Override
@@ -62,7 +62,8 @@ public class main_date_activity extends AppCompatActivity {
 
         mContext=main_date_activity.this;
         listView=findViewById(R.id.data_list);
-
+        Button to_todolist_btn=(Button) findViewById(R.id.to_todolist_btn);
+        btnManager.switchToActivity_btn(to_todolist_btn,main_date_activity.this,main_todolist_activity.class);
         mDate = new LinkedList<date_attribute>();
 
         Log.d(TAG,"onCreate: ");
