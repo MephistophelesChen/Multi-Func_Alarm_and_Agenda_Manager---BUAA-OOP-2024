@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 public class MySQLiteOpenHelper extends SQLiteOpenHelper{
    private static final String DATABASE_NAME = "mydatabase.db";
-   private static final int DATABASE_VERSION=6;
+   private static final int DATABASE_VERSION=7;
    private static final String TABLE_NAME = "mytable";
    private static final String COLUMN_ID = "id";
 
@@ -17,7 +17,8 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper{
            "idx INTEGER,"+
            "isSwitchOn INTEGER,"+
            "zhongyao INTEGER,"+
-           "jinji INTEGER);";
+           "jinji INTEGER,"+
+           "LocalDate TEXT);";
    public static final String TABLE_LOCAL_DATE_MAP_CREATE=
            "CREATE TABLE LocalDateMap("+
            "id INTEGER PRIMARY KEY AUTOINCREMENT,"+

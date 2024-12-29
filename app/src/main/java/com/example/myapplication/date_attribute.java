@@ -1,10 +1,13 @@
 package com.example.myapplication;
 
+import java.time.LocalDate;
+
 public class date_attribute {
 
 
     private String name;
     private String tips;
+    private LocalDate localDate;
     private boolean isSwitchOn;
     private int  id;
     private boolean zhongyao;
@@ -79,6 +82,24 @@ public class date_attribute {
     public void setJinji(boolean jinji) {
         this.jinji = jinji;
     }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+    public int getYear(){
+        return localDate.getYear();
+    }
+    public int getMonth(){
+        return localDate.getMonthValue();
+    }
+    public int getDayOfMonth(){
+        return localDate.getDayOfMonth();
+    }
+
     //    public int getIcon() {
 //        return icon;
 //    }

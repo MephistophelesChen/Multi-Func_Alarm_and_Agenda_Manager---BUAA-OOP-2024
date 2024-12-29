@@ -42,7 +42,7 @@ public class main_date_activity extends AppCompatActivity {
     private static Map<LocalDate,LinkedList<date_attribute>> dateMap = new HashMap<>();
     static MySQLiteOpenHelper dbHelper;
     static SQLiteDatabase db;
-
+  private ButtonManager btnManager=new ButtonManager();
     String TAG="mtTag";
 
     @Override
@@ -51,6 +51,7 @@ public class main_date_activity extends AppCompatActivity {
         setContentView(R.layout.main_date);
         dbHelper = new MySQLiteOpenHelper(this);
 //        dbHelper.deleteSQL();
+
         loadDateMapFromDatabase();
         db=dbHelper.getWritableDatabase();
 
@@ -62,7 +63,8 @@ public class main_date_activity extends AppCompatActivity {
 
         mContext=main_date_activity.this;
         listView=findViewById(R.id.data_list);
-
+        Button to_todolist_btn=(Button) findViewById(R.id.to_todolist_btn);
+        btnManager.switchToActivity_btn(to_todolist_btn,main_date_activity.this,main_todolist_activity.class);
         mDate = new LinkedList<date_attribute>();
 
         Log.d(TAG,"onCreate: ");
@@ -323,7 +325,7 @@ public class main_date_activity extends AppCompatActivity {
             // 使用 dateAttributeId 查询 DateAttribute 表以获取属性
             Cursor dateAttributeCursor = db.query(
                     "DateAttribute",
-                    new String[]{"attribute1", "attribute2", "idx","isSwitchOn","zhongyao","jinji"},
+                    new String[]{"attribute1", "attribute2", "idx","isSwitchOn","zhongyao","jinji","LocalDate"},
                     "id = ?",
                     new String[]{String.valueOf(dateAttributeId)},
                     null, null, null
@@ -335,6 +337,7 @@ public class main_date_activity extends AppCompatActivity {
                 int isSwitch = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("isSwitchOn"));
                 int isImportant = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("zhongyao"));
                 int isUrgent = dateAttributeCursor.getInt(dateAttributeCursor.getColumnIndexOrThrow("jinji"));
+                String date = dateAttributeCursor.getString(dateAttributeCursor.getColumnIndexOrThrow("LocalDate"));
                 boolean isSwitchOn;
                 boolean important = isImportant == 1;
                 boolean urgent = isUrgent==1;
@@ -346,7 +349,7 @@ public class main_date_activity extends AppCompatActivity {
                 }
                 date_attribute dateAttribute = new date_attribute(attribute1, attribute2 , isSwitchOn,important,urgent);
                 dateAttribute.setId(id);
-
+                dateAttribute.setLocalDate(LocalDate.parse(date));
                 // 将 dateAttribute 添加到 dateMap 中对应的日期下
                 dateMap.computeIfAbsent(localDate, k -> new LinkedList<>()).add(dateAttribute);
             }dateAttributeCursor.close();
