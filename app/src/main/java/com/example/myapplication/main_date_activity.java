@@ -39,7 +39,7 @@ public class main_date_activity extends AppCompatActivity {
     private ListView listView;
     private CalendarView calendarView;
     private static LocalDate selectedDate;
-    private static Map<LocalDate,LinkedList<date_attribute>> dateMap = new HashMap<>();
+    public static Map<LocalDate,LinkedList<date_attribute>> dateMap = new HashMap<>();
     static MySQLiteOpenHelper dbHelper;
     static SQLiteDatabase db;
   private ButtonManager btnManager=new ButtonManager();
@@ -52,7 +52,7 @@ public class main_date_activity extends AppCompatActivity {
         dbHelper = new MySQLiteOpenHelper(this);
 //        dbHelper.deleteSQL();
 
-        loadDateMapFromDatabase();
+        dateMap=loadDateMapFromDatabase();
         db=dbHelper.getWritableDatabase();
 
         Calendar calendar = Calendar.getInstance();
@@ -309,8 +309,9 @@ public class main_date_activity extends AppCompatActivity {
         }
     }
 
-    private void loadDateMapFromDatabase(){
+    public static Map<LocalDate,LinkedList<date_attribute>> loadDateMapFromDatabase(){
         dateMap.clear();
+        Map<LocalDate,LinkedList<date_attribute>> dateMap = new HashMap<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor localDateCursor = db.query(
                 "LocalDateMap",
@@ -355,7 +356,7 @@ public class main_date_activity extends AppCompatActivity {
             }dateAttributeCursor.close();
         }
         localDateCursor.close();
-
+return dateMap;
     }
 
         public static int getIdByAttributes(SQLiteDatabase db ,String attribute1,String attribute2){

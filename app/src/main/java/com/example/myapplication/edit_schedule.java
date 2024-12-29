@@ -132,6 +132,7 @@ public class edit_schedule extends AppCompatActivity {
             return;
         }
         dateAttribute.setId(dateAttributeId);
+
         main_date_activity.updateInSQLid(main_date_activity.getDbHelper().getWritableDatabase(),dateAttributeId);
 
         SQLiteDatabase db = null;

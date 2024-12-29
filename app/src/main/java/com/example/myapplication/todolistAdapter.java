@@ -1,5 +1,4 @@
 package com.example.myapplication;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -19,27 +18,27 @@ import com.example.myapplication.main_date_activity;
 import java.util.LinkedList;
 
 //mData 是副本
-public class date_adapter extends BaseAdapter {
-       private LinkedList<date_attribute> mData;
-       private Context mContext;
-       private int resource;
+public class todolistAdapter extends BaseAdapter {
+    private LinkedList<date_attribute> mData;
+    private Context mContext;
+    private int resource;
 
 
-       private static class ViewHolder{
-           TextView xingxing;
-           TextView tips;
-           CheckBox checkBox;
-           int position;
-       }
-       public date_adapter(LinkedList<date_attribute> mData, Context context, int resource){
-           this.mContext=context;
-           this.mData=mData;
-           this.resource=resource;
-       }
-       @Override
-       public int getCount(){
-           return mData.size();
-       }
+    private static class ViewHolder{
+        TextView xingxing;
+        TextView tips;
+        CheckBox checkBox;
+        int position;
+    }
+    public todolistAdapter(LinkedList<date_attribute> mData, Context context, int resource){
+        this.mContext=context;
+        this.mData=mData;
+        this.resource=resource;
+    }
+    @Override
+    public int getCount(){
+        return mData.size();
+    }
 
     @Override
     public Object getItem(int position) {
@@ -47,14 +46,14 @@ public class date_adapter extends BaseAdapter {
     }
 
     //null?
-       @Override
-       public long getItemId(int position){
-           return position;
-       }
+    @Override
+    public long getItemId(int position){
+        return position;
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-           ViewHolder holder;
+        ViewHolder holder;
         if(convertView==null) {
             convertView = LayoutInflater.from(mContext).inflate(resource, parent, false);
             holder = new ViewHolder();
@@ -69,15 +68,16 @@ public class date_adapter extends BaseAdapter {
 
         holder.position=position;
         date_attribute dateAttribute = (date_attribute) getItem(position);
+        System.out.println(position);
+        System.out.println(mData.get(0).getName());
         holder.xingxing.setText(dateAttribute.getName());
-        holder.tips.setText(dateAttribute.getTips());
+        holder.tips.setText(dateAttribute.getLocalDate().getMonthValue()+"月"+dateAttribute.getLocalDate().getDayOfMonth()+"日");
         holder.checkBox.setChecked(dateAttribute.getIsSwitchOn());
 
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             int currentIndex = holder.position; // 使用holder中的position
             date_attribute currentItem = (date_attribute) getItem(currentIndex);
             currentItem.setIsSwitchOn(isChecked); // 更新数据模型
-            main_date_activity.getDateMap().get(main_date_activity.getLocalDate()).get(currentIndex).setIsSwitchOn(isChecked);
             // 更新数据库（注意：这里应该在一个异步任务中执行，以避免阻塞UI线程）
             int id = currentItem.getId();
             Log.d("mtTag",String.valueOf(id));
@@ -92,9 +92,9 @@ public class date_adapter extends BaseAdapter {
     }
 
     public void updateDate(LinkedList<date_attribute> Date){
-           this.mData.clear();
-           this.mData.addAll(Date);
-           notifyDataSetChanged();
+        this.mData.clear();
+        this.mData.addAll(Date);
+        notifyDataSetChanged();
 
     }
 

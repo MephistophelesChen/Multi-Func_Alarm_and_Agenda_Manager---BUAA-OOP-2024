@@ -100,7 +100,7 @@
         app:layout_constraintRight_toLeftOf="@id/y1n2list"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:background="@drawable/press_button_repeat_bottom"
+        android:background="@drawable/press_button_repeat_bottom1"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_weight="1"
         />
@@ -114,7 +114,7 @@
         app:layout_constraintBottom_toTopOf="@id/n1n2"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:background="@drawable/press_button_repeat_bottom"
+        android:background="@drawable/press_button_repeat_bottom1"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_weight="1"
         />
@@ -128,7 +128,7 @@
         app:layout_constraintRight_toLeftOf="@id/n1n2list"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:background="@drawable/press_button_repeat_bottom"
+        android:background="@drawable/press_button_repeat_bottom1"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_weight="1"
 
@@ -143,7 +143,7 @@
         app:layout_constraintLeft_toRightOf="@id/n1y2list"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:background="@drawable/press_button_repeat_bottom"
+        android:background="@drawable/press_button_repeat_bottom1"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_weight="1"
         />
