@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/delete" android:title="删除"/>
+    <item android:id="@+id/about_us" android:title="关于我们"/>
+    <item android:id="@+id/judge" android:title="评价此应用"/>
 </menu>

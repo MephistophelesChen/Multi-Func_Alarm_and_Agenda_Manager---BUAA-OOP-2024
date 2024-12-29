@@ -33,6 +33,7 @@ import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.VibrationEffect;
 import android.util.AttributeSet;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -40,6 +41,7 @@ import android.widget.AnalogClock;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -176,6 +178,29 @@ public class main_alarm_activity extends AppCompatActivity {
             public void onClick(View v){
                 Intent intent = new Intent(main_alarm_activity.this, main_date_activity.class);
                 startActivity(intent);
+            }
+        });
+        ImageButton topButton=findViewById(R.id.threeDots);
+        topButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(main_alarm_activity.this,topButton);
+                popup.getMenuInflater().inflate(R.menu.menu_pop, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        int id=menuItem.getItemId();
+                        if(id==R.id.about_us){
+                            Intent intent=new Intent(main_alarm_activity.this,about_us_activity.class);
+                            startActivity(intent);
+                        }else if(id==R.id.judge){
+                            Intent intent=new Intent(main_alarm_activity.this,judge_activity.class);
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                });
+                popup.show();
             }
         });
     }

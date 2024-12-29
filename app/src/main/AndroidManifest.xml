@@ -42,7 +42,8 @@
         <activity android:name=".main_todolist_activity" />
 
         <activity android:name=".main_setting_activity" />
-
+        <activity android:name=".about_us_activity"/>
+        <activity android:name=".judge_activity"/>
         <activity android:name=".activity_ring_alarm"/>
 <activity android:name=".music_select_activity"/>
         <activity
