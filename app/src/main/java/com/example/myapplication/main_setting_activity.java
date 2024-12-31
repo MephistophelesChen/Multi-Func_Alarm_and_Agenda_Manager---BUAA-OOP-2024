@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -26,8 +27,11 @@ public class main_setting_activity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.main_setting);
+        TextView tt=findViewById(R.id.sleeptime);
+        SharedPreferences sharedPreferences=getSharedPreferences("sleeptime",Context.MODE_PRIVATE);
+        String time=sharedPreferences.getString("sleep","1分钟(演示用)");
+        tt.setText(time);
         switch_vibrate=(Switch) findViewById(R.id.switch_vibrate);
         switch_vibrate.setChecked(main_alarm_activity.EnableVibrate);
         switch_vibrate.bringToFront();
@@ -101,6 +105,63 @@ popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     }
                 });
                 popup.show();
+            }
+        });
+        Button facebutton=findViewById(R.id.face_identity);
+        facebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               PopupMenu popupMenu=new PopupMenu(main_setting_activity.this,facebutton);
+               popupMenu.getMenuInflater().inflate(R.menu.menu_sleeptime,popupMenu.getMenu());
+               TextView textView=findViewById(R.id.sleeptime);
+               SharedPreferences sharedPreferences=getSharedPreferences("sleeptime",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+               popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                   @Override
+                   public boolean onMenuItemClick(MenuItem menuItem) {
+                       int id=menuItem.getItemId();
+                       if(id==R.id.min1){
+                           textView.setText("1分钟(演示用)");
+                           editor.putString("sleep","1分钟(演示用)");
+                       }else if(id==R.id.min5){
+                           textView.setText("5分钟");
+                           editor.putString("sleep","5分钟");
+                       }else if(id==R.id.min10){
+                           textView.setText("10分钟");
+                           editor.putString("sleep","10分钟");
+                       } else if (id==R.id.min20) {
+                           textView.setText("20分钟");
+                           editor.putString("sleep","20分钟");
+                       }
+                       return true;
+                   }
+               });
+               popupMenu.show();
+            }
+        });
+        Button showbutton=findViewById(R.id.show_music);
+        showbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri alert;
+                SharedPreferences sharedPreferences=getSharedPreferences("music",Context.MODE_PRIVATE);
+                String path=sharedPreferences.getString("ring_music","null");
+                if(!path.equals("null"))
+                {
+                    alert=Uri.parse(path);
+                }
+                else {
+                    alert= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+                }
+               MediaUtil.stopRing();
+                MediaUtil.playRing(main_setting_activity.this,alert);
+            }
+        });
+        Button stopbutton=findViewById(R.id.stop);
+        stopbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MediaUtil.stopRing();
             }
         });
     }
