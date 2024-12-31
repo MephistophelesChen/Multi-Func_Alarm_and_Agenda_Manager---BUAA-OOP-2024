@@ -394,7 +394,7 @@ static boolean if_will_ring()
     private Alarm getNextAlarmToRing() {
         Calendar now = Calendar.getInstance();
         Calendar oneMinuteLater = (Calendar) now.clone(); // 创建一个当前时间的副本
-        oneMinuteLater.add(Calendar.MINUTE, 1); // 在副本上增加1分钟
+        oneMinuteLater.add(Calendar.SECOND, 50); // 在副本上增加1分钟
         for (Alarm alarm : alarms) {
             if (alarm.isRing()) {
                 Calendar alarmTime = Calendar.getInstance();
