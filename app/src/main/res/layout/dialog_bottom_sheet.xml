@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bottomshape"
+    android:background="@color/background_item"
     android:padding="7.5dp"
     >
 <ListView

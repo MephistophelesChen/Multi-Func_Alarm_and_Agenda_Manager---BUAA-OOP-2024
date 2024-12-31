@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Calendar;
 
-public class activity_ring_alarm extends Activity {
+public class activity_ring_alarm extends AppCompatActivity {
     ImageButton endButton;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +84,6 @@ public class activity_ring_alarm extends Activity {
         now.add(Calendar.MINUTE, 1); // 延迟1分钟
         int hour = now.get(Calendar.HOUR_OF_DAY);
         int minute = now.get(Calendar.MINUTE);
-
         // 更新数据库中的隐藏闹钟
         ContentValues values = new ContentValues();
         values.put(DataBaseHelper.COLUMN_ALARM_HOUR, String.valueOf(hour));

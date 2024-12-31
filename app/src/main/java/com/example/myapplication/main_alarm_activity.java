@@ -1,10 +1,7 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.VibrateUtil.vibrator;
 import static java.lang.Thread.sleep;
 
-import android.annotation.SuppressLint;
-import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -13,16 +10,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Picture;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -30,28 +19,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
-import android.os.SystemClock;
-import android.os.VibrationEffect;
-import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.AnalogClock;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.RemoteViews;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -376,6 +358,9 @@ static boolean if_will_ring()
                     map1.replace(timeStr,false);
                 }
                 i++;
+            }
+            if(!if_will_ring()){
+                willring=false;
             }
             adapter.notifyDataSetChanged();
             postNotification(nextAlarm.id);

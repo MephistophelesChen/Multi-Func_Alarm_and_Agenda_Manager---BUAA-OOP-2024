@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/min1" android:title="1分钟(演示用)"/>
+    <item android:id="@+id/min5" android:title="5分钟"/>
+    <item android:id="@+id/min10" android:title="10分钟" />
+    <item android:id="@+id/min20" android:title="20分钟"/>
+</menu>

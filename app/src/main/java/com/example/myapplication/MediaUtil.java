@@ -14,6 +14,7 @@ public class MediaUtil {
     public static void playRing(Context context,Uri alert) {
         try {
             //获取手机默认铃声
+
             mediaPlayer = new MediaPlayer();
 
             mediaPlayer.setDataSource(context, alert);//根据Uri加载音频文件
@@ -46,6 +47,5 @@ public class MediaUtil {
             main_alarm_activity.isVibrating = false;
         }
         mediaPlayer.release();
-
     }
 }

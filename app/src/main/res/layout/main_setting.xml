@@ -54,7 +54,7 @@ android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/press_button_repeat_nocorner"
-        android:text=" 表情识别功能"
+        android:text=" 贪睡时长选择"
         app:layout_constraintTop_toBottomOf="@id/theme"
         app:layout_constraintBottom_toTopOf="@id/vibrate"
         android:gravity="left|center"
@@ -62,9 +62,21 @@ android:background="@color/white"
         android:paddingLeft="15dp"
         tools:layout_editor_absoluteX="0dp"
         android:drawableRight="@drawable/chevron_right"
-        android:drawableLeft="@drawable/face_id"
+        android:drawableLeft="@drawable/cil_bed"
         />
-
+    <TextView
+        android:id="@+id/sleeptime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="一分钟(展示用)"
+        android:textSize="15dp"
+        android:textColor="@color/gray_3"
+        app:layout_constraintTop_toTopOf="@id/face_identity"
+        android:elevation="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/face_identity"
+        app:layout_constraintRight_toRightOf="@id/face_identity"
+        android:paddingRight="30dp"
+        />
     <Button
         android:id="@+id/ring_music"
         android:layout_width="match_parent"
@@ -182,5 +194,22 @@ android:background="@color/white"
         android:background="@drawable/press_button"
         style="?android:attr/borderlessButtonStyle"
         />
-
+    <Button
+        android:id="@+id/show_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ring_music"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="   播放当前铃声   "
+        android:background="@drawable/press_button"
+        />
+<Button
+    android:id="@+id/stop"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="   停止播放   "
+    android:background="@drawable/press_button"
+   app:layout_constraintTop_toBottomOf="@id/show_music"
+    app:layout_constraintRight_toRightOf="parent"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -107,7 +107,7 @@ if(dateAttribute.getIsSwitchOn()){
                 holder.tips.setTextColor(color);
             }
         });
-
+        convertView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.white));
         return convertView;
     }
 

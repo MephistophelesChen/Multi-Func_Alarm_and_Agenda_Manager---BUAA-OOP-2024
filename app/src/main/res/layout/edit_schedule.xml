@@ -48,11 +48,11 @@
     <ImageButton
         android:id="@+id/back"
         android:layout_width="60dp"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:background="@drawable/press_button"
         android:paddingLeft="7dp"
         android:src="@drawable/x"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,7 +64,8 @@
         android:text="Urgent"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/Important"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintLeft_toRightOf="@id/Important"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Important" />
 
     <CheckBox
@@ -76,8 +77,8 @@
         android:text="Important"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+       app:layout_constraintRight_toLeftOf="@id/Urgent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -91,21 +92,6 @@
         android:layout_height="wrap_content"
         app:barrierDirection="left" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="253dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/Important"
-        app:layout_constraintGuide_begin="39dp"
-        app:layout_constraintTop_toBottomOf="@+id/back" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="358dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

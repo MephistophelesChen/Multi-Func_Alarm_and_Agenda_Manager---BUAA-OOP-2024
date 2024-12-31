@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
-public class music_select_activity extends Activity {
+public class music_select_activity extends AppCompatActivity {
     public static ArrayList<Integer> music_list=new ArrayList<Integer>();
     public static ArrayList<String> music_name=new ArrayList<String>();
     public ListView music_listview;

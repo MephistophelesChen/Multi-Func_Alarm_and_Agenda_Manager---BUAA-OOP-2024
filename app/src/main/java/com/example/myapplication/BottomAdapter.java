@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.List;
 
 public class BottomAdapter extends BaseAdapter {
@@ -76,6 +78,7 @@ public class BottomAdapter extends BaseAdapter {
                 }
             }
         });
+
         return view;
     }
 

@@ -256,6 +256,12 @@ public class main_date_activity extends AppCompatActivity {
     @Override
     public void onStart(){
         super.onStart();
+        for(int i=0;i<listView.getCount();i++){
+            View itemView = listView.getChildAt(i);
+            if(itemView!=null){
+                itemView.setBackgroundColor(Color.WHITE);
+            }
+        }
         Log.d(TAG,"onStart: ");
     }
     @Override

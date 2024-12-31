@@ -28,10 +28,7 @@ public class main_setting_activity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_setting);
-        TextView tt=findViewById(R.id.sleeptime);
-        SharedPreferences sharedPreferences=getSharedPreferences("sleeptime",Context.MODE_PRIVATE);
-        String time=sharedPreferences.getString("sleep","1分钟(演示用)");
-        tt.setText(time);
+
         switch_vibrate=(Switch) findViewById(R.id.switch_vibrate);
         switch_vibrate.setChecked(main_alarm_activity.EnableVibrate);
         switch_vibrate.bringToFront();
@@ -133,9 +130,11 @@ popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                            textView.setText("20分钟");
                            editor.putString("sleep","20分钟");
                        }
+                       editor.apply();
                        return true;
                    }
                });
+
                popupMenu.show();
             }
         });
@@ -181,6 +180,10 @@ popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             textView.setText("跟随系统");
         }
         switch_vibrate.setChecked(main_alarm_activity.EnableVibrate);
+        TextView tt=findViewById(R.id.sleeptime);
+        sharedPreferences=getSharedPreferences("sleeptime",Context.MODE_PRIVATE);
+        String time=sharedPreferences.getString("sleep","1分钟(演示用)");
+        tt.setText(time);
     }
 }
 
