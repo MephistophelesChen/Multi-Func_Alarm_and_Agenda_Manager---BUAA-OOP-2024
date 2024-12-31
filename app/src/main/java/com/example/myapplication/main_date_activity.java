@@ -13,6 +13,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.*;
@@ -193,6 +194,12 @@ public class main_date_activity extends AppCompatActivity {
                             itemView.setBackgroundColor(Color.WHITE);
                         }
                     }
+                    if(mDate.isEmpty()){
+                        nothing_to_do.setVisibility(View.VISIBLE);
+                    }
+                    else{
+                        nothing_to_do.setVisibility(View.GONE);
+                    }
                     selectedPosition.clear();
                     selectedIdx.clear();
                     delete_schedule.setVisibility(View.GONE);
@@ -217,6 +224,29 @@ public class main_date_activity extends AppCompatActivity {
                     selectedIdx.clear();
                 }
             });
+        ImageButton topButton=findViewById(R.id.threeDots);
+        topButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(main_date_activity.this,topButton);
+                popup.getMenuInflater().inflate(R.menu.menu_pop, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        int id=menuItem.getItemId();
+                        if(id==R.id.about_us){
+                            Intent intent=new Intent(main_date_activity.this,about_us_activity.class);
+                            startActivity(intent);
+                        }else if(id==R.id.judge){
+                            Intent intent=new Intent(main_date_activity.this,judge_activity.class);
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                });
+                popup.show();
+            }
+        });
     }
 //----------------------------------------------------------
 

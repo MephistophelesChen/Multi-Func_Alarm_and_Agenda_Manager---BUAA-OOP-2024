@@ -11,6 +11,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.example.myapplication.R;
 import com.example.myapplication.date_attribute;
 import com.example.myapplication.main_date_activity;
@@ -73,7 +75,15 @@ public class todolistAdapter extends BaseAdapter {
         holder.xingxing.setText(dateAttribute.getName());
         holder.tips.setText(dateAttribute.getLocalDate().getMonthValue()+"月"+dateAttribute.getLocalDate().getDayOfMonth()+"日");
         holder.checkBox.setChecked(dateAttribute.getIsSwitchOn());
-
+        if(dateAttribute.getIsSwitchOn()){
+            int color= ContextCompat.getColor(mContext,R.color.text_color_thin);
+            holder.xingxing.setTextColor(color);
+            holder.tips.setTextColor(color);
+        }else {
+            int color=ContextCompat.getColor(mContext,R.color.text_color);
+            holder.xingxing.setTextColor(color);
+            holder.tips.setTextColor(color);
+        }
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             int currentIndex = holder.position; // 使用holder中的position
             date_attribute currentItem = (date_attribute) getItem(currentIndex);
@@ -85,6 +95,15 @@ public class todolistAdapter extends BaseAdapter {
                 main_date_activity.updateIsSwitchOnById(main_date_activity.getDbHelper().getWritableDatabase(), id, isChecked);
             } else {
                 Log.d("mtTag", "No matching record found for attributes");
+            }
+            if(dateAttribute.getIsSwitchOn()){
+                int color= ContextCompat.getColor(mContext,R.color.text_color_thin);
+                holder.xingxing.setTextColor(color);
+                holder.tips.setTextColor(color);
+            }else {
+                int color=ContextCompat.getColor(mContext,R.color.text_color);
+                holder.xingxing.setTextColor(color);
+                holder.tips.setTextColor(color);
             }
         });
 

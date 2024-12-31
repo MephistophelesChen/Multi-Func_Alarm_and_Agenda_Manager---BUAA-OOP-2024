@@ -83,7 +83,6 @@ public class main_alarm_activity extends AppCompatActivity {
     private Button to_date_btn;
     public static boolean EnableVibrate = false;
     public static boolean isVibrating = false;
-    Button test;
     int test111=0;
     static boolean willring;
      int temp_alter_position=-1;
@@ -105,13 +104,7 @@ public class main_alarm_activity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         }
 
-        test=findViewById(R.id.test1);
-   test.setOnClickListener(new View.OnClickListener() {
-       @Override
-       public void onClick(View view) {
 
-       }
-   });
         dbHelper = new DataBaseHelper(this);
         alarmList = findViewById(R.id.list_test);
         adapter = new MyBaseAdapter(main_alarm_activity.this, time, repeat, map1, alarms, db, dbHelper);
@@ -254,7 +247,7 @@ static boolean if_will_ring()
                 if(willring) {
                     if (calculateNextRingTime() - now.getTimeInMillis() <= 1000)
                         checkAndRing();
-                    updateNextRingTime();
+                       updateNextRingTime();
                 }
             }
         }, delay);
@@ -291,7 +284,7 @@ static boolean if_will_ring()
             alarms.get(temp_alter_position).repeat=repeatDays;
             adapter.getList().set(temp_alter_position,String.format("%02d:%02d%d", hour, minute, alarms.get(temp_alter_position).id));
             adapter.getList1().set(temp_alter_position,Tool.addrepeat(repeatDays));
-            Toast.makeText(main_alarm_activity.this,Integer.toString(temp_alter_position),Toast.LENGTH_SHORT).show();
+
             updataSQL(temp_alter_position,hour,minute,repeatDays);
             sort_alarm();
             loadFromSQL();
@@ -344,7 +337,11 @@ static boolean if_will_ring()
                 }
                 hours += minutes / 60;
                 minutes %= 60;
-                nextTime = String.format("还有%d小时%d分钟响铃", hours, minutes);
+                if(hours<24){
+                nextTime = String.format("还有%d小时%d分钟响铃", hours, minutes);}
+                else {
+                    nextTime=String.format("还有%d天%d小时%d分钟响铃",hours/24,hours%24,minutes);
+                }
             }
 
         }
@@ -396,6 +393,8 @@ static boolean if_will_ring()
 
     private Alarm getNextAlarmToRing() {
         Calendar now = Calendar.getInstance();
+        Calendar oneMinuteLater = (Calendar) now.clone(); // 创建一个当前时间的副本
+        oneMinuteLater.add(Calendar.SECOND, 50); // 在副本上增加1分钟
         for (Alarm alarm : alarms) {
             if (alarm.isRing()) {
                 Calendar alarmTime = Calendar.getInstance();
@@ -403,7 +402,7 @@ static boolean if_will_ring()
                 alarmTime.set(Calendar.MINUTE, alarm.getMinute());
                 alarmTime.set(Calendar.SECOND, 0);
 
-                if (alarmTime.after(now)) {
+                if (alarmTime.after(now)&&!alarmTime.after(oneMinuteLater)) {
                     return alarm;
                 }
             }
