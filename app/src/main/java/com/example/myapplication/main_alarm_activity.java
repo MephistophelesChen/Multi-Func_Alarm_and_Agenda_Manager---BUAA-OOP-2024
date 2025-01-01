@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import static java.lang.Thread.sleep;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -75,7 +76,7 @@ public class main_alarm_activity extends AppCompatActivity {
         setContentView(R.layout.main_alarm);
       //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         alarm_id = 1;
-        willring=false;
+        willring=if_will_ring();
         SharedPreferences sharedPreferences=getSharedPreferences("theme", Context.MODE_PRIVATE);
         int theme=sharedPreferences.getInt("themeSelect",0);
         if(theme==0){
@@ -204,6 +205,7 @@ public class main_alarm_activity extends AppCompatActivity {
         EnableVibrate=sharedPreferences.getBoolean("isVibrate",false);
 
         willring=if_will_ring();
+
     }
 
 static boolean if_will_ring()
@@ -219,17 +221,21 @@ static boolean if_will_ring()
     }
     return will;
 }
-    void updateNextRingTime() {
+  void updateNextRingTime() {
         Calendar now = Calendar.getInstance();
         long delay = 60 - now.get(Calendar.SECOND) * 1000L;
         calculateNextRingTime();
+        willring=if_will_ring();
         handler.postDelayed(new Runnable() {
+
             @Override
             public void run() {
                 if(willring) {
                     if (calculateNextRingTime() - now.getTimeInMillis() <= 1000)
+                    {
                         checkAndRing();
-                       updateNextRingTime();
+                    }
+                    updateNextRingTime();
                 }
             }
         }, delay);
@@ -359,9 +365,7 @@ static boolean if_will_ring()
                 }
                 i++;
             }
-            if(!if_will_ring()){
-                willring=false;
-            }
+                willring=if_will_ring();
             adapter.notifyDataSetChanged();
             postNotification(nextAlarm.id);
 

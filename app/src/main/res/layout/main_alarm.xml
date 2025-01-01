@@ -50,27 +50,13 @@
         android:hand_hour="@drawable/hourppp"
         android:hand_minute="@drawable/minuteppp"
         app:layout_constraintTop_toBottomOf="@id/topText"
-        app:layout_constraintBottom_toTopOf="@id/digitalclock"
+        app:layout_constraintBottom_toTopOf="@id/next_ring_time"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/circle_1"
        />
 
-    <DigitalClock
-        android:id="@+id/digitalclock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_x="148dp"
-        android:layout_y="323dp"
-        android:fontFamily="@font/font_1"
-        android:textSize="25dp"
-        app:layout_constraintVertical_weight="2"
-        app:layout_constraintTop_toBottomOf="@id/analogClock1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/next_ring_time"
-        app:layout_constraintRight_toLeftOf="@id/next_ring_time"
-        />
+
 
     <TextView
         android:id="@+id/next_ring_time"
@@ -81,7 +67,7 @@
         android:fontFamily="@font/font_1"
         android:text="还有X小时XX分钟响铃"
         app:layout_constraintTop_toBottomOf="@id/analogClock1"
-        app:layout_constraintLeft_toRightOf="@id/digitalclock"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
 
@@ -92,7 +78,7 @@
         android:background="@color/background_item"
         android:focusable="true"
         app:layout_constraintBottom_toTopOf="@id/to_date_btn"
-        app:layout_constraintTop_toBottomOf="@id/digitalclock"
+        app:layout_constraintTop_toBottomOf="@id/next_ring_time"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_weight="5"
         tools:layout_editor_absoluteX="0dp" />

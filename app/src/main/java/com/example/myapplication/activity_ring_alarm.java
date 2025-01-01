@@ -40,7 +40,8 @@ public class activity_ring_alarm extends AppCompatActivity {
                      }
                  }
                  main_alarm_activity.willring= ring;
-                 finish();
+                 Intent intent1=new Intent(activity_ring_alarm.this,main_alarm_activity.class);
+                 startActivity(intent1);
              }
          });
 
@@ -50,7 +51,18 @@ public class activity_ring_alarm extends AppCompatActivity {
             public void onClick(View v) {
                 delayAlarm();
                 MediaUtil.stopRing();
-                finish();
+                boolean ring=false;
+                for(Alarm alarm:main_alarm_activity.alarms)
+                {
+                    if(alarm.isRing)
+                    {
+                        ring=true;
+                        break;
+                    }
+                }
+                main_alarm_activity.willring= ring;
+                Intent intent1=new Intent(activity_ring_alarm.this,main_alarm_activity.class);
+                startActivity(intent1);
             }
         });
         // 检查所有在同一时间点的、不重复的闹钟，并将其关闭
@@ -90,7 +102,7 @@ public class activity_ring_alarm extends AppCompatActivity {
         values.put(DataBaseHelper.COLUMN_ALARM_MINUTE, String.valueOf(minute));
         values.put(DataBaseHelper.COLUMN_ALARM_RING, "1");  //打开
         db.update(DataBaseHelper.TABLE_NAME, values, "isHidden = ?", new String[]{"1"});
-
+        main_alarm_activity.willring=true;
         // 更新内存中的隐藏闹钟
         for (Alarm alarm : main_alarm_activity.alarms) {
             if (alarm.isHidden) {
@@ -102,6 +114,7 @@ public class activity_ring_alarm extends AppCompatActivity {
         }
 
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
