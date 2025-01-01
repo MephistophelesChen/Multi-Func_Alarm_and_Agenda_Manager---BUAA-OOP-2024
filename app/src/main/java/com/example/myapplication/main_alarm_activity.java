@@ -225,7 +225,7 @@ static boolean if_will_ring()
         Calendar now = Calendar.getInstance();
         long delay = 60 - now.get(Calendar.SECOND) * 1000L;
         calculateNextRingTime();
-        willring=if_will_ring();
+
         handler.postDelayed(new Runnable() {
 
             @Override
